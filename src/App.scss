@@ -2,9 +2,14 @@
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  align-items: center;
 
-  &__body {
+  &__profile {
+    flex: 1;
+    height: 100%;
+  }
+
+  &__content {
     flex: 1;
     height: 100%;
   }

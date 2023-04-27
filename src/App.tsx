@@ -5,18 +5,19 @@ import Resume from "./components/resume";
 import Projects from "./components/projects";
 import Contact from "./components/contact";
 import Navbar from "./components/navbar";
+import Gilada from "./components/gilada";
 
-export type Route = "profile" | "resume" | "projects" | "contact";
+export type Route = "Profile" | "Resume" | "Projects" | "Contact";
 
 const routes: Record<Route, () => JSX.Element> = {
-  profile: Profile,
-  resume: Resume,
-  projects: Projects,
-  contact: Contact,
+  Profile: Profile,
+  Resume: Resume,
+  Projects: Projects,
+  Contact: Contact,
 };
 
 const App = () => {
-  const [route, setRoute] = useState<Route>("profile");
+  const [route, setRoute] = useState<Route>("Profile");
 
   const changeRoute = (newRoute: Route) => {
     setRoute(newRoute);
@@ -25,7 +26,9 @@ const App = () => {
   return (
     <div className="app">
       <Navbar changeRoute={changeRoute} />
-      <div className="app__profile">gilada del medio</div>
+      <div className="app__profile">
+        <Gilada />
+      </div>
       <div className="app__content">{routes[route]()}</div>
     </div>
   );

@@ -1,0 +1,18 @@
+.gilada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: blanchedalmond;
+
+  &__foto {
+    height: 250px;
+  }
+
+  &__logos {
+    margin-top: 10px;
+  }
+
+  &__buttons {
+    margin-top: 25px;
+  }
+}
