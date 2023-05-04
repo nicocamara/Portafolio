@@ -9,7 +9,7 @@ import Gilada from "./components/gilada";
 
 export type Route = "Profile" | "Resume" | "Projects" | "Contact";
 
-const routes: Record<Route, () => JSX.Element> = {
+const contents: Record<Route, () => JSX.Element> = {
   Profile: Profile,
   Resume: Resume,
   Projects: Projects,
@@ -17,10 +17,10 @@ const routes: Record<Route, () => JSX.Element> = {
 };
 
 const App = () => {
-  const [route, setRoute] = useState<Route>("Profile");
+  const [content, setcontent] = useState<Route>("Profile");
 
   const changeRoute = (newRoute: Route) => {
-    setRoute(newRoute);
+    setcontent(newRoute);
   };
 
   return (
@@ -28,7 +28,7 @@ const App = () => {
       <Navbar changeRoute={changeRoute} />
       <div className="app__profile">
         <Gilada />
-        <div className="app__content">{routes[route]()}</div>
+        <div className="app__content">{contents[content]()}</div>
       </div>
     </div>
   );
