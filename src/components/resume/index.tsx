@@ -1,7 +1,7 @@
 import "./styles.scss";
 
 const Resume = () => {
-  return <div>Resume</div>;
+  return <div>Resumes</div>;
 };
 
 export default Resume;
