@@ -1,4 +1,5 @@
 import { Route } from "../../App";
+import { getAssetUrl } from "../../utils";
 import "./styles.scss";
 
 type NavbarProps = {
@@ -15,6 +16,7 @@ const Navbar = (props: NavbarProps) => {
           key={r}
           onClick={() => props.changeRoute(r)}
         >
+          <img className="navbar__icons" src={getAssetUrl(`${r}.svg`)} />
           {r}
         </div>
       ))}

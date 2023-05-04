@@ -5,11 +5,8 @@
   align-items: center;
 
   &__profile {
-    flex: 1;
-    height: 100%;
-  }
-
-  &__content {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     height: 100%;
   }

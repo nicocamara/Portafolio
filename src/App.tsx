@@ -28,8 +28,8 @@ const App = () => {
       <Navbar changeRoute={changeRoute} />
       <div className="app__profile">
         <Gilada />
+        <div className="app__content">{routes[route]()}</div>
       </div>
-      <div className="app__content">{routes[route]()}</div>
     </div>
   );
 };
