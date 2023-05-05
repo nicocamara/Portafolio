@@ -3,7 +3,7 @@ import "./styles.scss";
 const NavbarHome = () => {
   return (
     <div className="navHome">
-      <div>Poner el logo o la marca</div>
+      <div>Poner el logo</div>
       <div className="navHome__links">
         <Link to="/" className="navHome__links-a">
           Home
