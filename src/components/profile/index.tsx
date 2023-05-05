@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Contact from "../contact";
 import Gilada from "../gilada";
-import NavbarProfile from "../navbarProfile";
+import NavbarProfile from "../menu";
 import Projects from "../projects";
 import Resume from "../resume";
 import "./styles.scss";
