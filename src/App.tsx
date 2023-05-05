@@ -1,35 +1,20 @@
-import { useState } from "react";
-import "./App.scss";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Profile from "./components/profile";
-import Resume from "./components/resume";
-import Projects from "./components/projects";
-import Contact from "./components/contact";
-import Navbar from "./components/navbar";
-import Gilada from "./components/gilada";
-
-export type Route = "Profile" | "Resume" | "Projects" | "Contact";
-
-const contents: Record<Route, () => JSX.Element> = {
-  Profile: Profile,
-  Resume: Resume,
-  Projects: Projects,
-  Contact: Contact,
-};
+import NavbarHome from "./components/navbarHome";
+import Home from "./components/Home";
 
 const App = () => {
-  const [content, setcontent] = useState<Route>("Profile");
-
-  const changeRoute = (newRoute: Route) => {
-    setcontent(newRoute);
-  };
+  console.log("aca rey");
 
   return (
     <div className="app">
-      <Navbar changeRoute={changeRoute} />
-      <div className="app__profile">
-        <Gilada />
-        <div className="app__content">{contents[content]()}</div>
-      </div>
+      <NavbarHome />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />{" "}
+        {/* <Route path="/register" element={<register />} /> */}
+        {/* <Route path="/error" element={<Error />} /> */}
+      </Routes>
     </div>
   );
 };
