@@ -1,7 +1,7 @@
-import "./style.scss";
+import './style.scss';
 
 const Home = () => {
-  console.log("anda");
+  console.log('anda');
 
   return (
     <div className="home">

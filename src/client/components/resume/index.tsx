@@ -1,7 +1,5 @@
-import "./styles.scss";
+import './styles.scss';
 
-const Resume = () => {
-  return <div>Resumes</div>;
-};
+const Resume = () => <div>Resumes</div>;
 
 export default Resume;
