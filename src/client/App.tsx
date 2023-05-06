@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Profile from "./components/profile";
-import NavbarHome from "./components/navbar";
+import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
+import NavbarHome from "./components/navbar";
+import Profile from "./components/profile";
 
 const App = () => {
   console.log("aca rey");
