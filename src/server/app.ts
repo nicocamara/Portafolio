@@ -7,11 +7,12 @@ import config from './utils/config';
 
 const app = express();
 app.disable('x-powered-by');
-app.use(
-  cors({
-    origin: config.isDevelopment ? 'http://localhost:3000' : 'https://elchamuyin.onrender.com',
-  })
-);
+
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
+const corsOptions = { origin: config.isDevelopment ? 'http://localhost:3000' : 'https://my-portfolio.onrender.com' };
+app.use(cors(corsOptions));
+
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -6,7 +6,7 @@ const API = Router();
 API.get('/', async (_req, res) => {
   // Capture parameters/payload
   // Do important stuff
-  res.status(200).send('all good');
+  res.status(200).send({ hola: 'all good' });
 });
 
 export default API;

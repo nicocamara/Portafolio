@@ -1,6 +1,6 @@
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { visualizer } from 'rollup-plugin-visualizer';
+// import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, loadEnv } from 'vite';
 
 // https://vitejs.dev/config/
@@ -9,18 +9,20 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       react(),
-      visualizer({
-        template: 'treemap',
-        gzipSize: true,
-        brotliSize: true,
-        title: 'Bundle Network Visualization',
-        filename: 'build/client/bundle-info.html',
-      }),
+      // visualizer({
+      //   template: 'treemap',
+      //   gzipSize: true,
+      //   open: true,
+      //   brotliSize: true,
+      //   title: 'Bundle Network Visualization',
+      //   filename: 'build/client/bundle-info.html',
+      // }),
     ],
     define: {
       NODE_ENV: env.APP_ENV,
     },
     server: {
+      port: parseInt(env.PORT),
       hmr: {
         overlay: false,
       },
@@ -32,7 +34,6 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: 'build/client',
-      assetsDir: './',
       rollupOptions: {
         output: {
           entryFileNames: 'main.js',
@@ -42,6 +43,9 @@ export default defineConfig(({ mode }) => {
       },
       sourcemap: true,
       minify: 'esbuild',
+    },
+    preview: {
+      port: parseInt(env.PORT),
     },
   };
 });
