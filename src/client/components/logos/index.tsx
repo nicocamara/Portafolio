@@ -1,7 +1,7 @@
-import classNames from "classnames";
-import { useState } from "react";
-import { getAssetUrl } from "../../utils";
-import "./style.scss";
+import classNames from 'classnames';
+import { useState } from 'react';
+import { getAssetUrl } from '../../utils';
+import './style.scss';
 
 type LogoProps = {
   path: string;
@@ -25,12 +25,8 @@ const Logo = (props: LogoProps) => {
     setHover(false);
   };
 
-  const path = getAssetUrl(`${props.path + (isHovered ? "-hover" : "")}.svg`);
-  const className = classNames(
-    "img",
-    { img__link: props.link },
-    props.className
-  );
+  const path = getAssetUrl(`${props.path + (isHovered ? '-hover' : '')}.svg`);
+  const className = classNames('img', { img__link: props.link }, props.className);
   return (
     <img
       onMouseEnter={mouseEnterHandler}
