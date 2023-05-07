@@ -27,6 +27,7 @@
     "fix-lint": "eslint --fix 'src/**/*.ts{,x}'"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
     "axios": "^0.26.1",
     "body-parser": "^1.20.1",
     "classnames": "^2.3.2",
@@ -52,7 +53,6 @@
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
-    "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^8.38.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-promise": "^6.1.1",
