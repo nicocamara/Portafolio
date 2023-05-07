@@ -2,7 +2,6 @@
   "name": "portafolio",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
   "engines": {
     "node": "16.x"
   },
@@ -25,7 +24,8 @@
     "serve:client": "PORT=3000 vite preview",
     "serve:server": "PORT=4420 ts-node-dev build/server/index.js --cors",
     "check-lint": "eslint 'src/**/*.ts{,x}'",
-    "fix-lint": "eslint --fix 'src/**/*.ts{,x}'"
+    "fix-lint": "eslint --fix 'src/**/*.ts{,x}'",
+    "start": "node build/server/index.js"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.0",
