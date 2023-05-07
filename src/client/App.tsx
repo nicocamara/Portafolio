@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 const App = () => {
   const IS_DEVELOPMENT = process.env.NODE_ENV !== 'production';
-  const API_HOST = IS_DEVELOPMENT ? 'http://localhost:4420' : 'https://my-portfolio-server-fzmo.onrender.com/';
+  const API_HOST = IS_DEVELOPMENT ? 'http://localhost:4420' : 'https://my-portfolio-server-fzmo.onrender.com';
 
   useEffect(() => {
     (async () => {
