@@ -1,4 +1,4 @@
-# My Portfolio
+# CV showcase
 
 ### ⚡ **Project overview:**
 
@@ -45,6 +45,8 @@
 
 ### 🚀 **Deploys**:
 
-- We have both applications deployed with [render](https://dashboard.render.com/) hosting [elchamuyin's google credentials]
+- We have both applications deployed with [render](https://dashboard.render.com/) hosting [nico's google credentials - github]
 - The server url is [https://my-portfolio-server-fzmo.onrender.com](https://my-portfolio-server-fzmo.onrender.com)
-- The client url is [https://my-portfolio-staging.onrender.com](https://my-portfolio-staging.onrender.com)
+- The client urls are:
+  - [https://www.cvshowcase.com](https://www.cvshowcase.com)
+  - [https://my-portfolio-staging.onrender.com](https://my-portfolio-staging.onrender.com)
