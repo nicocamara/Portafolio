@@ -46,5 +46,5 @@
 ### 🚀 **Deploys**:
 
 - We have both applications deployed with [render](https://dashboard.render.com/) hosting [elchamuyin's google credentials]
-- The server url is [https://[change here].onrender.com](https://elchamuserver.onrender.com)
-- The client url is [https://[change here].onrender.com](https://elchamuyin.onrender.com)
+- The server url is [https://my-portfolio-server-fzmo.onrender.com](https://my-portfolio-server-fzmo.onrender.com)
+- The client url is [https://my-portfolio-staging.onrender.com](https://my-portfolio-staging.onrender.com)

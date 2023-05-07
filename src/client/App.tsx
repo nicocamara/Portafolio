@@ -12,7 +12,6 @@ const App = () => {
     (async () => {
       const responseFromServer = await fetch(API_HOST + '/');
       console.log(responseFromServer);
-      console.log('IS_DEVELOPMENT', IS_DEVELOPMENT);
     })();
   }, []);
 
