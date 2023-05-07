@@ -8,9 +8,9 @@ import config from './utils/config';
 const app = express();
 app.disable('x-powered-by');
 
-console.log('process.env.NODE_ENV', process.env.NODE_ENV);
-
-const corsOptions = { origin: config.isDevelopment ? 'http://localhost:3000' : 'https://my-portfolio.onrender.com' };
+const corsOptions = {
+  origin: config.isDevelopment ? 'http://localhost:3000' : 'https://my-portfolio-staging.onrender.com',
+};
 app.use(cors(corsOptions));
 
 app.use(morgan('dev'));
