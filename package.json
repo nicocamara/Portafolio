@@ -24,9 +24,13 @@
     "serve:client": "PORT=3000 vite preview",
     "serve:server": "PORT=4420 ts-node-dev build/server/index.js --cors",
     "check-lint": "eslint 'src/**/*.ts{,x}'",
-    "fix-lint": "eslint --fix 'src/**/*.ts{,x}'"
+    "fix-lint": "eslint --fix 'src/**/*.ts{,x}'",
+    "start": "node build/server/index.js"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "@types/cors": "^2.8.12",
+    "@types/morgan": "^1.9.3",
     "axios": "^0.26.1",
     "body-parser": "^1.20.1",
     "classnames": "^2.3.2",
@@ -36,37 +40,33 @@
     "express": "^4.18.2",
     "firebase": "^9.21.0",
     "firebase-admin": "^11.0.1",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.1"
+    "react-router-dom": "^6.11.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/node": "^7.17.10",
     "@babel/plugin-proposal-decorators": "*",
-    "@types/cors": "^2.8.12",
-    "@types/morgan": "^1.9.3",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
-    "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^8.38.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
-    "morgan": "^1.10.0",
-    "path": "^0.12.7",
     "prettier": "^2.8.8",
     "rollup-plugin-visualizer": "^5.9.0",
     "sass": "^1.62.1",
-    "serve": "^13.0.2",
     "ts-node": "^10.4.0",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.2"
+    "ts-node-dev": "^2.0.0"
   }
 }

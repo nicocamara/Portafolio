@@ -8,10 +8,19 @@ import config from './utils/config';
 const app = express();
 app.disable('x-powered-by');
 
-console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+const originToAllow = config.isDevelopment ? 'http://localhost:3000' : 'https://my-portfolio-staging.onrender.com';
 
-const corsOptions = { origin: config.isDevelopment ? 'http://localhost:3000' : 'https://my-portfolio.onrender.com' };
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (origin?.includes(originToAllow)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  })
+);
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
