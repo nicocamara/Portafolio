@@ -3,6 +3,7 @@ import Home from './components/Home';
 import NavbarHome from './components/navbar';
 import Profile from './components/profile';
 import { useEffect } from 'react';
+import RegisterForm from './components/registerForm';
 
 const App = () => {
   const IS_DEVELOPMENT = process.env.NODE_ENV !== 'production';
@@ -20,7 +21,8 @@ const App = () => {
       <NavbarHome />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} /> {/* <Route path="/register" element={<register />} /> */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/register" element={<RegisterForm />} />
         {/* <Route path="/error" element={<Error />} /> */}
       </Routes>
     </div>

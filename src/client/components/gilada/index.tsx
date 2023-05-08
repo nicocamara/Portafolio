@@ -1,4 +1,4 @@
-import { getAssetUrl } from '../../utils';
+import { getAssetUrl } from '../../utils/config';
 import Logo from '../logos';
 import './style.scss';
 

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useState } from 'react';
-import { getAssetUrl } from '../../utils';
+import { getAssetUrl } from '../../utils/config';
 import './style.scss';
 
 type LogoProps = {
