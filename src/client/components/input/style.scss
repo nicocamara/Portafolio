@@ -40,11 +40,7 @@
 }
 
 label:focus-within > .span {
-  transform: translate(140px, 3px) scale(0.75);
-}
-
-input:not(:placeholder-shown) + .span {
-  transform: translate(140px, 3px) scale(0.75);
+  transform: translate(150px, 15px) scale(0.75);
 }
 
 .error {

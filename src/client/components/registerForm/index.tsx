@@ -1,13 +1,12 @@
 import { Field, Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-// import { User } from '../../utils/Type';
 import { runValidation } from '../../utils/validations';
 // import Button from '../../atoms/button';
-import Input from '../input/index';
 import { useContext } from 'react';
-import StateContext from '../../utils/stateContext';
 import { User } from '../../utils/Type';
-// import './style.scss';
+import StateContext from '../../utils/stateContext';
+import Input from '../input/index';
+import './styles.scss';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -42,16 +41,6 @@ const RegisterForm = () => {
           <>
             <Form className="form">
               <div className="sign">Register Acount</div>
-              {/* <div className="genre">
-                <Field name="Genre" as="select">
-                  <option value="Mrs" id="Mrs">
-                    Mrs
-                  </option>
-                  <option value="Mr" id="Mr">
-                    Mr
-                  </option>
-                </Field>
-              </div> */}
               <Field
                 component={Input}
                 name="firstName"
@@ -79,8 +68,12 @@ const RegisterForm = () => {
                 validate={(value: string) => runValidation(value, 'password')}
               />
 
+              <div className="form-message">
+                <input type="checkbox" />
+                By registering on this website, I accept the terms and conditions of use. I also confirm that I have
+                read and understood the privacy policy of this site.
+              </div>
               <button type="submit"> Register</button>
-              <div className="form-message">Terms Acepted</div>
             </Form>
           </>
         )}
