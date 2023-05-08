@@ -4,36 +4,36 @@ import { useNavigate } from 'react-router-dom';
 import { runValidation } from '../../utils/validations';
 // import Button from '../../atoms/button';
 import Input from '../input/index';
+import { useContext } from 'react';
+import StateContext from '../../utils/stateContext';
+import { User } from '../../utils/Type';
 // import './style.scss';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
+  const { handlers } = useContext(StateContext);
 
   const initialValues = {
-    id: '',
     firstName: '',
     lastName: '',
     email: '',
     password: '',
-    gender: '',
   };
 
-  // const submitHandler = async (values: User & { password: string }) => {
-  //   // try {
-  //   //   await registerUser(values);
-  //   // } catch (error) {
-  //   //   if (error instanceof Error && error.message.includes('email-already-in-use')) {
-  //   //     console.log(error.message);
-  //   //     window.alert('Email Already in Use');
-  //   //   }
-  //   //   if (error instanceof Error && error.message.includes('weak-password')) {
-  //   //     console.log(error.message);
-  //   //     window.alert('Password should be at least 6 characters');
-  //   //   }
-  //   // }
-  // };
-
-  const submitHandler = () => console.log('holis');
+  const submitHandler = async (values: Omit<User, 'uid'> & { password: string }) => {
+    try {
+      await handlers.register(values);
+    } catch (error) {
+      if (error instanceof Error && error.message.includes('email-already-in-use')) {
+        console.log(error.message);
+        window.alert('Email Already in Use');
+      }
+      if (error instanceof Error && error.message.includes('weak-password')) {
+        console.log(error.message);
+        window.alert('Password should be at least 6 characters');
+      }
+    }
+  };
 
   return (
     <div className="register">
@@ -42,7 +42,7 @@ const RegisterForm = () => {
           <>
             <Form className="form">
               <div className="sign">Register Acount</div>
-              <div className="genre">
+              {/* <div className="genre">
                 <Field name="Genre" as="select">
                   <option value="Mrs" id="Mrs">
                     Mrs
@@ -51,7 +51,7 @@ const RegisterForm = () => {
                     Mr
                   </option>
                 </Field>
-              </div>
+              </div> */}
               <Field
                 component={Input}
                 name="firstName"
@@ -87,7 +87,7 @@ const RegisterForm = () => {
       </Formik>
       <div className="bottom-form">
         <div className="separator-line">Register Answer</div>
-        <button onClick={() => console.log('hay que navegar', submitHandler)}>Log In</button>
+        <button onClick={() => navigate('/login')}>Log In</button>
       </div>
     </div>
   );
