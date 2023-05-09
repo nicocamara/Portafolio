@@ -43,6 +43,10 @@ label:focus-within > .span {
   transform: translate(150px, 15px) scale(0.75);
 }
 
+input:not(:placeholder-shown) + .span {
+  transform: translate(150px, 15px) scale(0.75);
+}
+
 .error {
   color: red;
   font-family: 'Times New Roman', Times, serif;

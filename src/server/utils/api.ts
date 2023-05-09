@@ -5,9 +5,9 @@ import { auth, db } from './db';
 // Using http protocol we define a REST API(representational state transfer)
 const API = Router();
 
-API.get('/', async (_req, res) => {
-  res.status(200).send({ hoola: 'all good' });
-});
+// API.get('/', async (_req, res) => {
+//   res.status(200).send({ hoola: 'all good' });
+// });
 
 API.post('/register', async (_req, res) => {
   const { password, ...rest } = _req.body as Omit<User, 'uid'> & { password: string };
