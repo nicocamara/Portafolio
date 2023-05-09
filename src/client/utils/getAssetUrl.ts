@@ -2,7 +2,6 @@
 const fullPath = (document.currentScript as any)?.src ?? '';
 
 export const DISTRIBUTION_URL = fullPath.substring(0, fullPath.lastIndexOf('/'));
+const getAssetUrl = (path: string) => `${DISTRIBUTION_URL}/assets/${path}`;
 
-export const getAssetUrl = (path: string) => `${DISTRIBUTION_URL}/assets/${path}`;
-
-export const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+export default getAssetUrl;

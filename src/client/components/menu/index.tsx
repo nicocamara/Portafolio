@@ -1,21 +1,21 @@
 import { Route } from '../profile';
-import { getAssetUrl } from '../../utils';
+import getAssetUrl from '../../utils/getAssetUrl';
 import './styles.scss';
 
-type NavbarProps = {
+type MenuProps = {
   changeRoute: (newRoute: Route) => void;
 };
 const routes: Route[] = ['Resume', 'Projects', 'Contact'];
 
-const NavbarProfile = (props: NavbarProps) => (
-  <div className="navbar">
+const Menu = (props: MenuProps) => (
+  <div className="menu">
     {routes.map(r => (
-      <div className="navbar__routes" key={r} onClick={() => props.changeRoute(r)}>
-        <img className="navbar__icons" src={getAssetUrl(`${r}.svg`)} />
+      <div className="menu__routes" key={r} onClick={() => props.changeRoute(r)}>
+        <img className="menu__icons" src={getAssetUrl(`${r}.svg`)} />
         {r}
       </div>
     ))}
   </div>
 );
 
-export default NavbarProfile;
+export default Menu;

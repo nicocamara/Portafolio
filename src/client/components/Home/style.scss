@@ -1,11 +1,19 @@
 .home {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
+  font-size: 40px;
+  &__section {
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-  &__title {
-    font-size: 25px;
+  &__overview {
+    height: 1000px;
+  }
+
+  &__features {
+    min-height: 700px;
   }
 }

@@ -2,8 +2,8 @@ import './style.scss';
 
 const Home = () => (
   <div className="home">
-    <div className="home__title">No existe el perfil MI WRaaaayyy </div>
-    <div className="home__img">pone algo por default onda imagen</div>
+    <div className="home__section home__overview">OVERVIEW</div>
+    <div className="home__section home__features">FEATURES</div>
   </div>
 );
 
