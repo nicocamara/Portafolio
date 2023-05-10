@@ -18,12 +18,12 @@ const Navbar = ({ isSticky }: NavbarProps) => {
       </div>
       <div className={classNames('navbar__links', { 'navbar__links--sticky': isSticky })}>
         <div className="navbar__link" onClick={() => navigate('/about')}>
+          FEATURES
+        </div>
+        <div className="navbar__link" onClick={() => navigate('/about')}>
           ABOUT
         </div>
-        <div className="navbar__link" onClick={() => navigate('/profile')}>
-          PROFILE
-        </div>
-        <div className="navbar__link" onClick={() => navigate('/register')}>
+        <div className="navbar__link join" onClick={() => navigate('/register')}>
           JOIN
         </div>
       </div>
