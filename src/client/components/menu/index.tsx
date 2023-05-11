@@ -1,5 +1,5 @@
 import { Route } from '../profile';
-import { getAssetUrl } from '../../utils';
+import { getAssetUrl } from '../../utils/config';
 import './styles.scss';
 
 type NavbarProps = {

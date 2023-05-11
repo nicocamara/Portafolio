@@ -23,3 +23,4 @@ bundle-info.html
 *.njsproj
 *.sln
 *.sw?
+.env

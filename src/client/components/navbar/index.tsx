@@ -10,8 +10,8 @@ const NavbarHome = () => (
       <Link to="/profile" className="navHome__links-a">
         Profile
       </Link>
-      <Link to="/profile" className="navHome__links-a">
-        Login
+      <Link to="/register" className="navHome__links-a">
+        Register
       </Link>
     </div>
   </div>
