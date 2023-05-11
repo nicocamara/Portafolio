@@ -30,4 +30,19 @@ API.post('/register', async (_req, res) => {
   }
 });
 
+API.get('/login/:userId', async (_req, res) => {
+  const userId = _req.params.userId;
+  try {
+    const userRef = await db.collection('Users').doc(userId);
+    const doc = await userRef.get();
+    if (!doc.exists) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(doc.data());
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 export default API;
