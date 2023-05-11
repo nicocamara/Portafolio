@@ -20,7 +20,7 @@ const Login = () => {
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         <>
           <Form className="form">
-            <div className="sign">Sing In</div>
+            <div className="sign">Sing Inn</div>
             <Field
               component={Input}
               name="email"
