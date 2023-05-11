@@ -1,5 +1,5 @@
 import { browserLocalPersistence, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import callApi from './callApi';
 import { User } from './Type';
 import firebaseApp from './firebaseApp';
@@ -16,19 +16,35 @@ const StateContext = createContext<ContextValue>({} as ContextValue);
 
 export const StateProvider = ({ children }: any) => {
   const [user, setUser] = useState<User>();
+  const [persistanceId, setPersistanceId] = useState<string>();
   console.log('si mi wray', user);
 
+  auth.onAuthStateChanged(_firebaseAuthUser => {
+    if (_firebaseAuthUser?.uid && _firebaseAuthUser?.uid !== persistanceId) {
+      setPersistanceId(_firebaseAuthUser.uid);
+    }
+  });
+
+  useEffect(() => {
+    (async () => {
+      if (persistanceId && !user) {
+        const firestoreUser = await callApi({ method: 'GET', endpoint: `/login/${persistanceId}` });
+        setUser(firestoreUser);
+      }
+    })();
+  }, [persistanceId]);
+
   const registerHandler = async (_user: Omit<User, 'uid'> & { password: string }) => {
-    const newUser = await callApi({ method: 'POST', endpoint: '/register', payload: _user });
-    console.log('newUser', newUser);
+    const { token, ...newUser } = await callApi({ method: 'POST', endpoint: '/register', payload: _user });
+    await signInWithEmailAndPassword(auth, _user.email, _user.password);
+    await auth.setPersistence(browserLocalPersistence);
+    setUser(newUser);
   };
 
   const getUser = async (email: string, password: string) => {
     const firebaseAuthUser = await signInWithEmailAndPassword(auth, email, password);
-    const getCurrentUser = async (userId: string): Promise<User> =>
-      await callApi({ method: 'GET', endpoint: `/login/${userId}` });
-    const firestoreUser = await getCurrentUser(firebaseAuthUser.user.uid);
     await auth.setPersistence(browserLocalPersistence);
+    const firestoreUser = await callApi({ method: 'GET', endpoint: `/login/${firebaseAuthUser.user.uid}` });
     setUser(firestoreUser);
   };
 

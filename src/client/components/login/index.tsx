@@ -8,7 +8,6 @@ import './styles.scss';
 
 const Login = () => {
   const { handlers } = useContext(StateContext);
-  const [loggerIn, setLoggerIn] = useState();
   const navigate = useNavigate();
   const initialValues = {
     email: '',
