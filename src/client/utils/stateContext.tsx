@@ -17,7 +17,6 @@ const StateContext = createContext<ContextValue>({} as ContextValue);
 export const StateProvider = ({ children }: any) => {
   const [user, setUser] = useState<User>();
   const [persistanceId, setPersistanceId] = useState<string>();
-  console.log('si mi wray', user);
 
   auth.onAuthStateChanged(_firebaseAuthUser => {
     if (_firebaseAuthUser?.uid && _firebaseAuthUser?.uid !== persistanceId) {
