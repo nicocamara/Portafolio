@@ -1,22 +1,37 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Input from '../input';
 import { Field, Form, Formik } from 'formik';
 import { runValidation } from '../../utils/validations';
+import { useNavigate } from 'react-router';
+import StateContext from '../../utils/stateContext';
+import './styles.scss';
 
 const Login = () => {
-  const [loggerIn, setLoggerIn] = useState();
-
+  const { handlers } = useContext(StateContext);
+  const navigate = useNavigate();
   const initialValues = {
     email: '',
     password: '',
   };
 
-  const submitHandler = () => {
-    console.log('hola mi ray');
+  const submitHandler = async (values: { email: string; password: string }) => {
+    try {
+      await handlers.login(values.email, values.password);
+      navigate('/');
+    } catch (error) {
+      if (error instanceof Error && error.message.includes('auth/wrong-password')) {
+        console.log(error.message);
+        window.alert('wrong password');
+      }
+      if (error instanceof Error && error.message.includes('auth/user-not-found')) {
+        console.log(error.message);
+        window.alert('user not found');
+      }
+    }
   };
 
   return (
-    <div>
+    <div className="login">
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         <>
           <Form className="form">

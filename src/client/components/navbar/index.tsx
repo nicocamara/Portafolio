@@ -13,6 +13,9 @@ const NavbarHome = () => (
       <Link to="/register" className="navHome__links-a">
         Register
       </Link>
+      <Link to="/login" className="navHome__links-a">
+        login
+      </Link>
     </div>
   </div>
 );
