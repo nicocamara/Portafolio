@@ -7,6 +7,7 @@ import { User } from '../../utils/Type';
 import StateContext from '../../utils/stateContext';
 import Input from '../input/index';
 import './styles.scss';
+import Button from '../button';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -73,14 +74,14 @@ const RegisterForm = () => {
                 By registering on this website, I accept the terms and conditions of use. I also confirm that I have
                 read and understood the privacy policy of this site.
               </div>
-              <button type="submit"> Register</button>
+              <Button type="submit"> Register</Button>
             </Form>
           </>
         )}
       </Formik>
       <div className="bottom-form">
         <div className="separator-line">Register Answer</div>
-        <button onClick={() => navigate('/login')}>Log In</button>
+        <Button onClick={() => navigate('/login')}>Log In</Button>
       </div>
     </div>
   );
