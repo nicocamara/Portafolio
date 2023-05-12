@@ -5,6 +5,7 @@ import { runValidation } from '../../utils/validations';
 import { useNavigate } from 'react-router';
 import StateContext from '../../utils/stateContext';
 import './styles.scss';
+import Button from '../button';
 
 const Login = () => {
   const { handlers } = useContext(StateContext);
@@ -51,7 +52,7 @@ const Login = () => {
               validate={(value: string) => runValidation(value, 'password')}
             />
             <div className="button-container">
-              <button type="submit">Login</button>
+              <Button type="submit">Login</Button>
             </div>
             <div className="form-message">Continuing</div>
           </Form>
