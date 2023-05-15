@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect, useCallback } from 'react';
 import StateContext from '../../utils/stateContext';
 import { Field, Form, Formik } from 'formik';
 import Input from '../input';
@@ -6,22 +6,62 @@ import { runValidation, validateCheckBox } from '../../utils/validations';
 import Button from '../button';
 import { useNavigate } from 'react-router-dom';
 import { User } from '../../utils/Type';
+import debounce from '../../utils/debounce';
 
 const Auth = () => {
-  const { handlers } = useContext(StateContext);
-  const navigate = useNavigate();
+  const { handlers, user } = useContext(StateContext);
   const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate();
 
   const initialValues = {
+    userName: '',
     firstName: '',
     lastName: '',
     email: '',
     password: '',
   };
 
+  const validateUserName = useCallback(
+    debounce(async (value: unknown, setFieldError: any) => {
+      const error = await validate(value as string);
+      if (error && !!error.length) {
+        setFieldError('userName', error);
+        console.log('error', error);
+      }
+    }, 800),
+    []
+  );
+
+  const validate = async (value: string) => {
+    const error: string[] = [];
+    console.log('chamu', value);
+    if (!value) {
+      error.push('isRequired');
+      return error;
+    }
+
+    if (value.length < 5) {
+      error.push('minLength');
+      return error;
+    }
+
+    if (value.length > 25) {
+      error.push('maxLength');
+      return error;
+    }
+
+    try {
+      await handlers.checkUserName(value);
+    } catch (err: any) {
+      console.log('user name exist', err);
+    }
+    return error.length ? error : undefined;
+  };
+
   const registerHandler = async (values: Omit<User, 'uid'> & { password: string }) => {
     try {
       await handlers.register(values);
+      navigate('/');
     } catch (error) {
       if (error instanceof Error && error.message.includes('email-already-in-use')) {
         console.log(error.message);
@@ -50,14 +90,18 @@ const Auth = () => {
     }
   };
 
-  const submitHandler = isLogin ? loginHandler : registerHandler;
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user]);
 
-  const label = {};
+  const submitHandler = isLogin ? loginHandler : registerHandler;
 
   return (
     <div className="auth">
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
-        {({ errors }) => (
+        {({ errors, setFieldError }) => (
           <>
             <Form className="form">
               <div className="sign">Register Acount</div>
@@ -74,6 +118,12 @@ const Auth = () => {
                     name="lastName"
                     label={'last Name'}
                     validate={(value: string) => runValidation(value, 'lastName')}
+                  />
+                  <Field
+                    component={Input}
+                    name="userName"
+                    label={'User Name'}
+                    validate={(value: string) => validateUserName(value, setFieldError)}
                   />
                 </>
               )}

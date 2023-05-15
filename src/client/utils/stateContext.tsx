@@ -9,6 +9,7 @@ export type ContextValue = {
   handlers: {
     register: (_user: Omit<User, 'uid'> & { password: string }) => Promise<void>;
     login: (email: string, password: string) => Promise<void>;
+    checkUserName: (userName: string) => Promise<void>;
   };
 };
 const auth = getAuth(firebaseApp);
@@ -40,6 +41,10 @@ export const StateProvider = ({ children }: any) => {
     setUser(newUser);
   };
 
+  const checkUserName = async (userName: string) => {
+    await callApi({ method: 'GET', endpoint: `/check-userName/:${userName}` });
+  };
+
   const getUser = async (email: string, password: string) => {
     const firebaseAuthUser = await signInWithEmailAndPassword(auth, email, password);
     await auth.setPersistence(browserLocalPersistence);
@@ -50,6 +55,7 @@ export const StateProvider = ({ children }: any) => {
   const handlers = {
     register: registerHandler,
     login: getUser,
+    checkUserName,
   };
 
   return <StateContext.Provider value={{ user, handlers }}>{children}</StateContext.Provider>;
