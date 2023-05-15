@@ -30,6 +30,8 @@ const validationRules: { [key: string]: ValidationOptions } = {
   country: { minLength: 2, maxLength: 15, isRequired: true, format: '^(\\D| )*$' },
 };
 
+export const validateCheckBox = (value: boolean) => (value ? undefined : ['isRequired']);
+
 export const runValidation = (value: string, name: InputType) => {
   const error: string[] = [];
   const { minLength, maxLength, isRequired, format } = validationRules[name];

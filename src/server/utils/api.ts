@@ -30,6 +30,21 @@ API.post('/register', async (_req, res) => {
   }
 });
 
+API.get('/check-userName/:userName', async (_req, res) => {
+  const userName = _req.params.userName;
+  try {
+    const querySnaptShot = await db.collection('Users').where('userName', '==', userName).get();
+
+    if (!querySnaptShot.empty) {
+      res.status(422).send('No esta disponible');
+    } else {
+      res.status(200).send();
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 API.get('/login/:userId', async (_req, res) => {
   const userId = _req.params.userId;
   try {
