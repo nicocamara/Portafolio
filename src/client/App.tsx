@@ -28,4 +28,3 @@ const App = () => {
 };
 
 export default App;
-s;
