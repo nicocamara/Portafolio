@@ -1,0 +1,26 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 150px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 270px;
+  background-color: white;
+  padding: 18px;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0px 0px 8px 200px rgba(77, 67, 64, 0.52);
+  -webkit-box-shadow: 0px 0px 8px 1000px rgba(77, 67, 64, 0.52);
+  -moz-box-shadow: 0px 0px 8px 300px rgba(77, 67, 64, 0.52);
+}
+
+.form-message {
+  padding: 25px;
+}

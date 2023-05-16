@@ -1,6 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
-import './styles.scss';
 import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
+import './styles.scss';
 
 type NavbarProps = {
   isSticky: boolean;
@@ -23,7 +23,7 @@ const Navbar = ({ isSticky }: NavbarProps) => {
         <div className="navbar__link" onClick={() => navigate('/about')}>
           ABOUT
         </div>
-        <div className="navbar__link join" onClick={() => navigate('/register')}>
+        <div className="navbar__link join" onClick={() => navigate('/auth')}>
           JOIN
         </div>
       </div>

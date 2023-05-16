@@ -1,5 +1,5 @@
-import { Route } from '../profile';
 import getAssetUrl from '../../utils/getAssetUrl';
+import { Route } from '../profile';
 import './styles.scss';
 
 type MenuProps = {
