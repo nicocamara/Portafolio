@@ -1,12 +1,13 @@
-import { useContext, useState, useEffect, useCallback } from 'react';
-import StateContext from '../../utils/stateContext';
 import { Field, Form, Formik } from 'formik';
-import Input from '../input';
-import { runValidation, validateCheckBox } from '../../utils/validations';
-import Button from '../button';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User } from '../../utils/Type';
 import debounce from '../../utils/debounce';
+import StateContext from '../../utils/stateContext';
+import { runValidation } from '../../utils/validations';
+import Button from '../button';
+import Input from '../input';
+import './styles.scss';
 
 const Auth = () => {
   const { handlers, user } = useContext(StateContext);
@@ -26,7 +27,7 @@ const Auth = () => {
       const error = await validate(value as string);
       if (error && !!error.length) {
         setFieldError('userName', error);
-        console.log('error', error);
+        console.error('error', error);
       }
     }, 800),
     []
@@ -34,7 +35,6 @@ const Auth = () => {
 
   const validate = async (value: string) => {
     const error: string[] = [];
-    console.log('chamu', value);
     if (!value) {
       error.push('isRequired');
       return error;
@@ -53,7 +53,7 @@ const Auth = () => {
     try {
       await handlers.checkUserName(value);
     } catch (err: any) {
-      console.log('user name exist', err);
+      console.error(err);
     }
     return error.length ? error : undefined;
   };
@@ -64,11 +64,11 @@ const Auth = () => {
       navigate('/');
     } catch (error) {
       if (error instanceof Error && error.message.includes('email-already-in-use')) {
-        console.log(error.message);
+        console.error(error.message);
         window.alert('Email Already in Use');
       }
       if (error instanceof Error && error.message.includes('weak-password')) {
-        console.log(error.message);
+        console.error(error.message);
         window.alert('Password should be at least 6 characters');
       }
     }
@@ -80,11 +80,11 @@ const Auth = () => {
       navigate('/');
     } catch (error) {
       if (error instanceof Error && error.message.includes('auth/wrong-password')) {
-        console.log(error.message);
+        console.error(error.message);
         window.alert('wrong password');
       }
       if (error instanceof Error && error.message.includes('auth/user-not-found')) {
-        console.log(error.message);
+        console.error(error.message);
         window.alert('user not found');
       }
     }
@@ -100,10 +100,10 @@ const Auth = () => {
 
   return (
     <div className="auth">
-      <Formik initialValues={initialValues} onSubmit={submitHandler}>
-        {({ errors, setFieldError }) => (
-          <>
-            <Form className="form">
+      <div className="auth__form-container">
+        <Formik initialValues={initialValues} onSubmit={submitHandler}>
+          {({ errors, setFieldError }) => (
+            <Form className="auth__form">
               <div className="sign">Register Acount</div>
               {!isLogin && (
                 <>
@@ -127,7 +127,6 @@ const Auth = () => {
                   />
                 </>
               )}
-
               <Field
                 component={Input}
                 name="email"
@@ -149,9 +148,10 @@ const Auth = () => {
               <Button type="submit"> {isLogin ? 'Login' : 'Register'}</Button>
               <Button onClick={() => setIsLogin(!isLogin)}> {isLogin ? 'Go to Register' : ' Go to Login'}</Button>
             </Form>
-          </>
-        )}
-      </Formik>
+          )}
+        </Formik>
+      </div>
+      <div className="auth__side-content">side content</div>
     </div>
   );
 };

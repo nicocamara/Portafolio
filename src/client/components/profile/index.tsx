@@ -1,13 +1,12 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { User } from '../../../server/utils/types';
 import Contact from '../contact';
 import Gilada from '../gilada';
 import NavbarProfile from '../menu';
 import Projects from '../projects';
 import Resume from '../resume';
 import './styles.scss';
-import { useParams } from 'react-router-dom';
-import { User } from '../../../server/utils/types';
-import StateContext from '../../utils/stateContext';
 
 export type Route = 'Resume' | 'Projects' | 'Contact';
 
@@ -17,7 +16,7 @@ const contents: Record<Route, () => JSX.Element> = {
   Contact,
 };
 
-const Profile = () => {
+const Portfolio = () => {
   const { userName } = useParams();
   const [content, setcontent] = useState<Route>('Contact');
   const [profile, setProfile] = useState<User>();
@@ -38,9 +37,9 @@ const Profile = () => {
   // }
 
   return (
-    <div className="profile">
+    <div className="portfolio">
       <NavbarProfile changeRoute={changeRoute} />
-      <div className="profile__profile">
+      <div className="portfolio__change">
         <Gilada />
         <div className="app__content">{contents[content]()}</div>
       </div>
@@ -48,4 +47,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Portfolio;

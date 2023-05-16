@@ -17,7 +17,7 @@ const Navbar = ({ isSticky }: NavbarProps) => {
         <div className="navbar__logo__howcase">howcase</div>
       </div>
       <div className={classNames('navbar__links', { 'navbar__links--sticky': isSticky })}>
-        <div className="navbar__link" onClick={() => navigate('/about')}>
+        <div className="navbar__link" onClick={() => navigate('/features')}>
           FEATURES
         </div>
         <div className="navbar__link" onClick={() => navigate('/about')}>
