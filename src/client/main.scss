@@ -1,8 +1,58 @@
+@import 'variables.scss';
+
 html,
 body,
 #root {
+  overflow-x: hidden;
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: url(../../public/assets/backgroundPattern.png) repeat,
+    linear-gradient(
+      to bottom,
+      #fc9e38,
+      #fd9436,
+      #fe8b35,
+      #fe8036,
+      #fe7637,
+      #ff6a40,
+      #fe5f48,
+      #fc5351,
+      #f64662,
+      #ed3d71,
+      #e03980,
+      #cf3a8d
+    );
+  background-position: top;
+  background-size: 300px, cover;
+
+  @media (max-width: $mobile) {
+    background-size: 150px, cover;
+  }
+
+  &__container {
+    flex: 2;
+  }
+  &__body {
+    height: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  &__footer {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: gray;
+    font-size: 40px;
+  }
 }

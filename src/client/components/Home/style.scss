@@ -1,11 +1,63 @@
+@import '../../variables.scss';
 .home {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
 
-  &__title {
-    font-size: 25px;
+  &__section {
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: $mobile) {
+      margin: 0;
+    }
+  }
+
+  &__overview {
+    height: 1000px;
+    height: 100%;
+
+    &-container {
+      max-width: 1800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-text {
+      margin: 100px 0;
+      padding: 0 50px;
+      width: 60%;
+      font-size: 60px;
+
+      @media (max-width: $mediumScreen) {
+        width: 60%;
+        font-size: 45px;
+      }
+
+      @media (max-width: $tablet) {
+        width: 70%;
+        font-size: 35px;
+      }
+
+      @media (max-width: $mobile) {
+        width: 100%;
+        font-size: 25px;
+      }
+
+      &:nth-child(odd) {
+        align-self: flex-start;
+        color: #e3e3e7;
+      }
+
+      &:nth-child(even) {
+        align-self: flex-end;
+        text-align: end;
+      }
+    }
+  }
+
+  &__features {
+    min-height: 700px;
   }
 }

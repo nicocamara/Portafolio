@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { ErrorMessage, FieldProps, getIn } from 'formik';
 import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
-import { getAssetUrl } from '../../utils/config';
+import getAssetUrl from '../../utils/getAssetUrl';
 import { getErrorMessage } from '../../utils/validations';
 import './style.scss';
 
@@ -19,9 +19,7 @@ const Input = ({ label, field, form, ...rest }: InputProps) => {
   const isTouched = getIn(touched, field.name);
   const errors = isTouched && getIn(formikErrors, field.name);
   const hasError = !!errors?.length;
-  if (label === 'User Name') {
-    console.log('input', errors);
-  }
+
   const errorMessage = hasError ? getErrorMessage(errors[0], label) : undefined;
   const hasSuccess =
     isTouched && !hasError && !isEmpty(typeof field.value === 'string' ? field.value.trim() : field.value);
