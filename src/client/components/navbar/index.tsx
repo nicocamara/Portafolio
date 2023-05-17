@@ -23,6 +23,9 @@ const Navbar = ({ isSticky }: NavbarProps) => {
         <div className="navbar__link" onClick={() => navigate('/about')}>
           ABOUT
         </div>
+        <div className="navbar__link" onClick={() => navigate('/edit')}>
+          Edit Portfolio
+        </div>
         <div className="navbar__link join" onClick={() => navigate('/auth')}>
           JOIN
         </div>

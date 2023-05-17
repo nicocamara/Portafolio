@@ -3,15 +3,10 @@
 
   &__adress {
     padding: 15px;
-    background-color: red;
+    background-color: white;
   }
-}
 
-h2 {
-  background-color: greenyellow;
-  font-size: 14px;
-}
-
-h3 {
-  font-size: 10px;
+  &__data {
+    background-color: bisque;
+  }
 }

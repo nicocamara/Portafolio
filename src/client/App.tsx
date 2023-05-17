@@ -9,6 +9,7 @@ import './main.scss';
 import { User } from './utils/Type';
 import StateContext from './utils/stateContext';
 import useIntersector from './utils/useIntersector';
+import EditPage from './components/edit';
 
 type ProtectRoutePorps = { route: () => JSX.Element; user?: User };
 
@@ -35,7 +36,7 @@ const App = () => {
             <Route path="/:userName" element={<Portfolio />} />
             {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/auth" element={<Auth />} />
-            <Route path="/edit" element={<ProtectRoute user={user} route={() => <p>edit</p>} />} />
+            <Route path="/edit" element={<ProtectRoute user={user} route={() => <EditPage />} />} />
           </Routes>
         </div>
       </div>

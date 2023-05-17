@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { User } from './types';
+import { User, Portfolio } from './types';
 import { auth, db } from './db';
 
 // Using http protocol we define a REST API(representational state transfer)
@@ -60,4 +60,22 @@ API.get('/login/:userId', async (_req, res) => {
   }
 });
 
+API.post('/portfolio/:userName', async (_req, res) => {
+  const portfolio = _req.body as Portfolio;
+  const userName = _req.params.userName;
+
+  try {
+    const docRef = db.collection('Portfolio').doc(userName + '-portfolio');
+
+    await docRef.set(portfolio);
+
+    const response = await docRef.get();
+
+    res.status(201).send(response.data());
+  } catch (error) {
+    res.status(422).send('no se creo el portfolio');
+  }
+});
+
 export default API;
+// where('userId', '==', payload.uid)

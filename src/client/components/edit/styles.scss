@@ -1,0 +1,24 @@
+@import '../../variables.scss';
+
+.edit {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: rgb(255 255 255 / 65%);
+
+  &__form {
+    &-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    background-color: rgba(212, 212, 218, 0.733);
+    border-radius: $borderRadius;
+    padding: 20px;
+    margin: 20px;
+    max-width: 500px;
+  }
+}
