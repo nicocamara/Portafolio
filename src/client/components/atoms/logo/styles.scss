@@ -1,0 +1,47 @@
+@import '../../../variables.scss';
+
+.logo {
+  display: flex;
+  margin: auto 0;
+  height: 100%;
+  font-family: $logoFontFamily;
+  font-size: 40px;
+  line-height: 60px;
+  text-align: center;
+  font-weight: 600;
+  color: white;
+  cursor: default;
+
+  &--dark {
+    color: black;
+  }
+
+  &--clickable {
+    cursor: pointer;
+  }
+
+  span {
+    transition: all 0.5s ease-in-out;
+  }
+
+  span:nth-child(3) {
+    margin-left: 10px;
+  }
+
+  &--animate {
+    span:nth-child(2n) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      margin-left: -25px;
+    }
+
+    span:nth-child(2n + 1) {
+      font-size: 60px;
+      color: $primaryColor;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  }
+}

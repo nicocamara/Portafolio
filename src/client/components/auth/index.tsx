@@ -5,7 +5,8 @@ import { User } from '../../utils/Type';
 import debounce from '../../utils/debounce';
 import StateContext from '../../utils/stateContext';
 import { runValidation } from '../../utils/validations';
-import Button from '../button';
+import Button from '../atoms/button';
+import Logo from '../atoms/logo';
 import Input from '../input';
 import './styles.scss';
 
@@ -15,9 +16,9 @@ const Auth = () => {
   const navigate = useNavigate();
 
   const initialValues = {
-    userName: '',
     firstName: '',
     lastName: '',
+    userName: '',
     email: '',
     password: '',
   };
@@ -27,7 +28,6 @@ const Auth = () => {
       const error = await validate(value as string);
       if (error && !!error.length) {
         setFieldError('userName', error);
-        console.error('error', error);
       }
     }, 800),
     []
@@ -52,15 +52,17 @@ const Auth = () => {
 
     try {
       await handlers.checkUserName(value);
-    } catch (err: any) {
-      console.error(err);
-    }
+    } catch (err: any) {}
     return error.length ? error : undefined;
   };
 
-  const registerHandler = async (values: Omit<User, 'uid'> & { password: string }) => {
+  const onSubmit = async (values: Omit<User, 'uid'> & { password: string }) => {
     try {
-      await handlers.register(values);
+      if (isLogin) {
+        await handlers.login(values.email, values.password);
+      } else {
+        await handlers.register(values);
+      }
       navigate('/');
     } catch (error) {
       if (error instanceof Error && error.message.includes('email-already-in-use')) {
@@ -74,59 +76,53 @@ const Auth = () => {
     }
   };
 
-  const loginHandler = async (values: { email: string; password: string }) => {
-    try {
-      await handlers.login(values.email, values.password);
-      navigate('/');
-    } catch (error) {
-      if (error instanceof Error && error.message.includes('auth/wrong-password')) {
-        console.error(error.message);
-        window.alert('wrong password');
-      }
-      if (error instanceof Error && error.message.includes('auth/user-not-found')) {
-        console.error(error.message);
-        window.alert('user not found');
-      }
-    }
-  };
-
   useEffect(() => {
     if (user) {
       navigate('/');
     }
   }, [user]);
 
-  const submitHandler = isLogin ? loginHandler : registerHandler;
-
   return (
     <div className="auth">
-      <div className="auth__form-container">
-        <Formik initialValues={initialValues} onSubmit={submitHandler}>
-          {({ errors, setFieldError }) => (
-            <Form className="auth__form">
-              <div className="sign">Register Acount</div>
-              {!isLogin && (
-                <>
+      <div className="auth__logo">
+        <Logo dark />
+      </div>
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        {({ errors, setFieldError }) => (
+          <Form className="auth__form">
+            <h2 className="form__headline">{isLogin ? 'Sign In' : 'Sign Up'}</h2>
+            {!isLogin && (
+              <>
+                <div className="form__field-container">
                   <Field
                     component={Input}
                     name="firstName"
-                    label={'First Name'}
+                    label="First Name"
+                    type="text"
                     validate={(value: string) => runValidation(value, 'firstName')}
                   />
+                </div>
+                <div className="form__field-container">
                   <Field
                     component={Input}
                     name="lastName"
                     label={'last Name'}
+                    type="text"
                     validate={(value: string) => runValidation(value, 'lastName')}
                   />
+                </div>
+                <div className="form__field-container">
                   <Field
                     component={Input}
                     name="userName"
                     label={'User Name'}
+                    type="text"
                     validate={(value: string) => validateUserName(value, setFieldError)}
                   />
-                </>
-              )}
+                </div>
+              </>
+            )}
+            <div className="form__field-container">
               <Field
                 component={Input}
                 name="email"
@@ -134,6 +130,8 @@ const Auth = () => {
                 type="email"
                 validate={(value: string) => runValidation(value, 'email')}
               />
+            </div>
+            <div className="form__field-container">
               <Field
                 component={Input}
                 name="password"
@@ -141,17 +139,27 @@ const Auth = () => {
                 type="password"
                 validate={(value: string) => runValidation(value, 'password')}
               />
-              <div className="form-message">
-                <input type="checkbox" />
-                By registering on this website, I accept the terms and conditions of use
-              </div>
-              <Button type="submit"> {isLogin ? 'Login' : 'Register'}</Button>
-              <Button onClick={() => setIsLogin(!isLogin)}> {isLogin ? 'Go to Register' : ' Go to Login'}</Button>
-            </Form>
-          )}
-        </Formik>
+            </div>
+            <div className="form__field-container">
+              <Field
+                name="termsAndConditions"
+                label="Terms and conditions"
+                type="checkbox"
+                // validate={(value: boolean) => validateCheckBox(value)}
+              />
+              <span className="text-sm">Accept Terms</span>
+            </div>
+            <div className="form__field-container auth__button">
+              <Button type="submit">{isLogin ? 'Sign In' : 'Sign Up'}</Button>
+            </div>
+          </Form>
+        )}
+      </Formik>
+      <div className="form__field-container auth__button-center">
+        <Button isTertiary onClick={() => setIsLogin(!isLogin)}>
+          {isLogin ? 'Not a member? - Join Us' : 'Already registered? Go to Login'}
+        </Button>
       </div>
-      <div className="auth__side-content">side content</div>
     </div>
   );
 };
