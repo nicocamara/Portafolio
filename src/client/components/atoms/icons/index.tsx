@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useState } from 'react';
-import getAssetUrl from '../../utils/getAssetUrl';
+import getAssetUrl from '../../../utils/getAssetUrl';
 import './style.scss';
 
 type LogoProps = {
@@ -10,7 +10,7 @@ type LogoProps = {
   link?: string;
 };
 
-const Logo = (props: LogoProps) => {
+const Icons = (props: LogoProps) => {
   const [isHovered, setHover] = useState(false);
 
   const onClickHandler = () => {
@@ -39,4 +39,4 @@ const Logo = (props: LogoProps) => {
   );
 };
 
-export default Logo;
+export default Icons;

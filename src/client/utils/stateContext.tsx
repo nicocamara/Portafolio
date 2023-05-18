@@ -1,15 +1,17 @@
 import { browserLocalPersistence, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import callApi from './callApi';
-import { User } from './Type';
+import { Portfolio, User } from './Type';
 import firebaseApp from './firebaseApp';
 
 export type ContextValue = {
   user?: User;
+  myPortfolio?: Portfolio;
   handlers: {
     register: (_user: Omit<User, 'uid'> & { password: string }) => Promise<void>;
     login: (email: string, password: string) => Promise<void>;
     checkUserName: (userName: string) => Promise<void>;
+    createPortfolio: (values: Omit<Portfolio, 'id'>) => Promise<void>;
   };
 };
 const auth = getAuth(firebaseApp);
@@ -17,6 +19,7 @@ const StateContext = createContext<ContextValue>({} as ContextValue);
 
 export const StateProvider = ({ children }: any) => {
   const [user, setUser] = useState<User>();
+  const [myPortfolio, setMyPorfolio] = useState<Portfolio>();
   const [persistanceId, setPersistanceId] = useState<string>();
 
   auth.onAuthStateChanged(_firebaseAuthUser => {
@@ -52,13 +55,19 @@ export const StateProvider = ({ children }: any) => {
     setUser(firestoreUser);
   };
 
+  const createPortfolio = async (values: Omit<Portfolio, 'id'>) => {
+    const response = await callApi({ method: 'POST', endpoint: `/portfolio/${user?.userName}`, payload: values });
+    setMyPorfolio(response);
+  };
+
   const handlers = {
     register: registerHandler,
     login: getUser,
     checkUserName,
+    createPortfolio,
   };
 
-  return <StateContext.Provider value={{ user, handlers }}>{children}</StateContext.Provider>;
+  return <StateContext.Provider value={{ user, handlers, myPortfolio }}>{children}</StateContext.Provider>;
 };
 
 export default StateContext;
