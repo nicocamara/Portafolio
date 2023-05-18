@@ -1,0 +1,53 @@
+@import '../../../variables.scss';
+
+.loading-dots {
+  display: flex;
+
+  &__snippet {
+    margin: 0 auto;
+  }
+
+  &__dot {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: $secondaryColor;
+    color: $secondaryColor;
+    animation: flash 0.4s infinite linear alternate;
+    animation-delay: 0.2s;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      animation: flash 0.4s infinite alternate;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+    }
+
+    &::before {
+      right: 15px;
+      animation-delay: 0s;
+    }
+
+    &::after {
+      left: 15px;
+      animation-delay: 0.4s;
+    }
+  }
+}
+
+@keyframes flash {
+  0% {
+    background-color: $secondaryColor;
+  }
+
+  50%,
+  100% {
+    background-color: $primaryColor;
+  }
+}
