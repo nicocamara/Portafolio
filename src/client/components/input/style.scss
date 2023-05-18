@@ -1,5 +1,5 @@
 .inputComponent {
-  padding: 10px;
+  padding: 12px 10px 8px 10px;
   margin: 10px 0px;
   box-sizing: border-box;
   border-radius: 4px;
@@ -35,21 +35,21 @@
   color: #1e4c82;
   position: absolute;
   transform: translate(10px, 22px);
-  transform-origin: top right;
   transition: all 0.2s ease-in-out;
 }
 
 label:focus-within > .span {
-  transform: translate(150px, 15px) scale(0.75);
+  transform: translate(10px, 15px);
+  font-size: 11px;
 }
 
 input:not(:placeholder-shown) + .span {
-  transform: translate(150px, 15px) scale(0.75);
+  transform: translate(10px, 15px);
+  font-size: 11px;
 }
 
 .error {
   color: red;
-  font-family: 'Times New Roman', Times, serif;
   font-size: 15px;
 }
 
