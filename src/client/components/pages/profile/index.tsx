@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { User } from '../../../server/utils/types';
-import Contact from '../contact';
-import Gilada from '../gilada';
-import NavbarProfile from '../menu';
-import Projects from '../projects';
-import Resume from '../resume';
+import { User } from '../../../../server/utils/types';
+import Contact from '../../atoms/contact';
+import Gilada from '../../molecules/gilada';
+import NavbarProfile from '../../atoms/menu';
+import Projects from '../../molecules/projects';
+import Resume from '../../molecules/resume';
 import './styles.scss';
 
 export type Route = 'Resume' | 'Projects' | 'Contact';

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import StateContext from '../../utils/stateContext';
+import StateContext from '../../../utils/stateContext';
 import './styles.scss';
 
 const Contact = () => {

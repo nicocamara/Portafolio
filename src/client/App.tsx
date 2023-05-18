@@ -1,15 +1,15 @@
 /* eslint-disable react/no-children-prop */
 import { useContext, useRef } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import Auth from './components/auth';
-import Navbar from './components/navbar';
-import Portfolio from './components/profile';
+import Home from './components/pages/Home';
+import Auth from './components/pages/auth';
+import Navbar from './components/organism/navbar';
+import Portfolio from './components/pages/profile';
 import './main.scss';
 import { User } from './utils/Type';
 import StateContext from './utils/stateContext';
 import useIntersector from './utils/useIntersector';
-import EditPage from './components/edit';
+import EditPage from './components/molecules/edit';
 
 type ProtectRoutePorps = { route: () => JSX.Element; user?: User };
 

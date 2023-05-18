@@ -1,11 +1,12 @@
-import { Field, Formik, Form } from 'formik';
-import Button from '../button';
-import { useContext, useState } from 'react';
-import Input from '../input';
+import { Field, Form, Formik } from 'formik';
+
+import { useContext } from 'react';
+import { Portfolio } from '../../../utils/Type';
+import StateContext from '../../../utils/stateContext';
+import { runValidation } from '../../../utils/validations';
+import Button from '../../atoms/button';
+import Input from '../../atoms/input';
 import './styles.scss';
-import { runValidation } from '../../utils/validations';
-import StateContext from '../../utils/stateContext';
-import { Portfolio } from '../../utils/Type';
 
 const initialValues: Omit<Portfolio, 'id'> = {
   firstName: '',

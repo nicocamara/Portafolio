@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { ErrorMessage, FieldProps, getIn } from 'formik';
 import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
-import getAssetUrl from '../../utils/getAssetUrl';
-import { getErrorMessage } from '../../utils/validations';
+import getAssetUrl from '../../../utils/getAssetUrl';
+import { getErrorMessage } from '../../../utils/validations';
 import './style.scss';
 
 type CustomInputProps = {

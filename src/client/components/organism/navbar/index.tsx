@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import './styles.scss';
-import Logo from '../atoms/logo';
+import Logo from '../../atoms/logo';
 
 type NavbarProps = {
   isSticky: boolean;

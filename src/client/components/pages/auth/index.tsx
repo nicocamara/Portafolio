@@ -1,13 +1,13 @@
 import { Field, Form, Formik } from 'formik';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User } from '../../utils/Type';
-import debounce from '../../utils/debounce';
-import StateContext from '../../utils/stateContext';
-import { runValidation } from '../../utils/validations';
-import Button from '../atoms/button';
-import Logo from '../atoms/logo';
-import Input from '../input';
+import { User } from '../../../utils/Type';
+import debounce from '../../../utils/debounce';
+import StateContext from '../../../utils/stateContext';
+import { runValidation } from '../../../utils/validations';
+import Button from '../../atoms/button';
+import Logo from '../../atoms/logo';
+import Input from '../../atoms/input';
 import './styles.scss';
 
 const Auth = () => {
