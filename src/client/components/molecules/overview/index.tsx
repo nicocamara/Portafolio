@@ -1,5 +1,4 @@
 import { Field, Form, Formik } from 'formik';
-
 import { useContext } from 'react';
 import { Portfolio } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
@@ -16,10 +15,9 @@ const initialValues: Omit<Portfolio, 'id'> = {
   currentPosition: '',
   city: '',
   descritionJob: '',
-  skills: '',
 };
 
-const EditPage = () => {
+const OverView = () => {
   //   const [next, setNext] = useState();
 
   const { handlers } = useContext(StateContext);
@@ -33,10 +31,10 @@ const EditPage = () => {
   };
 
   return (
-    <div className="edit">
+    <div className="overview">
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ errors }) => (
-          <Form className="edit__form">
+          <Form className="overview__form">
             <div className="sign">Register Acount</div>
             <Field
               component={Input}
@@ -82,12 +80,7 @@ const EditPage = () => {
               label={'Description Job'}
               validate={(value: string) => runValidation(value, 'firstName')}
             />
-            <Field
-              component={Input}
-              name="skills"
-              label={'Skills'}
-              validate={(value: string) => runValidation(value, 'firstName')}
-            />
+
             <div className="form-message">
               <input type="checkbox" />
               By registering on this website, I accept the terms and conditions of use
@@ -100,4 +93,4 @@ const EditPage = () => {
   );
 };
 
-export default EditPage;
+export default OverView;

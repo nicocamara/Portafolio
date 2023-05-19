@@ -15,7 +15,6 @@ export type Portfolio = {
   currentPosition: string;
   city: string;
   descritionJob: string;
-  skills: string;
 };
 
 // export type Portfolio = {
