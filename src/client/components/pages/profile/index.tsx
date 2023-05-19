@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { User } from '../../../../server/utils/types';
 import Contact from '../../atoms/contact';
 import Gilada from '../../molecules/gilada';
-import NavbarProfile from '../../atoms/menu';
+import Menu from '../../atoms/menu';
 import Projects from '../../molecules/projects';
 import Resume from '../../molecules/resume';
 import './styles.scss';
@@ -38,7 +38,7 @@ const Portfolio = () => {
 
   return (
     <div className="portfolio">
-      <NavbarProfile changeRoute={changeRoute} />
+      <Menu changeRoute={changeRoute} />
       <div className="portfolio__change">
         <Gilada />
         <div className="app__content">{contents[content]()}</div>
