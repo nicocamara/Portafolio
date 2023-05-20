@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import getAssetUrl from '../../../utils/getAssetUrl';
 import EducationForm from '../../atoms/educationForm';
 import ExperiencesForm from '../../atoms/experiencesForm';
+import Icons from '../../atoms/icons';
 import OverView from '../../molecules/overview';
 import './styles.scss';
 
@@ -16,7 +16,7 @@ const MenuEdit = (props: MenuProps) => (
   <div className="menuEdit">
     {routes.map(r => (
       <div className="menuEdit__routes" key={r} onClick={() => props.changeRoute(r)}>
-        <img className="menuEdit__icons" src={getAssetUrl(`${r}.svg`)} />
+        <Icons className="menuEdit__icons" path={r} alt="linkedin" />
         {r}
       </div>
     ))}
