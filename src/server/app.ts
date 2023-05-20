@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import createError from 'http-errors';
 import morgan from 'morgan';
 import API from './utils/api';
 import config from './utils/config';
@@ -12,13 +13,8 @@ const originToAllow = config.isDevelopment ? 'http://localhost:3000' : 'https://
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (origin?.includes(originToAllow)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
+    origin: (origin, callback) =>
+      origin?.includes(originToAllow) ? callback(null, true) : callback(createError(403, 'Not allowed by CORS'), false),
   })
 );
 
