@@ -1,27 +1,28 @@
+@import '../../../variables.scss';
+
 .edit {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.65);
   border-radius: 7px;
 
-  // &__form {
-  //   &-container {
-  //     flex: 1;
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //   }
+  &__title {
+    font-size: 15px;
+  }
 
-  //   border-radius: 5px;
-  //   padding: 20px;
-  //   margin: 20px;
-  //   max-width: 500px;
-  // }
+  &__form {
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+    }
+  }
 }
 
-.menuEdit {
+.breadCrumb {
   display: flex;
   flex-direction: column;
   font-size: 20px;

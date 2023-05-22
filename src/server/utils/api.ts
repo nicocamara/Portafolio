@@ -78,4 +78,3 @@ API.post('/portfolio/:userName', async (_req, res) => {
 });
 
 export default API;
-// where('userId', '==', payload.uid)
