@@ -2,8 +2,6 @@
   height: 100%;
   width: 100%;
   display: flex;
-  flex-wrap: nowrap;
-  background-color: rgb(255 255 255 / 65%);
 
   &__form {
     &-container {
@@ -13,8 +11,6 @@
       align-items: center;
     }
 
-    background-color: rgba(212, 212, 218, 0.733);
-    border-radius: 5px;
     padding: 20px;
     margin: 20px;
     max-width: 500px;
