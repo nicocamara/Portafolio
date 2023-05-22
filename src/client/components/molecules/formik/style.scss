@@ -1,0 +1,23 @@
+.userName {
+  display: flex;
+  flex-direction: column;
+
+  &__leyend {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__loading {
+    margin: auto 20px auto 0;
+  }
+
+  &__url {
+    font-size: 14px;
+    padding: 5px 0;
+  }
+
+  &__url-value {
+    font-weight: bold;
+  }
+}

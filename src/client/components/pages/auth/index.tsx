@@ -1,17 +1,18 @@
 import { Field, Form, Formik } from 'formik';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User } from '../../../utils/Type';
-import debounce from '../../../utils/debounce';
 import StateContext from '../../../utils/stateContext';
 import { runValidation } from '../../../utils/validations';
 import Button from '../../atoms/button';
 import Logo from '../../atoms/logo';
-import Input from '../../atoms/input';
+import TextField from '../../molecules/formik/TextField';
+import UserNameField, { validate } from '../../molecules/formik/UserNameField';
 import './styles.scss';
 
 const Auth = () => {
   const { handlers, user } = useContext(StateContext);
+  const [isLoading, setLoading] = useState(false);
+
   const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
 
@@ -21,49 +22,18 @@ const Auth = () => {
     userName: '',
     email: '',
     password: '',
+    termsAndConditions: false,
   };
 
-  const validateUserName = useCallback(
-    debounce(async (value: unknown, setFieldError: any) => {
-      const error = await validate(value as string);
-      if (error && !!error.length) {
-        setFieldError('userName', error);
-      }
-    }, 800),
-    []
-  );
-
-  const validate = async (value: string) => {
-    const error: string[] = [];
-    if (!value) {
-      error.push('isRequired');
-      return error;
-    }
-
-    if (value.length < 5) {
-      error.push('minLength');
-      return error;
-    }
-
-    if (value.length > 25) {
-      error.push('maxLength');
-      return error;
-    }
-
-    try {
-      await handlers.checkUserName(value);
-    } catch (err: any) {}
-    return error.length ? error : undefined;
-  };
-
-  const onSubmit = async (values: Omit<User, 'uid'> & { password: string }) => {
+  const onSubmit = async ({ termsAndConditions, ...values }: typeof initialValues) => {
+    console.log(values);
+    setLoading(true);
     try {
       if (isLogin) {
         await handlers.login(values.email, values.password);
       } else {
         await handlers.register(values);
       }
-      navigate('/');
     } catch (error) {
       if (error instanceof Error && error.message.includes('email-already-in-use')) {
         console.error(error.message);
@@ -74,6 +44,8 @@ const Auth = () => {
         window.alert('Password should be at least 6 characters');
       }
     }
+    navigate('/');
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -88,43 +60,40 @@ const Auth = () => {
         <Logo dark />
       </div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        {({ errors, setFieldError }) => (
+        {({ setFieldError, setFieldValue, errors }) => (
           <Form className="auth__form">
             <h2 className="form__headline">{isLogin ? 'Sign In' : 'Sign Up'}</h2>
             {!isLogin && (
               <>
                 <div className="form__field-container">
                   <Field
-                    component={Input}
+                    component={TextField}
                     name="firstName"
                     label="First Name"
-                    type="text"
                     validate={(value: string) => runValidation(value, 'firstName')}
                   />
                 </div>
                 <div className="form__field-container">
                   <Field
-                    component={Input}
+                    component={TextField}
                     name="lastName"
                     label={'last Name'}
-                    type="text"
                     validate={(value: string) => runValidation(value, 'lastName')}
                   />
                 </div>
                 <div className="form__field-container">
                   <Field
-                    component={Input}
-                    name="userName"
-                    label={'User Name'}
-                    type="text"
-                    validate={(value: string) => validateUserName(value, setFieldError)}
+                    component={() => (
+                      <UserNameField setUserNameError={setFieldError} setUserNameField={setFieldValue} />
+                    )}
+                    validate={(value: string) => validate(value)}
                   />
                 </div>
               </>
             )}
             <div className="form__field-container">
               <Field
-                component={Input}
+                component={TextField}
                 name="email"
                 label="Email"
                 type="email"
@@ -133,7 +102,7 @@ const Auth = () => {
             </div>
             <div className="form__field-container">
               <Field
-                component={Input}
+                component={TextField}
                 name="password"
                 label={'Password'}
                 type="password"
@@ -150,7 +119,9 @@ const Auth = () => {
               <span className="text-sm">Accept Terms</span>
             </div>
             <div className="form__field-container auth__button">
-              <Button type="submit">{isLogin ? 'Sign In' : 'Sign Up'}</Button>
+              <Button type="submit" isLoading={isLoading}>
+                {isLogin ? 'Sign In' : 'Sign Up'}
+              </Button>
             </div>
           </Form>
         )}
