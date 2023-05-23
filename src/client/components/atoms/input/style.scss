@@ -1,3 +1,5 @@
+@import '../../../variables.scss';
+
 .inputComponent {
   padding: 12px 10px 8px 10px;
   margin: 10px 0px;
@@ -14,7 +16,7 @@
   background-color: transparent;
 
   &:hover {
-    border-color: blue;
+    border-color: $primaryColor;
   }
 
   &__error {

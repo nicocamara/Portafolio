@@ -4,7 +4,7 @@ import { runValidation } from '../../../utils/validations';
 import Button from '../../atoms/button';
 import Input from '../../atoms/input';
 import { Route } from '../../pages/editPage';
-// import './styles.scss';
+import './styles.scss';
 
 const initialValues: Job = {
   skills: [''],
@@ -30,8 +30,9 @@ const JobForm = (props: JobProps) => {
       {/* {mapear values.JobForm} */}
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ submitForm }) => (
-          <Form className="JobForm__form">
-            <div className="sign">Register Acount</div>
+          <Form className="jobForm__form">
+            <div className="jobForm__title">Register Acount</div>
+            <hr className="jobForm__line" />
             <Field
               component={Input}
               name="skills"
@@ -42,7 +43,7 @@ const JobForm = (props: JobProps) => {
               component={Input}
               name="title"
               label={'title'}
-              validate={(value: string) => runValidation(value, 'lastName')}
+              validate={(value: string) => runValidation(value, 'firstName')}
             />
 
             <Field
@@ -50,7 +51,7 @@ const JobForm = (props: JobProps) => {
               name="description"
               label="description"
               type="email"
-              validate={(value: string) => runValidation(value, 'email')}
+              validate={(value: string) => runValidation(value, 'firstName')}
             />
             <Field
               component={Input}
@@ -64,7 +65,9 @@ const JobForm = (props: JobProps) => {
               label={'endDate'}
               validate={(value: string) => runValidation(value, 'firstName')}
             />
-            <Button onClick={submitMainForm}>Submit</Button>
+            <Button className="jobForm__button" onClick={submitMainForm}>
+              Submit
+            </Button>
           </Form>
         )}
       </Formik>
