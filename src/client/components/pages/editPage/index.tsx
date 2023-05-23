@@ -22,23 +22,25 @@ type MenuProps = {
   step: Route;
 };
 const routes: Step[] = [
-  { name: 'overview', label: 'overview', description: 'Upload your data' },
-  { name: 'education', label: 'education', description: 'Upload your data' },
-  { name: 'jobs', label: 'jobs', description: 'Upload your data' },
-  { name: 'skills', label: 'skills', description: 'Upload your data' },
+  { name: 'overview', label: 'Overview', description: 'Upload your data' },
+  { name: 'education', label: 'Education', description: 'Upload your data' },
+  { name: 'jobs', label: 'Jobs', description: 'Upload your data' },
+  { name: 'skills', label: 'Skills', description: 'Upload your data' },
 ];
 
 const BreadCrumb = (props: MenuProps) => (
   <div className="breadCrumb">
     {routes.map(({ name, label, description }) => (
-      <div
-        className={classNames('breadCrumb__item', { 'breadCrumb__item--selected': props.step === name })}
-        key={name}
-        onClick={() => props.changeRoute(name)}
-      >
-        <Icons className="breadCrumb__icons" path={name} alt={name} />
-        <h4>{label}</h4>
-        <span>{description}</span>
+      <div className="breadCrumb__item" key={name} onClick={() => props.changeRoute(name)}>
+        <Icons
+          className={classNames('breadCrumb__icons', { 'breadCrumb__icons--selected': props.step === name })}
+          path={name}
+          alt={name}
+        />
+        <div className="breadCrumb__text">
+          <div className="breadCrumb__text-label">{label}</div>
+          <span className="breadCrumb__description">{description}</span>
+        </div>
       </div>
     ))}
   </div>
@@ -92,12 +94,15 @@ const EditPage = () => {
 
   return (
     <div className="edit">
-      <div className="edit__title">Hola Petrone</div>
+      <div className="edit__title">New Portfolio</div>
+      <div className="edit__subtitle">Follow these steps to upload your portfolio</div>
+      <hr className="edit__line" />
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         <Form className="edit__form">
           <>
             <BreadCrumb step={step} changeRoute={changeRoute} />
-            <div className="app__content">{getStep(step, changeRoute)}</div>
+            <hr className="edit__verticaLine" />
+            <div className="edit__content">{getStep(step, changeRoute)}</div>
           </>
         </Form>
       </Formik>

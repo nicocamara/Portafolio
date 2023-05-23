@@ -18,57 +18,78 @@ const OverView = ({ changeRoute }: OverViewProps) => {
 
   return (
     <div className="overview">
-      <div className="sign">Register Acount</div>
-      <Field
-        component={Input}
-        name="firstName"
-        label={'First Name'}
-        validate={(value: string) => runValidation(value, 'firstName')}
-      />
-      <Field
-        component={Input}
-        name="lastName"
-        label={'last Name'}
-        validate={(value: string) => runValidation(value, 'lastName')}
-      />
-
-      <Field
-        component={Input}
-        name="email"
-        label="Email"
-        type="email"
-        validate={(value: string) => runValidation(value, 'email')}
-      />
-      <Field
-        component={Input}
-        name="country"
-        label={'Street'}
-        validate={(value: string) => runValidation(value, 'firstName')}
-      />
-      <Field
-        component={Input}
-        name="city"
-        label={'City'}
-        validate={(value: string) => runValidation(value, 'firstName')}
-      />
-      <Field
-        component={Input}
-        name="currentPosition"
-        label={'Current Position'}
-        validate={(value: string) => runValidation(value, 'firstName')}
-      />
-      <Field
-        component={Input}
-        name="descritionJob"
-        label={'Description Job'}
-        validate={(value: string) => runValidation(value, 'firstName')}
-      />
-
-      <div className="form-message">
-        <input type="checkbox" />
-        By registering on this website, I accept the terms and conditions of use
+      <div className="overview__title">Register Acount</div>
+      <hr className="overview__line" />
+      <div className="form__field-container">
+        <Field
+          component={Input}
+          name="firstName"
+          label={'First Name'}
+          validate={(value: string) => runValidation(value, 'firstName')}
+        />
       </div>
-      <Button onClick={() => changeRoute('EducationForm')}>Next</Button>
+      <div className="form__field-container">
+        <Field
+          component={Input}
+          name="lastName"
+          label={'last Name'}
+          validate={(value: string) => runValidation(value, 'lastName')}
+        />
+      </div>
+      <div className="form__field-container">
+        <Field
+          component={Input}
+          name="email"
+          label="Email"
+          type="email"
+          validate={(value: string) => runValidation(value, 'email')}
+        />
+      </div>
+      <div className="form__field-container">
+        <Field
+          component={Input}
+          name="country"
+          label={'Street'}
+          validate={(value: string) => runValidation(value, 'firstName')}
+        />
+      </div>
+      <div className="form__field-container">
+        <Field
+          component={Input}
+          name="city"
+          label={'City'}
+          validate={(value: string) => runValidation(value, 'firstName')}
+        />
+      </div>
+      <div className="form__field-container">
+        <Field
+          component={Input}
+          name="city"
+          label={'City'}
+          validate={(value: string) => runValidation(value, 'firstName')}
+        />
+      </div>
+      <div className="form__field-container">
+        <Field
+          component={Input}
+          name="currentPosition"
+          label={'Current Position'}
+          validate={(value: string) => runValidation(value, 'firstName')}
+        />
+      </div>
+      <div className="form__field-container">
+        <Field
+          component={Input}
+          name="descritionJob"
+          label={'Description Job'}
+          validate={(value: string) => runValidation(value, 'firstName')}
+        />
+      </div>
+      <div className="form__field-container">
+        <Button className="overview__button" onClick={() => changeRoute('education')}>
+          Next
+        </Button>
+      </div>
     </div>
   );
 };

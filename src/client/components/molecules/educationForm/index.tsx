@@ -4,7 +4,7 @@ import { runValidation } from '../../../utils/validations';
 import Button from '../../atoms/button';
 import Input from '../../atoms/input';
 import { Route } from '../../pages/editPage';
-// import './styles.scss';
+import './styles.scss';
 
 const initialValues: Education = {
   institution: '',
@@ -26,12 +26,13 @@ const EducationForm = (props: EducationProps) => {
   };
 
   return (
-    <div className="EducationForm">
+    <div className="educationForm">
       {/* {mapear values.education} */}
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ submitForm }) => (
-          <Form className="EducationForm__form">
-            <div className="sign">Register Acount</div>
+          <Form className="educationForm__form">
+            <div className="educationForm__title">Register Acount</div>
+            <hr className="educationForm__line" />
             <Field
               component={Input}
               name="institution"
@@ -42,7 +43,7 @@ const EducationForm = (props: EducationProps) => {
               component={Input}
               name="title"
               label={'title'}
-              validate={(value: string) => runValidation(value, 'lastName')}
+              validate={(value: string) => runValidation(value, 'firstName')}
             />
 
             <Field
@@ -50,7 +51,7 @@ const EducationForm = (props: EducationProps) => {
               name="description"
               label="description"
               type="email"
-              validate={(value: string) => runValidation(value, 'email')}
+              validate={(value: string) => runValidation(value, 'firstName')}
             />
             <Field
               component={Input}
@@ -64,7 +65,9 @@ const EducationForm = (props: EducationProps) => {
               label={'endDate'}
               validate={(value: string) => runValidation(value, 'firstName')}
             />
-            <Button onClick={submitForm}>Next</Button>
+            <Button className="educationForm__button" onClick={submitForm}>
+              Next
+            </Button>
           </Form>
         )}
       </Formik>
