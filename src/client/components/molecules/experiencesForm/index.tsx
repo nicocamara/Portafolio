@@ -31,43 +31,65 @@ const JobForm = (props: JobProps) => {
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ submitForm }) => (
           <Form className="jobForm__form">
-            <div className="jobForm__title">Register Acount</div>
+            <div className="jobForm__title">Work Experencie</div>
             <hr className="jobForm__line" />
-            <Field
-              component={Input}
-              name="skills"
-              label={'skills'}
-              validate={(value: string) => runValidation(value, 'firstName')}
-            />
-            <Field
-              component={Input}
-              name="title"
-              label={'title'}
-              validate={(value: string) => runValidation(value, 'firstName')}
-            />
-
-            <Field
-              component={Input}
-              name="description"
-              label="description"
-              type="email"
-              validate={(value: string) => runValidation(value, 'firstName')}
-            />
-            <Field
-              component={Input}
-              name="startDate"
-              label={'startDate'}
-              validate={(value: string) => runValidation(value, 'firstName')}
-            />
-            <Field
-              component={Input}
-              name="endDate"
-              label={'endDate'}
-              validate={(value: string) => runValidation(value, 'firstName')}
-            />
-            <Button className="jobForm__button" onClick={submitMainForm}>
-              Submit
-            </Button>
+            <div className="form__field-container">
+              <Field
+                component={Input}
+                name="institution"
+                label={'institution'}
+                validate={(value: string) => runValidation(value, 'firstName')}
+              />
+            </div>
+            <div className="form__field-container">
+              <Field
+                component={Input}
+                name="title"
+                label={'title'}
+                validate={(value: string) => runValidation(value, 'firstName')}
+              />
+            </div>
+            <div className="form__field-container">
+              <Field
+                component={Input}
+                name="description"
+                label="Current Position"
+                type="email"
+                validate={(value: string) => runValidation(value, 'firstName')}
+              />
+            </div>
+            <div className="form__field-container">
+              <Field
+                component={Input}
+                name="startDate"
+                label={'startDate'}
+                validate={(value: string) => runValidation(value, 'firstName')}
+              />
+            </div>
+            <div className="form__field-container">
+              <Field
+                component={Input}
+                name="endDate"
+                label={'endDate'}
+                validate={(value: string) => runValidation(value, 'firstName')}
+              />
+            </div>
+            <div>
+              <div className="form__field-container">
+                <Field
+                  className="jobForm__description"
+                  component={Input}
+                  name="descritionJob"
+                  label={'Description Job'}
+                  validate={(value: string) => runValidation(value, 'firstName')}
+                />
+              </div>
+            </div>
+            <div className="form__field-container">
+              <Button className="educationForm__button" onClick={submitForm}>
+                Next
+              </Button>
+            </div>
           </Form>
         )}
       </Formik>

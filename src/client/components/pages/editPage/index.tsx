@@ -8,8 +8,9 @@ import EducationForm from '../../molecules/educationForm';
 import JobForm from '../../molecules/experiencesForm';
 import OverView from '../../molecules/overviewForm';
 import './styles.scss';
+import SkillsForm from '../../molecules/skills';
 
-export type Route = 'overview' | 'education' | 'jobs' | 'skills';
+export type Route = 'overview' | 'skills' | 'education' | 'jobs';
 
 export type Step = {
   name: Route;
@@ -23,9 +24,9 @@ type MenuProps = {
 };
 const routes: Step[] = [
   { name: 'overview', label: 'Overview', description: 'Upload your data' },
+  { name: 'skills', label: 'Skills', description: 'Upload your data' },
   { name: 'education', label: 'Education', description: 'Upload your data' },
   { name: 'jobs', label: 'Jobs', description: 'Upload your data' },
-  { name: 'skills', label: 'Skills', description: 'Upload your data' },
 ];
 
 const BreadCrumb = (props: MenuProps) => (
@@ -69,7 +70,7 @@ const getStep = (step: Route, changeRoute: (newRoute: Route) => void) => {
     overview: <OverView changeRoute={changeRoute} />,
     education: <EducationForm changeRoute={changeRoute} />,
     jobs: <JobForm changeRoute={changeRoute} />,
-    skills: <div>hola</div>,
+    skills: <SkillsForm changeRoute={changeRoute} />,
   };
 
   return steps[step];
