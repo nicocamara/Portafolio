@@ -5,21 +5,22 @@ import Button from '../../atoms/button';
 import Input from '../../atoms/input';
 import { Route } from '../../pages/editPage';
 import './styles.scss';
-
-const initialValues: Education = {
-  institution: '',
-  title: '',
-  description: '',
-  startDate: '',
-  endDate: '',
-};
+import classNames from 'classnames';
 
 type EducationProps = {
   changeRoute: (newRoute: Route) => void;
 };
 
-const EducationForm = (props: EducationProps) => {
+const EducationForm = ({ changeRoute }: EducationProps) => {
   const { setFieldValue, values } = useFormikContext<any>();
+
+  const initialValues: Education = {
+    institution: '',
+    title: '',
+    description: '',
+    startDate: '',
+    endDate: '',
+  };
 
   const submitHandler = async (newEducation: typeof initialValues) => {
     setFieldValue('education', [...values.education, newEducation]);
@@ -49,32 +50,32 @@ const EducationForm = (props: EducationProps) => {
                 validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
-            <div className="form__field-container">
-              <Field
-                component={Input}
-                name="description"
-                label="description"
-                type="email"
-                validate={(value: string) => runValidation(value, 'firstName')}
-              />
+            <div className={classNames('form__field-container', 'educationForm__date')}>
+              <div className="educationForm__date-subtitles">
+                Start Date
+                <Field className="educationForm__date-button" type="date" name="startDate" />
+              </div>
+              <div className="educationForm__date-subtitles">
+                Start Date
+                <Field className="educationForm__date-button" type="date" name="endDate" />
+              </div>
             </div>
             <div className="form__field-container">
               <Field
                 component={Input}
-                name="startDate"
-                label={'xx/xx/xx'}
-                validate={(value: string) => runValidation(value, 'firstName')}
-              />
-              <Field
-                component={Input}
-                name="endDate"
-                label={'xx/xx/xx'}
+                name="description"
+                label={'description'}
                 validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
 
             <div className="form__field-container">
               <Button className="educationForm__button" onClick={submitForm}>
+                Submit
+              </Button>
+            </div>
+            <div className="form__field-container">
+              <Button className="overview__button" onClick={() => changeRoute('jobs')}>
                 Next
               </Button>
             </div>

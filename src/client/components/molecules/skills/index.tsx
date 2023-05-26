@@ -1,25 +1,24 @@
 import { Field, Form, Formik, useFormikContext } from 'formik';
-import { Job } from '../../../utils/Type';
+import { Skills } from '../../../utils/Type';
 import { runValidation } from '../../../utils/validations';
 import Button from '../../atoms/button';
 import Input from '../../atoms/input';
 import { Route } from '../../pages/editPage';
 import './styles.scss';
 
-const initialValues: Job = {
-  skills: [''],
-  title: '',
-  description: '',
-  startDate: '',
-  endDate: '',
+const initialValues: Skills = {
+  workSkills: '',
+  softSkills: '',
+  teachSkills: '',
+  coverLetter: '',
 };
 
 type SkillsProps = {
   changeRoute: (newRoute: Route) => void;
 };
 
-const SkillsForm = (props: SkillsProps) => {
-  const { setFieldValue, values, submitForm: submitMainForm } = useFormikContext<any>();
+const SkillsForm = ({ changeRoute }: SkillsProps) => {
+  const { setFieldValue, values } = useFormikContext<any>();
 
   const submitHandler = async (newEducation: typeof initialValues) => {
     setFieldValue('education', [...values.education, newEducation]);
@@ -72,6 +71,11 @@ const SkillsForm = (props: SkillsProps) => {
             </div>
             <div className="form__field-container">
               <Button className="educationForm__button" onClick={submitForm}>
+                Submit
+              </Button>
+            </div>
+            <div className="form__field-container">
+              <Button className="educationForm__button" onClick={() => changeRoute('education')}>
                 Next
               </Button>
             </div>

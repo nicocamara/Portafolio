@@ -24,7 +24,7 @@ const OverView = ({ changeRoute }: OverViewProps) => {
       <div className="form__field-container">
         <Field
           component={Input}
-          name="firstName"
+          name="overview.firstName"
           label={'First Name'}
           validate={(value: string) => runValidation(value, 'firstName')}
         />
@@ -32,7 +32,7 @@ const OverView = ({ changeRoute }: OverViewProps) => {
       <div className="form__field-container">
         <Field
           component={Input}
-          name="lastName"
+          name="overview.lastName"
           label={'last Name'}
           validate={(value: string) => runValidation(value, 'lastName')}
         />
@@ -40,7 +40,7 @@ const OverView = ({ changeRoute }: OverViewProps) => {
       <div className="form__field-container">
         <Field
           component={Input}
-          name="email"
+          name="overview.email"
           label="Email"
           type="email"
           validate={(value: string) => runValidation(value, 'email')}
@@ -49,7 +49,7 @@ const OverView = ({ changeRoute }: OverViewProps) => {
       <div className="form__field-container">
         <Field
           component={Input}
-          name="country"
+          name="overview.country"
           label={'Street'}
           validate={(value: string) => runValidation(value, 'firstName')}
         />
@@ -57,7 +57,7 @@ const OverView = ({ changeRoute }: OverViewProps) => {
       <div className="form__field-container">
         <Field
           component={Input}
-          name="phone"
+          name="overview.phone"
           label={'Phone number'}
           validate={(value: string) => runValidation(value, 'firstName')}
         />
@@ -65,11 +65,11 @@ const OverView = ({ changeRoute }: OverViewProps) => {
       <div className="form__field-container">
         <Field
           component={Input}
-          name="city"
+          name="overview.city"
           label={'City'}
           validate={(value: string) => runValidation(value, 'firstName')}
         />
-      </div>{' '}
+      </div>
       <div className={classNames('form__field-container', 'overview__date')}>
         <div className="overview__date-subtitles">
           Birthdate
@@ -77,7 +77,7 @@ const OverView = ({ changeRoute }: OverViewProps) => {
         </div>
       </div>
       <div className="form__field-container">
-        <Button className="overview__button" onClick={() => changeRoute('education')}>
+        <Button className="overview__button" onClick={() => changeRoute('skills')}>
           Next
         </Button>
       </div>
