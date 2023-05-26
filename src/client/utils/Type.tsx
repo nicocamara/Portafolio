@@ -13,16 +13,21 @@ export type Portfolio = {
     lastName: string;
     email: string;
     phone: string;
-  };
-  address: {
-    street: string;
-    houseNumber: string;
-    zipCode: string;
     country: string;
+    street: string;
     city: string;
+    birthDate: string;
   };
+  skills: Skills[];
   job: Job[];
   education: Education[];
+};
+
+export type Skills = {
+  workSkills: string;
+  softSkills: string;
+  teachSkills: string;
+  coverLetter: string;
 };
 
 export type Education = Experence & {
@@ -30,7 +35,7 @@ export type Education = Experence & {
 };
 
 export type Job = Experence & {
-  skills: string[];
+  employer: string;
 };
 
 type Experence = {
