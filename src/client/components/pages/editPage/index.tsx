@@ -4,7 +4,7 @@ import { useContext, useState, useEffect, useCallback, ReactNode } from 'react';
 import { Portfolio } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
 import Icons from '../../atoms/icons';
-import EducationForm from '../../molecules/educationForm';
+import EducationForm from '../../molecules/education';
 import JobStep from '../../molecules/Job';
 import OverView from '../../molecules/overviewForm';
 import './styles.scss';

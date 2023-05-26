@@ -1,29 +1,29 @@
 import { Field, Form, Formik, useFormikContext } from 'formik';
 import { Job } from '../../../utils/Type';
-import { runValidation } from '../../../utils/validations';
+// import { runValidation } from '../../../utils/validations';
 import Button from '../../atoms/button';
 import Input from '../../atoms/input';
 import { Route } from '../../pages/editPage';
 import './styles.scss';
 import classNames from 'classnames';
 
-const initialValues: Job = {
-  title: '',
-  employer: '',
-  startDate: '',
-  endDate: '',
-  description: '',
-};
-
 type JobProps = {
   changeRoute: (newRoute: Route) => void;
 };
 
-const JobStep = (props: JobProps) => {
+const JobStep = ({ changeRoute }: JobProps) => {
   const { setFieldValue, values, submitForm: submitMainForm } = useFormikContext<any>();
 
-  const submitHandler = async (newEducation: typeof initialValues) => {
-    setFieldValue('education', [...values.education, newEducation]);
+  const initialValues: Job = {
+    title: '',
+    employer: '',
+    startDate: '',
+    endDate: '',
+    description: '',
+  };
+
+  const submitHandler = async (newJob: typeof initialValues) => {
+    setFieldValue('job', [...values.job, newJob]);
   };
 
   return (
@@ -37,36 +37,35 @@ const JobStep = (props: JobProps) => {
             <div className="form__field-container">
               <Field
                 component={Input}
-                name="institution"
+                name="job.institution"
                 label={'institution'}
-                validate={(value: string) => runValidation(value, 'firstName')}
+                // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
             <div className="form__field-container">
               <Field
                 component={Input}
-                name="title"
+                name="job.title"
                 label={'title'}
-                validate={(value: string) => runValidation(value, 'firstName')}
+                // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
             <div className="form__field-container">
               <Field
                 component={Input}
-                name="description"
+                name="job.description"
                 label="Current Position"
-                type="email"
-                validate={(value: string) => runValidation(value, 'firstName')}
+                // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
             <div className={classNames('form__field-container', 'jobForm__date')}>
               <div className="jobForm__date-subtitles">
                 Start Date
-                <Field className="jobForm__date-button" type="date" name="startDate" />
+                <Field className="jobForm__date-button" type="date" name="job.startDate" />
               </div>
               <div className="jobForm__date-subtitles">
                 Start Date
-                <Field className="jobForm__date-button" type="date" name="endDate" />
+                <Field className="jobForm__date-button" type="date" name="job.endDate" />
               </div>
             </div>
             <div>
@@ -76,12 +75,15 @@ const JobStep = (props: JobProps) => {
                   component={Input}
                   name="descritionJob"
                   label={'Description Job'}
-                  validate={(value: string) => runValidation(value, 'firstName')}
+                  // validate={(value: string) => runValidation(value, 'firstName')}
                 />
               </div>
             </div>
-            <div className="form__field-container">
-              <Button className="educationForm__button" onClick={submitForm}>
+            <div className={classNames('form__field-container', 'educationForm__date')}>
+              <Button className="overview__button" isTertiary onClick={() => changeRoute('education')}>
+                Back
+              </Button>
+              <Button className="overview__button" onClick={submitForm}>
                 Save
               </Button>
             </div>

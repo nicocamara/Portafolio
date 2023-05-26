@@ -19,7 +19,7 @@ type ValidationOptions = {
 };
 
 const validationRules: { [key: string]: ValidationOptions } = {
-  firstName: { minLength: 2, maxLength: 35, isRequired: true, format: '^[a-zA-ZÀ-ÿ\\s]{2,25}$' },
+  firstName: { minLength: 2, maxLength: 35, isRequired: true, format: '^[a-zA-ZÀ-ÿ\\s]{2,35}$' },
   lastName: { minLength: 2, maxLength: 25, isRequired: true, format: '^[a-zA-ZÀ-ÿ\\s]{2,25}$' },
   email: { minLength: 6, maxLength: 35, isRequired: true, format: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$' },
   password: { minLength: 8, maxLength: 25, isRequired: true, format: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$' },

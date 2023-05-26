@@ -1,10 +1,10 @@
 import { Field, Form, Formik, useFormikContext } from 'formik';
 import { Skills } from '../../../utils/Type';
-import { runValidation } from '../../../utils/validations';
 import Button from '../../atoms/button';
 import Input from '../../atoms/input';
 import { Route } from '../../pages/editPage';
 import './styles.scss';
+import classNames from 'classnames';
 
 const initialValues: Skills = {
   workSkills: '',
@@ -20,8 +20,8 @@ type SkillsProps = {
 const SkillsForm = ({ changeRoute }: SkillsProps) => {
   const { setFieldValue, values } = useFormikContext<any>();
 
-  const submitHandler = async (newEducation: typeof initialValues) => {
-    setFieldValue('education', [...values.education, newEducation]);
+  const submitHandler = async (newSkills: typeof initialValues) => {
+    setFieldValue('skills', [...values.skills, newSkills]);
   };
 
   return (
@@ -38,7 +38,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
                 component={Input}
                 name="institution"
                 label={'Describe yours works Skills'}
-                validate={(value: string) => runValidation(value, 'firstName')}
+                // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
             <div className="form__field-container">
@@ -47,7 +47,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
                 component={Input}
                 name="title"
                 label={'Describe Yours Soft Skills'}
-                validate={(value: string) => runValidation(value, 'firstName')}
+                // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
             <div className="form__field-container">
@@ -56,8 +56,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
                 component={Input}
                 name="description"
                 label={'Describe Yours Teach Skills'}
-                type="email"
-                validate={(value: string) => runValidation(value, 'firstName')}
+                // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
             <div className="form__field-container">
@@ -66,15 +65,18 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
                 component={Input}
                 name="startDate"
                 label={'Cover Letter'}
-                validate={(value: string) => runValidation(value, 'firstName')}
+                // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
             <div className="form__field-container">
               <Button className="educationForm__button" onClick={submitForm}>
-                Submit
+                Save
               </Button>
             </div>
-            <div className="form__field-container">
+            <div className={classNames('form__field-container', 'educationForm__date')}>
+              <Button className="educationForm__button" isTertiary onClick={() => changeRoute('overview')}>
+                Back
+              </Button>
               <Button className="educationForm__button" onClick={() => changeRoute('education')}>
                 Next
               </Button>
