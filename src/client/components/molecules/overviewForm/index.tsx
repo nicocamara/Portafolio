@@ -68,7 +68,7 @@ const OverView = ({ changeRoute }: OverViewProps) => {
       <div className={classNames('form__field-container', 'overview__date')}>
         <div className="overview__date-subtitles">
           Birthdate
-          <Field className="overview__date-button" type="date" name="overview.birthdate" />
+          <Field className="overview__date-button" type="date" name="overview.birthDate" />
         </div>
       </div>
       <div className="form__field-container">
