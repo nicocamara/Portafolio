@@ -36,7 +36,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
               <div className="skills__subtitles">Work Skills</div>
               <Field
                 component={Input}
-                name="institution"
+                name="workSkills"
                 label={'Describe yours works Skills'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
@@ -45,7 +45,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
               <div className="skills__subtitles">Soft Skills</div>
               <Field
                 component={Input}
-                name="title"
+                name="softSkills"
                 label={'Describe Yours Soft Skills'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
@@ -54,7 +54,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
               <div className="skills__subtitles">Teach Skills</div>
               <Field
                 component={Input}
-                name="description"
+                name="teachSkills"
                 label={'Describe Yours Teach Skills'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
@@ -63,13 +63,13 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
               <div className="skills__subtitles">Cover Letter</div>
               <Field
                 component={Input}
-                name="startDate"
+                name="coverLetter"
                 label={'Cover Letter'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
             <div className="form__field-container">
-              <Button className="educationForm__button" onClick={submitForm}>
+              <Button type="button" className="educationForm__button" onClick={submitForm}>
                 Save
               </Button>
             </div>

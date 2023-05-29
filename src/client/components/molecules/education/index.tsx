@@ -12,7 +12,7 @@ type EducationProps = {
 };
 
 const EducationForm = ({ changeRoute }: EducationProps) => {
-  const { setFieldValue, values } = useFormikContext<any>();
+  const { setFieldValue, values: mainValues } = useFormikContext<any>();
 
   const initialValues: Education = {
     institution: '',
@@ -20,17 +20,18 @@ const EducationForm = ({ changeRoute }: EducationProps) => {
     description: '',
     startDate: '',
     endDate: '',
+    actuality: false,
   };
 
   const submitHandler = async (newEducation: typeof initialValues) => {
-    setFieldValue('education', [...values.education, newEducation]);
+    setFieldValue('education', [...mainValues.education, newEducation]);
   };
 
   return (
     <div className="educationForm">
       {/* {mapear values.education} */}
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
-        {({ submitForm }) => (
+        {({ submitForm, values }) => (
           <Form className="educationForm__form">
             <div className="educationForm__title">Education</div>
             <hr className="educationForm__line" />
@@ -56,9 +57,15 @@ const EducationForm = ({ changeRoute }: EducationProps) => {
                 <Field className="educationForm__date-button" type="date" name="startDate" />
               </div>
               <div className="educationForm__date-subtitles">
-                Start Date
-                <Field className="educationForm__date-button" type="date" name="endDate" />
+                Actuality
+                <Field type="checkbox" name="actuality" />
               </div>
+              {!values.actuality && (
+                <div className="educationForm__date-subtitles">
+                  End Date
+                  <Field className="educationForm__date-button" type="date" name="endDate" />
+                </div>
+              )}
             </div>
             <div className="form__field-container">
               <Field
@@ -69,7 +76,7 @@ const EducationForm = ({ changeRoute }: EducationProps) => {
               />
             </div>
             <div className="form__field-container">
-              <Button className="educationForm__button" onClick={submitForm}>
+              <Button type="button" className="educationForm__button" onClick={submitForm}>
                 Submit ↑
               </Button>
             </div>

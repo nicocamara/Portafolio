@@ -43,4 +43,5 @@ type Experence = {
   description: string;
   startDate: string;
   endDate: string;
+  actuality: boolean;
 };

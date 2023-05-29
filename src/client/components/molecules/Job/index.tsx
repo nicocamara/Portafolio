@@ -12,7 +12,7 @@ type JobProps = {
 };
 
 const JobStep = ({ changeRoute }: JobProps) => {
-  const { setFieldValue, values, submitForm: submitMainForm } = useFormikContext<any>();
+  const { setFieldValue, values: mainValues, submitForm: submitMainForm } = useFormikContext<any>();
 
   const initialValues: Job = {
     title: '',
@@ -20,24 +20,25 @@ const JobStep = ({ changeRoute }: JobProps) => {
     startDate: '',
     endDate: '',
     description: '',
+    actuality: false,
   };
 
   const submitHandler = async (newJob: typeof initialValues) => {
-    setFieldValue('job', [...values.job, newJob]);
+    setFieldValue('job', [...mainValues.job, newJob]);
   };
 
   return (
     <div className="JobForm">
       {/* {mapear values.JobForm} */}
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
-        {({ submitForm }) => (
+        {({ submitForm, values }) => (
           <Form className="jobForm__form">
             <div className="jobForm__title">Work Experencie</div>
             <hr className="jobForm__line" />
             <div className="form__field-container">
               <Field
                 component={Input}
-                name="job.institution"
+                name="employer"
                 label={'institution'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
@@ -45,7 +46,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
             <div className="form__field-container">
               <Field
                 component={Input}
-                name="job.title"
+                name="title"
                 label={'title'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
@@ -53,7 +54,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
             <div className="form__field-container">
               <Field
                 component={Input}
-                name="job.description"
+                name="description"
                 label="Current Position"
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
@@ -61,12 +62,18 @@ const JobStep = ({ changeRoute }: JobProps) => {
             <div className={classNames('form__field-container', 'jobForm__date')}>
               <div className="jobForm__date-subtitles">
                 Start Date
-                <Field className="jobForm__date-button" type="date" name="job.startDate" />
+                <Field className="jobForm__date-button" type="date" name="startDate" />
               </div>
-              <div className="jobForm__date-subtitles">
-                Start Date
-                <Field className="jobForm__date-button" type="date" name="job.endDate" />
+              <div className="educationForm__date-subtitles">
+                Actuality
+                <Field type="checkbox" name="actuality" />
               </div>
+              {!values.actuality && (
+                <div className="jobForm__date-subtitles">
+                  End Date
+                  <Field className="jobForm__date-button" type="date" name="endDate" />
+                </div>
+              )}
             </div>
             <div>
               <div className="form__field-container">
@@ -83,7 +90,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
               <Button className="overview__button" isTertiary onClick={() => changeRoute('education')}>
                 Back
               </Button>
-              <Button className="overview__button" onClick={submitForm}>
+              <Button type="button" className="overview__button" onClick={submitForm}>
                 Save
               </Button>
             </div>

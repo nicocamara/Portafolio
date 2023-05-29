@@ -1,14 +1,14 @@
 import classNames from 'classnames';
-import { Form, Formik } from 'formik';
-import { useContext, useState, useEffect, useCallback, ReactNode } from 'react';
+import { Formik } from 'formik';
+import { ReactNode, useContext, useState } from 'react';
 import { Portfolio } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
 import Icons from '../../atoms/icons';
-import EducationForm from '../../molecules/education';
 import JobStep from '../../molecules/Job';
+import EducationForm from '../../molecules/education';
 import OverView from '../../molecules/overviewForm';
-import './styles.scss';
 import SkillsForm from '../../molecules/skills';
+import './styles.scss';
 
 export type Route = 'overview' | 'skills' | 'education' | 'jobs';
 
@@ -87,7 +87,6 @@ const EditPage = () => {
   };
 
   const submitHandler = async (values: typeof initialValues) => {
-    console.log('nico', values);
     try {
       await handlers.createPortfolio(values);
     } catch (error) {
@@ -101,13 +100,19 @@ const EditPage = () => {
       <div className="edit__subtitle">Follow these steps to upload your portfolio</div>
       <hr className="edit__line" />
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
-        <div className="edit__form">
-          <>
-            <BreadCrumb step={step} changeRoute={changeRoute} />
-            <hr className="edit__verticaLine" />
-            <div className="edit__content">{getStep(step, changeRoute)}</div>
-          </>
-        </div>
+        {/* estamos leyendo los values para saber porque nos manda 3 veces el mismo array de cada formulario */}
+        {({ values }) => {
+          console.log('valuees', values);
+          return (
+            <div className="edit__form">
+              <>
+                <BreadCrumb step={step} changeRoute={changeRoute} />
+                <hr className="edit__verticaLine" />
+                <div className="edit__content">{getStep(step, changeRoute)}</div>
+              </>
+            </div>
+          );
+        }}
       </Formik>
     </div>
   );
