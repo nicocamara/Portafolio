@@ -16,7 +16,7 @@ const Navbar = ({ isSticky }: NavbarProps) => {
         <div className="navbar__link" onClick={() => navigate('/features')}>
           FEATURES
         </div>
-        <div className="navbar__link" onClick={() => navigate('/about')}>
+        <div className="navbar__link" onClick={() => navigate('/maxisiempre')}>
           ABOUT
         </div>
         <div className="navbar__link" onClick={() => navigate('/edit')}>

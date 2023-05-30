@@ -5,7 +5,7 @@ import Navbar from './components/organism/navbar';
 import Home from './components/pages/Home';
 import Auth from './components/pages/auth';
 import EditPage from './components/pages/editPage';
-import Portfolio from './components/pages/profile';
+import PublicPortfolio from './components/pages/profile';
 import './main.scss';
 import { User } from './utils/Type';
 import StateContext from './utils/stateContext';
@@ -33,7 +33,7 @@ const App = () => {
           <div ref={bodyRef}></div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:userName" element={<Portfolio />} />
+            <Route path="/:userName" element={<PublicPortfolio />} />
             {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/auth" element={<Auth />} />
             <Route path="/edit" element={<ProtectRoute user={user} route={() => <EditPage />} />} />
