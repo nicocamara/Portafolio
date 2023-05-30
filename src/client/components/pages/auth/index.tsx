@@ -82,12 +82,7 @@ const Auth = () => {
                   />
                 </div>
                 <div className="form__field-container">
-                  <Field
-                    component={() => (
-                      <UserNameField setUserNameError={setFieldError} setUserNameField={setFieldValue} />
-                    )}
-                    validate={(value: string) => validate(value)}
-                  />
+                  <UserNameField setUserNameError={setFieldError} setUserNameField={setFieldValue} />
                 </div>
               </>
             )}
