@@ -60,6 +60,21 @@ API.get('/login/:userId', async (_req, res) => {
   }
 });
 
+API.get('/portfolio/:userName', async (_req, res) => {
+  const userName = _req.params.userName;
+  try {
+    const userRef = await db.collection('Portfolio').doc(userName + '-portfolio');
+    const doc = await userRef.get();
+    if (!doc.exists) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(doc.data());
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 API.post('/portfolio/:userName', async (_req, res) => {
   const portfolio = _req.body as Portfolio;
   const userName = _req.params.userName;

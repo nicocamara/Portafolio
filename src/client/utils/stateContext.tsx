@@ -12,6 +12,7 @@ export type ContextValue = {
     login: (email: string, password: string) => Promise<void>;
     checkUserName: (userName: string) => Promise<void>;
     createPortfolio: (values: Omit<Portfolio, 'id'>) => Promise<void>;
+    getPortfolio: (userName: string) => Promise<Portfolio>;
   };
 };
 const auth = getAuth(firebaseApp);
@@ -55,6 +56,11 @@ export const StateProvider = ({ children }: any) => {
     setUser(firestoreUser);
   };
 
+  const getPortfolio = async (userName: string) => {
+    const response = await callApi({ method: 'GET', endpoint: `/portfolio/${userName}` });
+    return response;
+  };
+
   const createPortfolio = async (values: Omit<Portfolio, 'id'>) => {
     const response = await callApi({ method: 'POST', endpoint: `/portfolio/${user?.userName}`, payload: values });
     setMyPorfolio(response);
@@ -65,6 +71,7 @@ export const StateProvider = ({ children }: any) => {
     login: getUser,
     checkUserName,
     createPortfolio,
+    getPortfolio,
   };
 
   return <StateContext.Provider value={{ user, handlers, myPortfolio }}>{children}</StateContext.Provider>;

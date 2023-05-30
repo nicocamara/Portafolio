@@ -39,7 +39,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
               <Field
                 component={Input}
                 name="employer"
-                label={'institution'}
+                label={'employer'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
@@ -51,14 +51,14 @@ const JobStep = ({ changeRoute }: JobProps) => {
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
-            <div className="form__field-container">
+            {/* <div className="form__field-container">
               <Field
                 component={Input}
                 name="description"
                 label="Current Position"
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
-            </div>
+            </div> */}
             <div className={classNames('form__field-container', 'jobForm__date')}>
               <div className="jobForm__date-subtitles">
                 Start Date
@@ -80,7 +80,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
                 <Field
                   className="jobForm__description"
                   component={Input}
-                  name="descritionJob"
+                  name="description"
                   label={'Description Job'}
                   // validate={(value: string) => runValidation(value, 'firstName')}
                 />
