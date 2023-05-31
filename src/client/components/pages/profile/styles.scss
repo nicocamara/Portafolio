@@ -1,13 +1,29 @@
+@import '../../../variables.scss';
+
 .portfolio {
+  display: flex;
   height: 100%;
   width: 100%;
-  display: flex;
+  background-color: $thirdColor;
+  border-radius: 7px;
+  padding: 10px;
+  text-align: center;
   align-items: center;
 
-  &__change {
-    display: flex;
+  @media (max-width: $mobile) {
     flex-direction: column;
+  }
+
+  &__menu {
+    width: 25%;
+  }
+
+  &__gilada {
+    // position: absolute;
     flex: 1;
-    height: 100%;
+  }
+
+  &__contents {
+    width: 50%;
   }
 }

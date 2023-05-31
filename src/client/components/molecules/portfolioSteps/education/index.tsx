@@ -1,9 +1,9 @@
 import { Field, Form, Formik, useFormikContext } from 'formik';
-import { Education } from '../../../utils/Type';
+import { Education } from '../../../../utils/Type';
 // import { runValidation } from '../../../utils/validations';
-import Button from '../../atoms/button';
-import Input from '../../atoms/input';
-import { Route } from '../../pages/editPage';
+import Button from '../../../atoms/button';
+import Input from '../../../atoms/input';
+import { Route } from '../../../pages/editPage';
 import './styles.scss';
 import classNames from 'classnames';
 

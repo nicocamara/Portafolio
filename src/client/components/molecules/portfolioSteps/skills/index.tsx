@@ -1,8 +1,8 @@
 import { Field, Form, Formik, useFormikContext } from 'formik';
-import { Skills } from '../../../utils/Type';
-import Button from '../../atoms/button';
-import Input from '../../atoms/input';
-import { Route } from '../../pages/editPage';
+import { Skills } from '../../../../utils/Type';
+import Button from '../../../atoms/button';
+import Input from '../../../atoms/input';
+import { Route } from '../../../pages/editPage';
 import './styles.scss';
 import classNames from 'classnames';
 

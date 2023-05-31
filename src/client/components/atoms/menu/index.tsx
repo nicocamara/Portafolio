@@ -12,7 +12,7 @@ const Menu = (props: MenuProps) => (
     {routes.map(r => (
       <div className="menu__routes" key={r} onClick={() => props.changeRoute(r)}>
         <img className="menu__icons" src={getAssetUrl(`${r}.svg`)} />
-        {r}
+        <div className="menu__text">{r}</div>
       </div>
     ))}
   </div>
