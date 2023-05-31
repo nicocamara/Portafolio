@@ -4,10 +4,10 @@ import { ReactNode, useContext, useState } from 'react';
 import { Portfolio } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
 import Icons from '../../atoms/icons';
-import JobStep from '../../molecules/Job';
-import EducationForm from '../../molecules/education';
-import OverView from '../../molecules/overviewForm';
-import SkillsForm from '../../molecules/skills';
+import JobStep from '../../molecules/portfolioSteps/Job';
+import EducationForm from '../../molecules/portfolioSteps/education';
+import OverView from '../../molecules/portfolioSteps/overviewForm';
+import SkillsForm from '../../molecules/portfolioSteps/skills';
 import './styles.scss';
 
 export type Route = 'overview' | 'skills' | 'education' | 'jobs';

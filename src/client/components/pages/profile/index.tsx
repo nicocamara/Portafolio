@@ -2,19 +2,19 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Portfolio } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
-import Contact from '../../atoms/contact';
+import Contact from '../../molecules/profileSteps/contact';
 import Menu from '../../atoms/menu';
-import Gilada from '../../molecules/gilada';
-import Projects from '../../molecules/projects';
-import Resume from '../../molecules/resume';
+import Gilada from '../../molecules/profileSteps/gilada';
+import Projects from '../../molecules/profileSteps/projects';
+import Resume from '../../molecules/profileSteps/resume';
 import './styles.scss';
 
 export type Route = 'Resume' | 'Projects' | 'Contact';
 
-const contents: Record<Route, () => JSX.Element> = {
-  Resume,
-  Projects,
-  // Contact,
+const contents: Record<Route, (props: { date: Portfolio }) => JSX.Element> = {
+  Resume: props => <Resume {...props} />,
+  Projects: props => <Projects {...props} />,
+  Contact: props => <Contact {...props} />,
 };
 
 const PublicPortfolio = () => {
@@ -41,11 +41,13 @@ const PublicPortfolio = () => {
 
   return (
     <div className="portfolio">
-      <Menu changeRoute={changeRoute} />
-      <div className="portfolio__change">
-        <Gilada />
-        {/* <div className="app__content">{contents[content]()}</div> */}
+      <div className="portfolio__menu">
+        <Menu changeRoute={changeRoute} />
       </div>
+      <div className="portfolio__gilada">
+        <Gilada />
+      </div>
+      <div className="porfolio__contents">{contents[content]({ date: portfolio })}</div>
     </div>
   );
 };

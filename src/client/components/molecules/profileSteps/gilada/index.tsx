@@ -1,5 +1,5 @@
-import getAssetUrl from '../../../utils/getAssetUrl';
-import Icons from '../../atoms/icons';
+import getAssetUrl from '../../../../utils/getAssetUrl';
+import Icons from '../../../atoms/icons';
 import './style.scss';
 
 const Gilada = () => (

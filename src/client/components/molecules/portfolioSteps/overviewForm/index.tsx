@@ -1,10 +1,10 @@
 import { Field } from 'formik';
 import { useContext } from 'react';
-import StateContext from '../../../utils/stateContext';
-import { runValidation } from '../../../utils/validations';
-import Button from '../../atoms/button';
-import Input from '../../atoms/input';
-import { Route } from '../../pages/editPage';
+import StateContext from '../../../../utils/stateContext';
+import { runValidation } from '../../../../utils/validations';
+import Button from '../../../atoms/button';
+import Input from '../../../atoms/input';
+import { Route } from '../../../pages/editPage';
 import './styles.scss';
 import classNames from 'classnames';
 
