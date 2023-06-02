@@ -11,11 +11,11 @@ const Projects = ({ date }: projectsProps) => {
     <div className="contact">
       <div>
         {date.skills.map((skill, index) => (
-          <div key={index}>
-            <div>{skill.workSkills}</div>
-            <div>{skill.softSkills}</div>
-            <div>{skill.teachSkills}</div>
-            <div>{skill.coverLetter}</div>
+          <div className="dvContainer" key={index}>
+            <div className="dvContainer__date">{skill.workSkills}</div>
+            <div className="dvContainer__date">{skill.softSkills}</div>
+            <div className="dvContainer__date">{skill.teachSkills}</div>
+            <div className="dvContainer__date">{skill.coverLetter}</div>
           </div>
         ))}
       </div>
