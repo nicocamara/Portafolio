@@ -10,9 +10,13 @@ const Contact = ({ date }: contactProps) => {
   return (
     <div className="contact">
       <div className="dvContainer">
-        <div className="dvContainer__title">Contact Date</div>
+        <div className="dvContainer__title">OverView Date</div>
         <hr className="dvContainer__line" />
         <div className="dvContainer__container">
+          <div className="dvContainer__subtitle">
+            User Data
+            <hr className="dvContainer__overline" />
+          </div>
           <div className="dvContainer__subcontainer">
             <div className="dvContainer__date">
               <span className="dvContainer__span">Name</span>
@@ -29,6 +33,10 @@ const Contact = ({ date }: contactProps) => {
           </div>
         </div>
         <div className="dvContainer__container">
+          <div className="dvContainer__subtitle">
+            Contact Data
+            <hr className="dvContainer__overline" />
+          </div>
           <div className="dvContainer__subcontainer">
             <div className="dvContainer__date">
               <span className="dvContainer__span">E-mail</span>
@@ -38,6 +46,12 @@ const Contact = ({ date }: contactProps) => {
               <span className="dvContainer__span">Phone</span>
               {date.overview.phone}
             </div>
+          </div>
+        </div>
+        <div className="dvContainer__container">
+          <div className="dvContainer__subtitle">
+            Adress Data
+            <hr className="dvContainer__overline" />
           </div>
           <div className="dvContainer__subcontainer">
             <div className="dvContainer__date">
