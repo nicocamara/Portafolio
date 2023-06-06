@@ -12,14 +12,49 @@ const Contact = ({ date }: contactProps) => {
       <div className="dvContainer">
         <div className="dvContainer__title">Contact Date</div>
         <hr className="dvContainer__line" />
-        <div className="dvContainer__date">FirstName: {date.overview.firstName}</div>
-        <div className="dvContainer__date">LastName: {date.overview.lastName}</div>
-        <div className="dvContainer__date">BirthDate: {date.overview.birthDate}</div>
-        <div className="dvContainer__date">E-mail: {date.overview.email}</div>
-        <div className="dvContainer__date">Phone: {date.overview.phone}</div>
-        <div className="dvContainer__date">Country: {date.overview.country}</div>
-        <div className="dvContainer__date">City: {date.overview.city}</div>
-        <div className="dvContainer__date">Street: {date.overview.street}</div>
+        <div className="dvContainer__container">
+          <div className="dvContainer__subcontainer">
+            <div className="dvContainer__date">
+              <span className="dvContainer__span">Name</span>
+              {date.overview.firstName}
+            </div>
+            <div className="dvContainer__date">
+              <span className="dvContainer__span">Last Name</span>
+              {date.overview.lastName}
+            </div>
+            <div className="dvContainer__date">
+              <span className="dvContainer__span">Birth Date</span>
+              {date.overview.birthDate}
+            </div>
+          </div>
+        </div>
+        <div className="dvContainer__container">
+          <div className="dvContainer__subcontainer">
+            <div className="dvContainer__date">
+              <span className="dvContainer__span">E-mail</span>
+              {date.overview.email}
+            </div>
+            <div className="dvContainer__date">
+              <span className="dvContainer__span">Phone</span>
+              {date.overview.phone}
+            </div>
+          </div>
+          <div className="dvContainer__subcontainer">
+            <div className="dvContainer__date">
+              <span className="dvContainer__span">Country</span>
+              {date.overview.country}
+            </div>
+            <div className="dvContainer__date">
+              <span className="dvContainer__span">City</span>
+              {date.overview.city}
+            </div>
+
+            <div className="dvContainer__date">
+              <span className="dvContainer__span">Street</span>
+              {date.overview.street}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
