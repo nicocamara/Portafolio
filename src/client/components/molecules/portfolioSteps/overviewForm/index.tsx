@@ -50,7 +50,7 @@ const OverView = ({ changeRoute }: OverViewProps) => {
         <Field
           component={Input}
           name="overview.country"
-          label={'Street'}
+          label={'Country'}
           validate={(value: string) => runValidation(value, 'country')}
         />
       </div>
@@ -63,6 +63,14 @@ const OverView = ({ changeRoute }: OverViewProps) => {
           name="overview.city"
           label={'City'}
           validate={(value: string) => runValidation(value, 'city')}
+        />
+      </div>
+      <div className="form__field-container">
+        <Field
+          component={Input}
+          name="overview.street"
+          label={'Street'}
+          validate={(value: string) => runValidation(value, 'street')}
         />
       </div>
       <div className={classNames('form__field-container', 'overview__date')}>
