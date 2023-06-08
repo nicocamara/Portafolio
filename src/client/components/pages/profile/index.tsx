@@ -5,22 +5,24 @@ import StateContext from '../../../utils/stateContext';
 import Contact from '../../molecules/profileSteps/contact';
 import Menu from '../../atoms/menu';
 import Gilada from '../../molecules/profileSteps/gilada';
-import Projects from '../../molecules/profileSteps/projects';
-import Resume from '../../molecules/profileSteps/resume';
+import Projects from '../../molecules/profileSteps/Skilfulness';
+import Resume from '../../molecules/profileSteps/studies';
 import './styles.scss';
+import Experiences from '../../molecules/profileSteps/exprences';
 
-export type Route = 'Resume' | 'Projects' | 'Contact';
+export type Route = 'Resume' | 'Skilfulness' | 'Studies' | 'Experiences';
 
 const contents: Record<Route, (props: { date: Portfolio }) => JSX.Element> = {
-  Resume: props => <Resume {...props} />,
-  Projects: props => <Projects {...props} />,
-  Contact: props => <Contact {...props} />,
+  Resume: props => <Contact {...props} />,
+  Studies: props => <Resume {...props} />,
+  Skilfulness: props => <Projects {...props} />,
+  Experiences: props => <Experiences {...props} />,
 };
 
 const PublicPortfolio = () => {
   const { handlers } = useContext(StateContext);
   const { userName } = useParams();
-  const [content, setcontent] = useState<Route>('Contact');
+  const [content, setcontent] = useState<Route>('Resume');
   const [portfolio, setPortfolio] = useState<Portfolio>();
 
   const changeRoute = (newRoute: Route) => {

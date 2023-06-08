@@ -1,12 +1,12 @@
+import { Portfolio } from '../../../utils/Type';
 import './styles.scss';
-import { Portfolio } from '../../../../utils/Type';
 
 type contactProps = {
   date: Portfolio;
 };
 
-const Contact = ({ date }: contactProps) => {
-  console.log('los datos rey', date);
+const Resume = ({ date }: contactProps) => {
+  console.log();
   return (
     <div className="contact">
       <div className="dvContainer">
@@ -74,4 +74,4 @@ const Contact = ({ date }: contactProps) => {
   );
 };
 
-export default Contact;
+export default Resume;

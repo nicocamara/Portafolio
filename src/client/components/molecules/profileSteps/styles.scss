@@ -1,6 +1,15 @@
-@import '../../../../variables.scss';
+@import '../../../variables.scss';
 
 .contact {
+  width: 500px;
+  height: 100%;
+  background-color: bisque;
+  @media (max-width: $mobile) {
+    width: 100%;
+  }
+}
+
+.projects {
   width: 500px;
   height: 100%;
   background-color: bisque;
@@ -21,7 +30,7 @@
 
   &__subtitle {
     font-size: 20px;
-    color: $secondaryColor;
+    color: $primaryColor;
     font-weight: 700;
     text-align: left;
     margin-top: 25px;
@@ -33,7 +42,9 @@
     background-color: $secondaryColor;
     margin: unset;
   }
+
   &__overline {
+    width: 100%;
     align-items: center;
     height: 0.2px;
     background-color: rgb(207, 198, 198);
@@ -61,6 +72,6 @@
   &__span {
     font-weight: 600;
     font-size: 20px;
-    color: $primaryColor;
+    color: $secondaryColor;
   }
 }

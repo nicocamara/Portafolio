@@ -10,7 +10,7 @@ import OverView from '../../molecules/portfolioSteps/overviewForm';
 import SkillsForm from '../../molecules/portfolioSteps/skills';
 import './styles.scss';
 
-export type Route = 'overview' | 'skills' | 'education' | 'jobs';
+export type Route = 'OverView' | 'skills' | 'education' | 'jobs';
 
 export type Step = {
   name: Route;
@@ -22,8 +22,9 @@ type MenuProps = {
   changeRoute: (newRoute: Route) => void;
   step: Route;
 };
+
 const routes: Step[] = [
-  { name: 'overview', label: 'Overview', description: 'Upload your data' },
+  { name: 'OverView', label: 'Overview', description: 'Upload your data' },
   { name: 'skills', label: 'Skills', description: 'Upload your data' },
   { name: 'education', label: 'Education', description: 'Upload your data' },
   { name: 'jobs', label: 'Jobs', description: 'Upload your data' },
@@ -68,7 +69,7 @@ const initialValues: Omit<Portfolio, 'id'> = {
 
 const getStep = (step: Route, changeRoute: (newRoute: Route) => void) => {
   const steps: Record<Route, ReactNode> = {
-    overview: <OverView changeRoute={changeRoute} />,
+    OverView: <OverView changeRoute={changeRoute} />,
     education: <EducationForm changeRoute={changeRoute} />,
     jobs: <JobStep changeRoute={changeRoute} />,
     skills: <SkillsForm changeRoute={changeRoute} />,
@@ -78,7 +79,7 @@ const getStep = (step: Route, changeRoute: (newRoute: Route) => void) => {
 };
 
 const EditPage = () => {
-  const [step, setStep] = useState<Route>('overview');
+  const [step, setStep] = useState<Route>('OverView');
   const { handlers } = useContext(StateContext);
   // const Vevo = useCallback(() => getStep(step, changeRoute), [step]);
 

@@ -5,7 +5,7 @@ import './styles.scss';
 type MenuProps = {
   changeRoute: (newRoute: Route) => void;
 };
-const routes: Route[] = ['Resume', 'Projects', 'Contact'];
+const routes: Route[] = ['Resume', 'Studies', 'Skilfulness', 'Experiences'];
 
 const Menu = (props: MenuProps) => (
   <div className="menu">
