@@ -74,7 +74,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
               </Button>
             </div>
             <div className={classNames('form__field-container', 'educationForm__date')}>
-              <Button className="educationForm__button" isTertiary onClick={() => changeRoute('OverView')}>
+              <Button className="educationForm__button" isTertiary onClick={() => changeRoute('headLine')}>
                 Back
               </Button>
               <Button className="educationForm__button" onClick={() => changeRoute('education')}>

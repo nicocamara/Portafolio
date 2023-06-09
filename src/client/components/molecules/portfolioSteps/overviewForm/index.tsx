@@ -80,7 +80,7 @@ const OverView = ({ changeRoute }: OverViewProps) => {
         </div>
       </div>
       <div className="form__field-container">
-        <Button className="overview__button" onClick={() => changeRoute('skills')}>
+        <Button className="overview__button" onClick={() => changeRoute('headLine')}>
           Next
         </Button>
       </div>

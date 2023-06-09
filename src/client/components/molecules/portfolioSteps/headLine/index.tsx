@@ -85,7 +85,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
               <Button className="educationForm__button" isTertiary onClick={() => changeRoute('OverView')}>
                 Back
               </Button>
-              <Button className="educationForm__button" onClick={() => changeRoute('education')}>
+              <Button className="educationForm__button" onClick={() => changeRoute('skills')}>
                 Next
               </Button>
             </div>
