@@ -4,7 +4,7 @@ import './style.scss';
 
 const Gilada = () => (
   <div className="gilada">
-    <img className="gilada__foto" src={getAssetUrl('nicoPerfil.png')} />
+    <img className="gilada__foto" src={getAssetUrl('placeholder.png')} />
     <div className="gilada__logos">
       <Icons path="linkedin" alt="linkedin" className="linkedin" link="https://www.linkedin.com/in/nicolas-camara/" />
       <Icons path="facebook" alt="facebook" className="linkedin" link="https://www.facebook.com/pato.camara.7/" />
