@@ -1,32 +1,31 @@
 import { Field, Form, Formik, useFormikContext } from 'formik';
-import { Skills } from '../../../../utils/Type';
 import Button from '../../../atoms/button';
 import Input from '../../../atoms/input';
 import { Route } from '../../../pages/editPage';
+import { HeadLine } from '../../../../utils/Type';
 import './styles.scss';
 import classNames from 'classnames';
 
-const initialValues: Skills = {
-  workSkills: '',
-  softSkills: '',
-  teachSkills: '',
-  coverLetter: '',
+const initialValues: HeadLine = {
+  image: '',
+  linkedin: '',
+  facebook: '',
+  github: '',
+  instagram: '',
 };
 
-type SkillsProps = {
+type headLineProps = {
   changeRoute: (newRoute: Route) => void;
 };
-
-const SkillsForm = ({ changeRoute }: SkillsProps) => {
+const HeadLineForm = ({ changeRoute }: headLineProps) => {
   const { setFieldValue, values } = useFormikContext<any>();
 
   const submitHandler = async (newSkills: typeof initialValues) => {
-    setFieldValue('skills', [...values.skills, newSkills]);
+    setFieldValue('headLine', [...values.headLine, newSkills]);
   };
 
   return (
-    <div className="skills">
-      {/* {mapear values.JobForm} */}
+    <div className="headLine">
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ submitForm }) => (
           <Form className="skills__form">
@@ -36,8 +35,8 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
               <div className="skills__subtitles">Work Skills</div>
               <Field
                 component={Input}
-                name="workSkills"
-                label={'Describe yours works Skills'}
+                name="image"
+                label={'Upload your Image'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
@@ -45,8 +44,8 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
               <div className="skills__subtitles">Soft Skills</div>
               <Field
                 component={Input}
-                name="softSkills"
-                label={'Describe Yours Soft Skills'}
+                name="linkedin"
+                label={'Link of linkeding'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
@@ -54,8 +53,8 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
               <div className="skills__subtitles">Teach Skills</div>
               <Field
                 component={Input}
-                name="teachSkills"
-                label={'Describe Yours Teach Skills'}
+                name="facebook"
+                label={'Link of facebook'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
@@ -63,8 +62,17 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
               <div className="skills__subtitles">Cover Letter</div>
               <Field
                 component={Input}
-                name="coverLetter"
-                label={'Cover Letter'}
+                name="github"
+                label={'Link of github'}
+                // validate={(value: string) => runValidation(value, 'firstName')}
+              />
+            </div>
+            <div className="form__field-container">
+              <div className="skills__subtitles">Teach Skills</div>
+              <Field
+                component={Input}
+                name="instagram"
+                label={'Link of instagram'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
@@ -88,4 +96,4 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
   );
 };
 
-export default SkillsForm;
+export default HeadLineForm;

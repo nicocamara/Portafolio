@@ -9,8 +9,9 @@ import EducationForm from '../../molecules/portfolioSteps/education';
 import OverView from '../../molecules/portfolioSteps/overviewForm';
 import SkillsForm from '../../molecules/portfolioSteps/skills';
 import './styles.scss';
+import HeadLineForm from '../../molecules/portfolioSteps/headLine';
 
-export type Route = 'OverView' | 'skills' | 'education' | 'jobs';
+export type Route = 'OverView' | 'headLine' | 'skills' | 'education' | 'jobs';
 
 export type Step = {
   name: Route;
@@ -25,6 +26,7 @@ type MenuProps = {
 
 const routes: Step[] = [
   { name: 'OverView', label: 'Overview', description: 'Upload your data' },
+  { name: 'headLine', label: 'HeadLine', description: 'Upload your data' },
   { name: 'skills', label: 'Skills', description: 'Upload your data' },
   { name: 'education', label: 'Education', description: 'Upload your data' },
   { name: 'jobs', label: 'Jobs', description: 'Upload your data' },
@@ -65,11 +67,13 @@ const initialValues: Omit<Portfolio, 'id'> = {
   skills: [],
   job: [],
   education: [],
+  headLine: [],
 };
 
 const getStep = (step: Route, changeRoute: (newRoute: Route) => void) => {
   const steps: Record<Route, ReactNode> = {
     OverView: <OverView changeRoute={changeRoute} />,
+    headLine: <HeadLineForm changeRoute={changeRoute} />,
     education: <EducationForm changeRoute={changeRoute} />,
     jobs: <JobStep changeRoute={changeRoute} />,
     skills: <SkillsForm changeRoute={changeRoute} />,

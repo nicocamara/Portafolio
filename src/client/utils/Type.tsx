@@ -21,6 +21,7 @@ export type Portfolio = {
   skills: Skills[];
   job: Job[];
   education: Education[];
+  headLine: HeadLine[];
 };
 
 export type Skills = {
@@ -44,4 +45,12 @@ type Experence = {
   startDate: string;
   endDate?: string;
   actuality: boolean;
+};
+
+export type HeadLine = {
+  image: string;
+  linkedin: string;
+  facebook: string;
+  github: string;
+  instagram: string;
 };
