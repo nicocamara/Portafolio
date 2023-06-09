@@ -50,9 +50,7 @@ const Experiences = ({ date }: experiencesProps) => {
                   Description
                   <hr className="dvContainer__overline" />
                 </div>
-                <div className="dvContainer__date">
-                  <div>{job.description}</div>
-                </div>
+                <div className="dvContainer__date">{job.description}</div>
               </div>
             ))}
           </div>
