@@ -48,7 +48,7 @@ type Experence = {
 };
 
 export type HeadLine = {
-  image: string;
+  image?: string;
   linkedin: string;
   facebook: string;
   github: string;

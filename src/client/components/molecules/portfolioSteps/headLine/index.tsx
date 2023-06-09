@@ -29,7 +29,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ submitForm }) => (
           <Form className="skills__form">
-            <div className="skills__title">Skills</div>
+            <div className="skills__title">Head line</div>
             <hr className="skills__line" />
             <div className="form__field-container">
               <div className="skills__subtitles">Work Skills</div>
@@ -41,7 +41,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
               />
             </div>
             <div className="form__field-container">
-              <div className="skills__subtitles">Soft Skills</div>
+              <div className="skills__subtitles">Linkedin Link</div>
               <Field
                 component={Input}
                 name="linkedin"
@@ -50,7 +50,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
               />
             </div>
             <div className="form__field-container">
-              <div className="skills__subtitles">Teach Skills</div>
+              <div className="skills__subtitles">Facebook Link</div>
               <Field
                 component={Input}
                 name="facebook"
@@ -59,7 +59,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
               />
             </div>
             <div className="form__field-container">
-              <div className="skills__subtitles">Cover Letter</div>
+              <div className="skills__subtitles">Github Link</div>
               <Field
                 component={Input}
                 name="github"
@@ -68,7 +68,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
               />
             </div>
             <div className="form__field-container">
-              <div className="skills__subtitles">Teach Skills</div>
+              <div className="skills__subtitles">Instagram Link</div>
               <Field
                 component={Input}
                 name="instagram"

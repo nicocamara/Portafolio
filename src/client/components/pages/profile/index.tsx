@@ -4,11 +4,12 @@ import { Portfolio } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
 import Contact from '../../molecules/profileSteps/contact';
 import Menu from '../../atoms/menu';
-import Gilada from '../../molecules/profileSteps/gilada';
+
 import Projects from '../../molecules/profileSteps/Skilfulness';
 import Resume from '../../molecules/profileSteps/studies';
 import './styles.scss';
 import Experiences from '../../molecules/profileSteps/exprences';
+import Identity from '../../molecules/profileSteps/Identity';
 
 export type Route = 'Resume' | 'Skilfulness' | 'Studies' | 'Experiences';
 
@@ -47,7 +48,7 @@ const PublicPortfolio = () => {
         <Menu changeRoute={changeRoute} />
       </div>
       <div className="portfolio__gilada">
-        <Gilada />
+        <Identity date={portfolio} />
       </div>
       <div className="porfolio__contents">{contents[content]({ date: portfolio })}</div>
     </div>
