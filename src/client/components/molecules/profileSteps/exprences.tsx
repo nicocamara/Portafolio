@@ -6,7 +6,7 @@ type experiencesProps = {
 };
 
 const Experiences = ({ date }: experiencesProps) => {
-  console.log('los datos rey', date);
+  console.log();
   return (
     <div className="contact">
       <div className="dvContainer">

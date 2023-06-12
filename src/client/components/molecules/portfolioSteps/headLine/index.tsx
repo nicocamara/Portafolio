@@ -34,7 +34,16 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
             <div className="form__field-container">
               <div className="skills__subtitles">Work Skills</div>
               <Field
-                component={Input}
+                component={
+                  <input
+                    id="file"
+                    name="file"
+                    type="file"
+                    onChange={event => {
+                      // formik.setFieldValue("file", event.currentTarget.files[0]);
+                    }}
+                  />
+                }
                 name="image"
                 label={'Upload your Image'}
                 // validate={(value: string) => runValidation(value, 'firstName')}

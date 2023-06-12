@@ -33,7 +33,7 @@ const routes: Step[] = [
 ];
 
 const BreadCrumb = (props: MenuProps) => {
-  console.log('raro', props.step);
+  console.log();
   return (
     <div className="breadCrumb">
       {routes.map(({ name, label, description }) => (

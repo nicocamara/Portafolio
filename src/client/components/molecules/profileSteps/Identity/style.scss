@@ -12,6 +12,7 @@
 
   @media (max-width: $mobile) {
     width: 100%;
+    padding: 10px 0px;
   }
 
   .container {
@@ -29,7 +30,8 @@
   }
 
   &__buttons {
-    margin-top: 1em;
+    width: 100%;
+    margin-top: 15px;
     display: flex;
   }
 }

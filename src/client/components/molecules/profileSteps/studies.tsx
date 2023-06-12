@@ -6,7 +6,7 @@ type EducationProps = {
 };
 
 const Studies = ({ date }: EducationProps) => {
-  console.log('los datos rey', date);
+  console.log();
   return (
     <div className="contact">
       <div className="dvContainer">
