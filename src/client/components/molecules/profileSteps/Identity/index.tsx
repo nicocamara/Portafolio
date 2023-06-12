@@ -1,5 +1,6 @@
 import { Portfolio } from '../../../../utils/Type';
 import getAssetUrl from '../../../../utils/getAssetUrl';
+import Button from '../../../atoms/button';
 import Icons from '../../../atoms/icons';
 import './style.scss';
 
@@ -24,9 +25,8 @@ const Identity = ({ date }: identityProps) => (
         </div>
       </div>
     ))}
-    <div className="gilada__buttons">
-      <button>Download</button>
-      <button>Contact</button>
+    <div className="identity__buttons">
+      <Button className="identity__button">Download CV</Button>
     </div>
   </div>
 );
