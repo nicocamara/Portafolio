@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "concurrently -r 'npm run dev:client' 'npm run dev:server'",
     "dev:client": "PORT=3000 vite",
-    "dev:server": "PORT=4420 ts-node-dev --respawn --transpile-only src/server/index.ts",
+    "dev:server": "PORT=4420 ts-node-dev --respawn --transpile-only --watch src/server --exit-child src/server/index.ts",
     "build": "concurrently -r 'npm run prepare-build' 'npm run build:client' 'npm run build:server'",
     "prepare-build": "rm -rf build && mkdir -p build/client && mkdir -p build/server && cp -r public/index.html build/client",
     "build:client": "vite build",

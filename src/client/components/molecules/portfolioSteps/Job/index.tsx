@@ -1,11 +1,11 @@
 import { Field, Form, Formik, useFormikContext } from 'formik';
 import { Job } from '../../../../utils/Type';
 // import { runValidation } from '../../../utils/validations';
-import Button from '../../../atoms/button';
-import Input from '../../../atoms/input';
-import { Route } from '../../../pages/editPage';
-import './styles.scss';
 import classNames from 'classnames';
+import Button from '../../../atoms/button';
+import { Route } from '../../../pages/editPage';
+import TextField from '../../formik/TextField';
+import './styles.scss';
 
 type JobProps = {
   changeRoute: (newRoute: Route) => void;
@@ -37,7 +37,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
             <hr className="jobForm__line" />
             <div className="form__field-container">
               <Field
-                component={Input}
+                component={TextField}
                 name="employer"
                 label={'employer'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -45,7 +45,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
             </div>
             <div className="form__field-container">
               <Field
-                component={Input}
+                component={TextField}
                 name="title"
                 label={'title'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -53,7 +53,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
             </div>
             {/* <div className="form__field-container">
               <Field
-                component={Input}
+                component={TextField}
                 name="description"
                 label="Current Position"
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -79,7 +79,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
               <div className="form__field-container">
                 <Field
                   className="jobForm__description"
-                  component={Input}
+                  component={TextField}
                   name="description"
                   label={'Description Job'}
                   // validate={(value: string) => runValidation(value, 'firstName')}
