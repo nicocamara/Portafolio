@@ -1,4 +1,5 @@
 type InputType =
+  | 'userName'
   | 'firstName'
   | 'lastName'
   | 'email'
@@ -19,6 +20,7 @@ type ValidationOptions = {
 };
 
 const validationRules: { [key: string]: ValidationOptions } = {
+  userName: { minLength: 5, maxLength: 35, isRequired: true, format: '^[A-Za-z0-9\\-_.+]+$' },
   firstName: { minLength: 2, maxLength: 35, isRequired: true, format: '^[a-zA-ZÀ-ÿ\\s]{2,35}$' },
   lastName: { minLength: 2, maxLength: 25, isRequired: true, format: '^[a-zA-ZÀ-ÿ\\s]{2,25}$' },
   email: { minLength: 6, maxLength: 35, isRequired: true, format: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$' },
@@ -31,6 +33,7 @@ const validationRules: { [key: string]: ValidationOptions } = {
 };
 
 export const validateCheckBox = (value: boolean) => (value ? undefined : ['isRequired']);
+export const isEmpty = (value: any) => value === null || value === undefined || value === '';
 
 export const runValidation = (value: string, name: InputType) => {
   const error: string[] = [];
@@ -52,7 +55,7 @@ export const runValidation = (value: string, name: InputType) => {
     error.push('invalid');
   }
 
-  return error.length ? error : undefined;
+  return error.length ? error[0] : undefined;
 };
 
 const errorMessages = {
@@ -60,9 +63,12 @@ const errorMessages = {
   minLength: (label: string) => `${label} is too short`,
   maxLength: (label: string) => `${label} is too long`,
   invalid: (label: string) => `${label} is invalid`,
+  whitespaces: (label: string) => 'This field does not allow whitespaces',
+  unAvailable: (label: string) => `This ${label} is not available`,
 };
 
 export const getErrorMessage = (errorKey: ErrorKey, label?: any) => errorMessages[errorKey](label);
+
 // Password format: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'
 // (?=.*?[A-Z]) -- At least 1 uppercase letter A-Z
 // (?=.*?[a-z]) -- At least 1 lowercase letter a-z

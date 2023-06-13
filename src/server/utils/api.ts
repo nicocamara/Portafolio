@@ -13,6 +13,13 @@ API.post('/register', async (_req, res) => {
   const { password, ...rest } = _req.body as Omit<User, 'uid'> & { password: string };
 
   try {
+    const querySnaptShot = await db.collection('Users').where('userName', '==', rest.userName).get();
+
+    if (!querySnaptShot.empty) {
+      res.status(423).send({ message: `el username ${rest.userName} No esta disponible` });
+      return;
+    }
+
     const firebaseAuthUser = await auth.createUser({ email: rest.email, password });
     const firestoreUser = { ...rest, uid: firebaseAuthUser.uid };
 
@@ -30,20 +37,20 @@ API.post('/register', async (_req, res) => {
   }
 });
 
-API.get('/check-userName/:userName', async (_req, res) => {
-  const userName = _req.params.userName;
-  try {
-    const querySnaptShot = await db.collection('Users').where('userName', '==', userName).get();
+// API.get('/check-userName/:userName', async (_req, res) => {
+//   const userName = _req.params.userName;
+//   try {
+//     const querySnaptShot = await db.collection('Users').where('userName', '==', userName).get();
 
-    if (!querySnaptShot.empty) {
-      res.status(422).send('No esta disponible');
-    } else {
-      res.status(200).send();
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
+//     if (!querySnaptShot.empty) {
+//       res.status(422).send('No esta disponible');
+//     } else {
+//       res.status(200).send({});
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 API.get('/login/:userId', async (_req, res) => {
   const userId = _req.params.userId;

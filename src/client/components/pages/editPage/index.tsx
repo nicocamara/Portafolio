@@ -6,10 +6,10 @@ import StateContext from '../../../utils/stateContext';
 import Icons from '../../atoms/icons';
 import JobStep from '../../molecules/portfolioSteps/Job';
 import EducationForm from '../../molecules/portfolioSteps/education';
+import HeadLineForm from '../../molecules/portfolioSteps/headLine';
 import OverView from '../../molecules/portfolioSteps/overviewForm';
 import SkillsForm from '../../molecules/portfolioSteps/skills';
 import './styles.scss';
-import HeadLineForm from '../../molecules/portfolioSteps/headLine';
 
 export type Route = 'OverView' | 'headLine' | 'skills' | 'education' | 'jobs';
 
