@@ -7,7 +7,7 @@ import './styles.scss';
 import classNames from 'classnames';
 
 const initialValues: HeadLine = {
-  image: '',
+  image: null,
   linkedin: '',
   facebook: '',
   github: '',
@@ -34,16 +34,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
             <div className="form__field-container">
               <div className="skills__subtitles">Work Skills</div>
               <Field
-                component={
-                  <input
-                    id="file"
-                    name="file"
-                    type="file"
-                    onChange={event => {
-                      // formik.setFieldValue("file", event.currentTarget.files[0]);
-                    }}
-                  />
-                }
+                component={<input id="file" name="file" type="file" />}
                 name="image"
                 label={'Upload your Image'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
