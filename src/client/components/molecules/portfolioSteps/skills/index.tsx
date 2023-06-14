@@ -1,10 +1,10 @@
+import classNames from 'classnames';
 import { Field, Form, Formik, useFormikContext } from 'formik';
 import { Skills } from '../../../../utils/Type';
 import Button from '../../../atoms/button';
-import Input from '../../../atoms/input';
 import { Route } from '../../../pages/editPage';
+import TextField from '../../formik/TextField';
 import './styles.scss';
-import classNames from 'classnames';
 
 const initialValues: Skills = {
   workSkills: '',
@@ -35,7 +35,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
             <div className="form__field-container">
               <div className="skills__subtitles">Work Skills</div>
               <Field
-                component={Input}
+                component={TextField}
                 name="workSkills"
                 label={'Describe yours works Skills'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -44,7 +44,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
             <div className="form__field-container">
               <div className="skills__subtitles">Soft Skills</div>
               <Field
-                component={Input}
+                component={TextField}
                 name="softSkills"
                 label={'Describe Yours Soft Skills'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -53,7 +53,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
             <div className="form__field-container">
               <div className="skills__subtitles">Teach Skills</div>
               <Field
-                component={Input}
+                component={TextField}
                 name="teachSkills"
                 label={'Describe Yours Teach Skills'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -62,7 +62,7 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
             <div className="form__field-container">
               <div className="skills__subtitles">Cover Letter</div>
               <Field
-                component={Input}
+                component={TextField}
                 name="coverLetter"
                 label={'Cover Letter'}
                 // validate={(value: string) => runValidation(value, 'firstName')}

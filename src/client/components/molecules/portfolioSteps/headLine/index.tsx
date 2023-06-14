@@ -1,10 +1,10 @@
-import { Field, Form, Formik, useFormikContext } from 'formik';
-import Button from '../../../atoms/button';
-import Input from '../../../atoms/input';
-import { Route } from '../../../pages/editPage';
-import { HeadLine } from '../../../../utils/Type';
-import './styles.scss';
 import classNames from 'classnames';
+import { Field, Form, Formik, useFormikContext } from 'formik';
+import { HeadLine } from '../../../../utils/Type';
+import Button from '../../../atoms/button';
+import { Route } from '../../../pages/editPage';
+import TextField from '../../formik/TextField';
+import './styles.scss';
 
 const initialValues: HeadLine = {
   image: null,
@@ -43,7 +43,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
             <div className="form__field-container">
               <div className="skills__subtitles">Linkedin Link</div>
               <Field
-                component={Input}
+                component={TextField}
                 name="linkedin"
                 label={'Link of linkeding'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -52,7 +52,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
             <div className="form__field-container">
               <div className="skills__subtitles">Facebook Link</div>
               <Field
-                component={Input}
+                component={TextField}
                 name="facebook"
                 label={'Link of facebook'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -61,7 +61,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
             <div className="form__field-container">
               <div className="skills__subtitles">Github Link</div>
               <Field
-                component={Input}
+                component={TextField}
                 name="github"
                 label={'Link of github'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -70,7 +70,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
             <div className="form__field-container">
               <div className="skills__subtitles">Instagram Link</div>
               <Field
-                component={Input}
+                component={TextField}
                 name="instagram"
                 label={'Link of instagram'}
                 // validate={(value: string) => runValidation(value, 'firstName')}

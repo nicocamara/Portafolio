@@ -46,7 +46,7 @@ export const StateProvider = ({ children }: any) => {
   };
 
   const checkUserName = async (userName: string) => {
-    await callApi({ method: 'GET', endpoint: `/check-userName/:${userName}` });
+    await callApi({ method: 'GET', endpoint: `/check-userName/${userName}` });
   };
 
   const getUser = async (email: string, password: string) => {

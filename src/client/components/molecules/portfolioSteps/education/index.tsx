@@ -1,11 +1,11 @@
 import { Field, Form, Formik, useFormikContext } from 'formik';
 import { Education } from '../../../../utils/Type';
 // import { runValidation } from '../../../utils/validations';
-import Button from '../../../atoms/button';
-import Input from '../../../atoms/input';
-import { Route } from '../../../pages/editPage';
-import './styles.scss';
 import classNames from 'classnames';
+import Button from '../../../atoms/button';
+import { Route } from '../../../pages/editPage';
+import TextField from '../../formik/TextField';
+import './styles.scss';
 
 type EducationProps = {
   changeRoute: (newRoute: Route) => void;
@@ -37,7 +37,7 @@ const EducationForm = ({ changeRoute }: EducationProps) => {
             <hr className="educationForm__line" />
             <div className="form__field-container">
               <Field
-                component={Input}
+                component={TextField}
                 name="institution"
                 label={'institution'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -45,7 +45,7 @@ const EducationForm = ({ changeRoute }: EducationProps) => {
             </div>
             <div className="form__field-container">
               <Field
-                component={Input}
+                component={TextField}
                 name="title"
                 label={'title'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
@@ -69,7 +69,7 @@ const EducationForm = ({ changeRoute }: EducationProps) => {
             </div>
             <div className="form__field-container">
               <Field
-                component={Input}
+                component={TextField}
                 name="description"
                 label={'description'}
                 // validate={(value: string) => runValidation(value, 'firstName')}
