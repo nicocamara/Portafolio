@@ -47,13 +47,9 @@ type Experence = {
   actuality: boolean;
 };
 
-export type HeadLine = ImageFormvalue & {
+export type HeadLine = {
   linkedin: string;
   facebook: string;
   github: string;
   instagram: string;
-};
-
-type ImageFormvalue = {
-  image: File | null;
 };

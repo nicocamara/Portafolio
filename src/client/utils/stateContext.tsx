@@ -2,10 +2,12 @@ import { browserLocalPersistence, getAuth, signInWithEmailAndPassword } from 'fi
 import { createContext, useEffect, useState } from 'react';
 import callApi from './callApi';
 import { Portfolio, User } from './Type';
-import firebaseApp from './firebaseApp';
+import firebaseApp, { storageFile } from './firebaseApp';
+import { listAll, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 export type ContextValue = {
   user?: User;
+
   myPortfolio?: Portfolio;
   handlers: {
     register: (_user: Omit<User, 'uid'> & { password: string }) => Promise<void>;
@@ -13,12 +15,14 @@ export type ContextValue = {
     checkUserName: (userName: string) => Promise<void>;
     createPortfolio: (values: Omit<Portfolio, 'id'>) => Promise<void>;
     getPortfolio: (userName: string) => Promise<Portfolio>;
+    uploadFile: (file: Blob) => Promise<void>;
   };
 };
 const auth = getAuth(firebaseApp);
 const StateContext = createContext<ContextValue>({} as ContextValue);
 
 export const StateProvider = ({ children }: any) => {
+  const [avatar, setAvatar] = useState<any[]>();
   const [user, setUser] = useState<User>();
   const [myPortfolio, setMyPorfolio] = useState<Portfolio>();
   const [persistanceId, setPersistanceId] = useState<string>();
@@ -66,12 +70,26 @@ export const StateProvider = ({ children }: any) => {
     setMyPorfolio(response);
   };
 
+  const uploadFile = async (file: Blob) => {
+    const storageRef = ref(storageFile, `images/${file.name}`);
+    await uploadBytes(storageRef, file);
+  };
+
+  const getFile = async () => {
+    const storageRef = ref(storageFile, 'images/');
+    await listAll(storageRef).then(response => {
+      response.items.forEach(item => getDownloadURL(item).then(url => setAvatar(prev => [...[prev], url])));
+    });
+  };
+  console.log('que onda MI WRRRAAY', avatar);
+
   const handlers = {
     register: registerHandler,
     login: getUser,
     checkUserName,
     createPortfolio,
     getPortfolio,
+    uploadFile,
   };
 
   return <StateContext.Provider value={{ user, handlers, myPortfolio }}>{children}</StateContext.Provider>;

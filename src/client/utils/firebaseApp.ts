@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
+import { getStorage } from 'firebase/storage';
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyANSpkTs45PgSBw_OWhB8LKQ1njCiOX8aw',
   authDomain: 'portfolioweb-a80dc.firebaseapp.com',
   projectId: 'portfolioweb-a80dc',
@@ -11,5 +12,7 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
+
+export const storageFile = getStorage(firebaseApp);
 
 export default firebaseApp;

@@ -7,7 +7,6 @@ import TextField from '../../formik/TextField';
 import './styles.scss';
 
 const initialValues: HeadLine = {
-  image: null,
   linkedin: '',
   facebook: '',
   github: '',
@@ -32,15 +31,6 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
             <div className="skills__title">Head line</div>
             <hr className="skills__line" />
             <div className="form__field-container">
-              <div className="skills__subtitles">Work Skills</div>
-              <Field
-                component={<input id="file" name="file" type="file" />}
-                name="image"
-                label={'Upload your Image'}
-                // validate={(value: string) => runValidation(value, 'firstName')}
-              />
-            </div>
-            <div className="form__field-container">
               <div className="skills__subtitles">Linkedin Link</div>
               <Field
                 component={TextField}
@@ -49,6 +39,7 @@ const HeadLineForm = ({ changeRoute }: headLineProps) => {
                 // validate={(value: string) => runValidation(value, 'firstName')}
               />
             </div>
+
             <div className="form__field-container">
               <div className="skills__subtitles">Facebook Link</div>
               <Field
