@@ -1,0 +1,20 @@
+.dropfile {
+  &__preview {
+    display: 'flex';
+    flex-direction: 'row';
+    flex-wrap: 'wrap';
+    margin-top: 16;
+  }
+
+  &__thumb {
+    display: 'inline-flex';
+    border-radius: 2;
+    border: '1px solid #eaeaea';
+    margin-bottom: 8;
+    margin-right: 8;
+    width: 100;
+    height: 100;
+    padding: 4;
+    box-sizing: 'border-box';
+  }
+}
