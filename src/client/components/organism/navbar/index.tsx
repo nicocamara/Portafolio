@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 import Logo from '../../atoms/logo';
 
@@ -7,27 +7,26 @@ type NavbarProps = {
   isSticky: boolean;
 };
 
-const Navbar = ({ isSticky }: NavbarProps) => {
-  const navigate = useNavigate();
-  return (
-    <div className={classNames('navbar', { 'navbar--sticky': isSticky })}>
-      <Logo animate={isSticky} onClick={() => navigate('/')} dark />
-      <div className={classNames('navbar__links', { 'navbar__links--sticky': isSticky })}>
-        <div className="navbar__link" onClick={() => navigate('/features')}>
-          FEATURES
-        </div>
-        <div className="navbar__link" onClick={() => navigate('/maxisiempre')}>
-          ABOUT
-        </div>
-        <div className="navbar__link" onClick={() => navigate('/edit')}>
-          Edit Portfolio
-        </div>
-        <div className="navbar__link join" onClick={() => navigate('/auth')}>
-          JOIN
-        </div>
-      </div>
+const Navbar = ({ isSticky }: NavbarProps) => (
+  <div className={classNames('navbar', { 'navbar--sticky': isSticky })}>
+    <Link to="/" className="navbar__logo">
+      <Logo animate={isSticky} dark />
+    </Link>
+    <div className={classNames('navbar__links', { 'navbar__links--sticky': isSticky })}>
+      <Link className="navbar__link" to="/features">
+        FEATURES
+      </Link>
+      <Link className="navbar__link" to="/maxisiempre">
+        ABOUT
+      </Link>
+      <Link className="navbar__link" to="/edit">
+        Edit Portfolio
+      </Link>
+      <Link className="navbar__link join" to="/auth">
+        JOIN
+      </Link>
     </div>
-  );
-};
+  </div>
+);
 
 export default Navbar;

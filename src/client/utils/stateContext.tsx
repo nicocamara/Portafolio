@@ -1,13 +1,12 @@
 import { browserLocalPersistence, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { ref, uploadBytes } from 'firebase/storage';
 import { createContext, useEffect, useState } from 'react';
+import { Asset, Portfolio, User } from './Type';
 import callApi from './callApi';
-import { Portfolio, User } from './Type';
 import firebaseApp, { storageFile } from './firebaseApp';
-import { listAll, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 export type ContextValue = {
   user?: User;
-
   myPortfolio?: Portfolio;
   handlers: {
     register: (_user: Omit<User, 'uid'> & { password: string }) => Promise<void>;
@@ -15,14 +14,13 @@ export type ContextValue = {
     checkUserName: (userName: string) => Promise<void>;
     createPortfolio: (values: Omit<Portfolio, 'id'>) => Promise<void>;
     getPortfolio: (userName: string) => Promise<Portfolio>;
-    uploadFile: (file: Blob) => Promise<void>;
+    uploadFiles: (assets: Asset[]) => Promise<void>;
   };
 };
 const auth = getAuth(firebaseApp);
 const StateContext = createContext<ContextValue>({} as ContextValue);
 
 export const StateProvider = ({ children }: any) => {
-  const [avatar, setAvatar] = useState<any[]>();
   const [user, setUser] = useState<User>();
   const [myPortfolio, setMyPorfolio] = useState<Portfolio>();
   const [persistanceId, setPersistanceId] = useState<string>();
@@ -70,18 +68,23 @@ export const StateProvider = ({ children }: any) => {
     setMyPorfolio(response);
   };
 
-  const uploadFile = async (file: Blob) => {
-    const storageRef = ref(storageFile, `images/${file.name}`);
-    await uploadBytes(storageRef, file);
-  };
+  const uploadFiles = async (assets: Asset[]) => {
+    console.log('uploadFiles', assets);
 
-  const getFile = async () => {
-    const storageRef = ref(storageFile, 'images/');
-    await listAll(storageRef).then(response => {
-      response.items.forEach(item => getDownloadURL(item).then(url => setAvatar(prev => [...[prev], url])));
+    assets.forEach(async ({ fileType, preview, ...rest }) => {
+      // TODO: CONVERT File TO bLOB TYPE BEFORE UPLOAD TO BUCKET
+      const storageRef = ref(storageFile, `images/${fileType}/${rest.name}`);
+      const blobAsset = new Blob([new Uint8Array(e.target.result)], { type: file.type });
+      await uploadBytes(storageRef, rest as unknown as Blob);
     });
   };
-  console.log('que onda MI WRRRAAY', avatar);
+
+  // const getFile = async () => {
+  //   const storageRef = ref(storageFile, 'images/');
+  //   await listAll(storageRef).then(response => {
+  //     response.items.forEach(item => getDownloadURL(item).then(url => setAvatar(prev => [...[prev], url])));
+  //   });
+  // };
 
   const handlers = {
     register: registerHandler,
@@ -89,7 +92,7 @@ export const StateProvider = ({ children }: any) => {
     checkUserName,
     createPortfolio,
     getPortfolio,
-    uploadFile,
+    uploadFiles,
   };
 
   return <StateContext.Provider value={{ user, handlers, myPortfolio }}>{children}</StateContext.Provider>;

@@ -1,42 +1,38 @@
 import classNames from 'classnames';
 import { Field } from 'formik';
+import { Asset } from '../../../../utils/Type';
 import { runValidation } from '../../../../utils/validations';
 import Button from '../../../atoms/button';
+import DropFile from '../../../atoms/dropFile';
 import { Route } from '../../../pages/editPage';
 import TextField from '../../formik/TextField';
 import './styles.scss';
-import { useContext, useState } from 'react';
-import StateContext from '../../../../utils/stateContext';
 
 type OverViewProps = {
+  oldAssets: Asset[];
   changeRoute: (newRoute: Route) => void;
+  handleAsset: (asset: Asset) => void;
 };
 
-const OverView = ({ changeRoute }: OverViewProps) => {
-  const { handlers } = useContext(StateContext);
-  const [image, setImage] = useState();
-
-  const imagenhandler = async () => {
-    if (!image) {
+const OverView = ({ oldAssets, changeRoute, handleAsset }: OverViewProps) => {
+  const handleAssetUpload = (files: Asset[]) => {
+    if (!files.length) {
       return;
     }
-    await handlers.uploadFile(image);
+    handleAsset(files[0]);
   };
 
-  console.log('images', image);
   return (
     <div className="overview">
       <div className="overview__title">Personal Data</div>
       <hr className="overview__line" />
-      <div className="form__field-container">
-        <div className="skills__subtitles">Avatar</div>
-        <input
-          name="image"
-          type="file"
-          onChange={(e: any) => setImage(e.target.files[0])}
-          // validate={(value: string) => runValidation(value, 'firstName')}
-        />
-        <button onClick={imagenhandler}>submit image</button>
+      <div className="overview__avatar">
+        <DropFile isSingleAsset scenario="avatar" onDropHandler={handleAssetUpload} oldAssets={oldAssets} />
+        {/* <div className="overview__avatar-input">
+          <div className="overview__avatar-label">Avatar</div>
+          <input name="image" type="file" onChange={handleAssetUpload} />
+        </div>
+        {avatarPreview && <img className="overview__avatar-img" src={avatarPreview} alt="avatar-preview" />} */}
       </div>
       <div className="form__field-container">
         <Field

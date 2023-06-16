@@ -11,6 +11,7 @@ body,
 }
 
 .app {
+  will-change: transform; // will-change: transform to prevent repaintings on scroll
   width: 100%;
   min-height: 100%;
   display: flex;
