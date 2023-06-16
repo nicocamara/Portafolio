@@ -4,7 +4,6 @@
   display: flex;
   height: 100%;
   width: 100%;
-  background-color: $thirdColor;
   text-align: center;
 
   @media (max-width: $mobile) {
@@ -12,22 +11,21 @@
   }
 
   &__menu {
-    width: 25%;
     @media (max-width: $mobile) {
       width: 100%;
     }
   }
 
-  &__gilada {
+  &__overview {
     // position: absolute;
-    flex: 1;
+    // flex: 1;
     @media (max-width: $mobile) {
       width: 100%;
     }
   }
 
-  &__contents {
-    width: 50%;
+  &__content {
+    // width: 20%;
 
     @media (max-width: $mobile) {
       width: 100%;

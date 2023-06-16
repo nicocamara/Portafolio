@@ -46,7 +46,7 @@ body,
 
   &__body {
     max-width: 1800px;
-    margin: auto;
+    margin: 150px auto;
     @media (max-width: $mobile) {
       margin: 0;
       width: 100%;

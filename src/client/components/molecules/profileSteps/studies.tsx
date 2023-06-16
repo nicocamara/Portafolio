@@ -5,7 +5,7 @@ type EducationProps = {
   date: Portfolio;
 };
 
-const Studies = ({ date }: EducationProps) => {
+const Education = ({ date }: EducationProps) => {
   console.log();
   return (
     <div className="contact">
@@ -62,4 +62,4 @@ const Studies = ({ date }: EducationProps) => {
   );
 };
 
-export default Studies;
+export default Education;
