@@ -72,10 +72,14 @@ export const StateProvider = ({ children }: any) => {
     console.log('uploadFiles', assets);
 
     assets.forEach(async ({ fileType, preview, ...rest }) => {
+      console.log('elrest', rest);
+      console.log('fileType', fileType);
+      console.log('preview', preview);
       // TODO: CONVERT File TO bLOB TYPE BEFORE UPLOAD TO BUCKET
+      const blobAsset = new Blob([rest], { type: preview });
+      console.log('es un blob', blobAsset);
       const storageRef = ref(storageFile, `images/${fileType}/${rest.name}`);
-      const blobAsset = new Blob([new Uint8Array(e.target.result)], { type: file.type });
-      await uploadBytes(storageRef, rest as unknown as Blob);
+      await uploadBytes(storageRef, blobAsset);
     });
   };
 
