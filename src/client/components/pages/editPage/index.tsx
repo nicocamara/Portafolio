@@ -121,7 +121,7 @@ const EditPage = () => {
       <div className="edit__subtitle">Follow these steps to upload your portfolio</div>
       <hr className="edit__line" />
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
-        <div className="edit__form">
+        <div className="edit__container">
           <BreadCrumb step={step} changeRoute={changeRoute} />
           <hr className="edit__verticaLine" />
           <div className="edit__content">{getStep(step, { changeRoute, handleAsset, assets })}</div>

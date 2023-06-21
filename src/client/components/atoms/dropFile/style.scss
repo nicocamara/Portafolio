@@ -1,4 +1,43 @@
+@import '../../../variables.scss';
+
 .dropfile {
+  display: flex;
+  flex: 1;
+
+  &__area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 0 12px;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #fafafa;
+    color: #bdbdbd;
+    outline: none;
+    transition: border 0.24s ease-in-out;
+    border: 2px dashed #eeeeee;
+    height: 70px;
+
+    &--focus {
+      border-color: #2196f3;
+    }
+
+    &--error {
+      border-color: #ff1744;
+    }
+
+    &--sucess {
+      border-color: #00e676;
+    }
+  }
+
+  &__leyend {
+    text-align: center;
+    margin: 0;
+  }
+
   &__preview {
     display: 'flex';
     flex-direction: 'row';
