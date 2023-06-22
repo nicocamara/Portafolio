@@ -10,7 +10,7 @@ type NavbarProps = {
 };
 
 const Navbar = ({ isSticky }: NavbarProps) => {
-  const { handlers } = useContext(StateContext);
+  const { user, handlers } = useContext(StateContext);
   return (
     <div className={classNames('navbar', { 'navbar--sticky': isSticky })}>
       <Link to="/" className="navbar__logo">
@@ -30,9 +30,11 @@ const Navbar = ({ isSticky }: NavbarProps) => {
         <Link className="navbar__link join" to="/auth">
           JOIN
         </Link>
-        <Link onClick={handlers.logOut} className="navbar__link join" to="/auth">
-          LOGOUT
-        </Link>
+        {user && (
+          <Link onClick={handlers.logOut} className="navbar__link join" to="/auth">
+            LOGOUT
+          </Link>
+        )}
         {/* <button onClick={handlers.logOut}>LOGOUT</button> */}
       </div>
     </div>
