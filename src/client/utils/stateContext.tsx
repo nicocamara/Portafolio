@@ -15,6 +15,7 @@ export type ContextValue = {
     createPortfolio: (values: Omit<Portfolio, 'id'>) => Promise<void>;
     getPortfolio: (userName: string) => Promise<Portfolio>;
     uploadFiles: (assets: Asset[]) => Promise<void>;
+    logOut: () => Promise<void>;
   };
 };
 const auth = getAuth(firebaseApp);
@@ -30,6 +31,16 @@ export const StateProvider = ({ children }: any) => {
       setPersistanceId(_firebaseAuthUser.uid);
     }
   });
+
+  const logOut = async () => {
+    try {
+      await auth.signOut();
+      setPersistanceId('');
+      await window.location.replace('/auth');
+    } catch (error) {
+      console.error('Error durante el logout:', error);
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -91,6 +102,7 @@ export const StateProvider = ({ children }: any) => {
     createPortfolio,
     getPortfolio,
     uploadFiles,
+    logOut,
   };
 
   return <StateContext.Provider value={{ user, handlers, myPortfolio }}>{children}</StateContext.Provider>;
