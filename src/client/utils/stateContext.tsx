@@ -1,5 +1,5 @@
 import { browserLocalPersistence, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { ref, uploadBytes } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { createContext, useEffect, useState } from 'react';
 import { Asset, Portfolio, User } from './Type';
 import callApi from './callApi';
@@ -80,10 +80,8 @@ export const StateProvider = ({ children }: any) => {
   };
 
   const uploadFiles = async (assets: Asset[]) => {
-    console.log('uploadFiles', assets, user);
-
     assets.forEach(async file => {
-      const storageRef = ref(storageFile, `images/${file.fileType}/${file.name}`);
+      const storageRef = ref(storageFile, `images/${user?.userName}/${file.fileType}/${file.name}`);
       await uploadBytes(storageRef, file);
     });
   };
