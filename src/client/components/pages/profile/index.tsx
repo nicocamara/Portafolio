@@ -4,7 +4,6 @@ import { Portfolio } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
 import Contact from '../../molecules/profileSteps/contact';
 import Menu from '../../atoms/menu';
-
 import Projects from '../../molecules/profileSteps/Skilfulness';
 import Resume from '../../molecules/profileSteps/studies';
 import './styles.scss';

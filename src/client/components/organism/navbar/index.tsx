@@ -20,7 +20,7 @@ const Navbar = ({ isSticky }: NavbarProps) => {
         <Link className="navbar__link" to="/features">
           FEATURES
         </Link>
-        <Link className="navbar__link" to="/maxisiempre">
+        <Link className="navbar__link" to={`/${user?.userName}`}>
           ABOUT
         </Link>
         <Link className="navbar__link" to="/edit">
