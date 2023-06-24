@@ -4,7 +4,7 @@ import { Portfolio } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
 import Contact from '../../molecules/profileSteps/contact';
 import Menu from '../../atoms/menu';
-
+import LoadingSpinner from '../../atoms/loadingSpinneer';
 import Projects from '../../molecules/profileSteps/Skilfulness';
 import Resume from '../../molecules/profileSteps/studies';
 import './styles.scss';
@@ -25,21 +25,23 @@ const PublicPortfolio = () => {
   const { userName } = useParams();
   const [content, setcontent] = useState<Route>('Resume');
   const [portfolio, setPortfolio] = useState<Portfolio>();
-
+  const [isLoading, setLoading] = useState(true);
   const changeRoute = (newRoute: Route) => {
     setcontent(newRoute);
   };
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       const response = await handlers.getPortfolio(userName!);
 
       setPortfolio(response);
+      setLoading(false);
     })();
   }, []);
 
-  if (!portfolio) {
-    return <p>Loading</p>;
+  if (isLoading) {
+    return <LoadingSpinner />;
   }
 
   return (
