@@ -9,10 +9,12 @@ import Button from '../../atoms/button';
 import Logo from '../../atoms/logo';
 import TextField from '../../molecules/formik/TextField';
 import './styles.scss';
+import LoadingSpinner from '../../atoms/loadingSpinneer';
 
 const Auth = () => {
   const { handlers, user } = useContext(StateContext);
   const [isLogin, setIsLogin] = useState(true);
+  const [spinner, setSpinner] = useState(false);
   const navigate = useNavigate();
 
   const initialValues = {
@@ -26,11 +28,13 @@ const Auth = () => {
   const onSubmit = async (values: Omit<User, 'uid'> & { password: string }) => {
     try {
       if (isLogin) {
+        setSpinner(true);
+
         await handlers.login(values.email, values.password);
       } else {
         await handlers.register(values);
       }
-
+      setSpinner(false);
       navigate('/');
     } catch (error: any) {
       if (error.statusCode === 423) {
@@ -48,6 +52,10 @@ const Auth = () => {
       navigate('/');
     }
   }, [user]);
+
+  if (spinner) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="auth">

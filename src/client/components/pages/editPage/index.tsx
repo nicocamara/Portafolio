@@ -10,6 +10,7 @@ import HeadLineForm from '../../molecules/portfolioSteps/headLine';
 import OverView from '../../molecules/portfolioSteps/overviewForm';
 import SkillsForm from '../../molecules/portfolioSteps/skills';
 import './styles.scss';
+import LoadingSpinner from '../../atoms/loadingSpinneer';
 
 export type Route = 'OverView' | 'headLine' | 'skills' | 'education' | 'jobs';
 
@@ -85,10 +86,12 @@ const getStep = (step: Route, changeRoute: (newRoute: Route) => void) => {
 const EditPage = () => {
   const [step, setStep] = useState<Route>('OverView');
   const { handlers } = useContext(StateContext);
-  // const Vevo = useCallback(() => getStep(step, changeRoute), [step]);
+  const [spinner, setSpinner] = useState(false);
 
   const changeRoute = (newRoute: Route) => {
+    setSpinner(true);
     setStep(newRoute);
+    setSpinner(false);
   };
 
   const submitHandler = async (values: typeof initialValues) => {
@@ -98,6 +101,10 @@ const EditPage = () => {
       console.log(error);
     }
   };
+
+  if (spinner) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="edit">
