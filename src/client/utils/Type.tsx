@@ -6,9 +6,12 @@ export type User = {
   email: string;
 };
 
+export type Asset = File & { fileType: string; preview: string };
+
 export type Portfolio = {
   id: string;
   overview: {
+    avatarURL: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -48,7 +51,6 @@ type Experence = {
 };
 
 export type HeadLine = {
-  image?: string;
   linkedin: string;
   facebook: string;
   github: string;

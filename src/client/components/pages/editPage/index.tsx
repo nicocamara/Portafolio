@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { Formik } from 'formik';
 import { ReactNode, useContext, useState } from 'react';
-import { Portfolio } from '../../../utils/Type';
+import { Asset } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
 import Icons from '../../atoms/icons';
 import JobStep from '../../molecules/portfolioSteps/Job';
@@ -54,8 +54,9 @@ const BreadCrumb = (props: MenuProps) => {
   );
 };
 
-const initialValues: Omit<Portfolio, 'id'> = {
+const initialValues = {
   overview: {
+    avatarURL: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -71,9 +72,17 @@ const initialValues: Omit<Portfolio, 'id'> = {
   headLine: [],
 };
 
-const getStep = (step: Route, changeRoute: (newRoute: Route) => void) => {
+type StepProps = {
+  assets: Asset[];
+  changeRoute: (newRoute: Route) => void;
+  handleAsset: (asset: Asset) => void;
+};
+
+const getStep = (step: Route, stepProps: StepProps) => {
+  const { assets, changeRoute, handleAsset } = stepProps;
+
   const steps: Record<Route, ReactNode> = {
-    OverView: <OverView changeRoute={changeRoute} />,
+    OverView: <OverView oldAssets={assets} changeRoute={changeRoute} handleAsset={handleAsset} />,
     headLine: <HeadLineForm changeRoute={changeRoute} />,
     education: <EducationForm changeRoute={changeRoute} />,
     jobs: <JobStep changeRoute={changeRoute} />,
@@ -85,8 +94,13 @@ const getStep = (step: Route, changeRoute: (newRoute: Route) => void) => {
 
 const EditPage = () => {
   const [step, setStep] = useState<Route>('OverView');
+  const [assets, setAssets] = useState<Asset[]>([]);
   const { handlers } = useContext(StateContext);
   const [spinner, setSpinner] = useState(false);
+
+  const handleAsset = (asset: Asset) => {
+    setAssets([...assets, asset]);
+  };
 
   const changeRoute = (newRoute: Route) => {
     setSpinner(true);
@@ -97,6 +111,9 @@ const EditPage = () => {
   const submitHandler = async (values: typeof initialValues) => {
     try {
       await handlers.createPortfolio(values);
+      if (assets.length) {
+        await handlers.uploadFiles(assets);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -112,19 +129,11 @@ const EditPage = () => {
       <div className="edit__subtitle">Follow these steps to upload your portfolio</div>
       <hr className="edit__line" />
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
-        {/* estamos leyendo los values para saber porque nos manda 3 veces el mismo array de cada formulario */}
-        {({ values }) => {
-          console.log('valuees', values);
-          return (
-            <div className="edit__form">
-              <>
-                <BreadCrumb step={step} changeRoute={changeRoute} />
-                <hr className="edit__verticaLine" />
-                <div className="edit__content">{getStep(step, changeRoute)}</div>
-              </>
-            </div>
-          );
-        }}
+        <div className="edit__container">
+          <BreadCrumb step={step} changeRoute={changeRoute} />
+          <hr className="edit__verticaLine" />
+          <div className="edit__content">{getStep(step, { changeRoute, handleAsset, assets })}</div>
+        </div>
       </Formik>
     </div>
   );

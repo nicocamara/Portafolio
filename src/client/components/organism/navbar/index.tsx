@@ -1,30 +1,41 @@
 import classNames from 'classnames';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 import Logo from '../../atoms/logo';
+import { useContext } from 'react';
+import StateContext from '../../../utils/stateContext';
 
 type NavbarProps = {
   isSticky: boolean;
 };
 
 const Navbar = ({ isSticky }: NavbarProps) => {
-  const navigate = useNavigate();
+  const { user, handlers } = useContext(StateContext);
   return (
     <div className={classNames('navbar', { 'navbar--sticky': isSticky })}>
-      <Logo animate={isSticky} onClick={() => navigate('/')} dark />
+      <Link to="/" className="navbar__logo">
+        <Logo animate={isSticky} dark />
+      </Link>
       <div className={classNames('navbar__links', { 'navbar__links--sticky': isSticky })}>
-        <div className="navbar__link" onClick={() => navigate('/features')}>
+        <Link className="navbar__link" to="/features">
           FEATURES
-        </div>
-        <div className="navbar__link" onClick={() => navigate('/maxisiempre')}>
+        </Link>
+        <Link className="navbar__link" to={`/${user?.userName}`}>
           ABOUT
-        </div>
-        <div className="navbar__link" onClick={() => navigate('/edit')}>
+        </Link>
+        <Link className="navbar__link" to="/edit">
           Edit Portfolio
-        </div>
-        <div className="navbar__link join" onClick={() => navigate('/auth')}>
+        </Link>
+
+        <Link className="navbar__link join" to="/auth">
           JOIN
-        </div>
+        </Link>
+        {user && (
+          <Link onClick={handlers.logOut} className="navbar__link join" to="/auth">
+            LOGOUT
+          </Link>
+        )}
+        {/* <button onClick={handlers.logOut}>LOGOUT</button> */}
       </div>
     </div>
   );

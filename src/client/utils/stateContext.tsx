@@ -1,8 +1,9 @@
 import { browserLocalPersistence, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { createContext, useEffect, useState } from 'react';
+import { Asset, Portfolio, User } from './Type';
 import callApi from './callApi';
-import { Portfolio, User } from './Type';
-import firebaseApp from './firebaseApp';
+import firebaseApp, { storageFile } from './firebaseApp';
 
 export type ContextValue = {
   user?: User;
@@ -13,6 +14,8 @@ export type ContextValue = {
     checkUserName: (userName: string) => Promise<void>;
     createPortfolio: (values: Omit<Portfolio, 'id'>) => Promise<void>;
     getPortfolio: (userName: string) => Promise<Portfolio>;
+    uploadFiles: (assets: Asset[]) => Promise<void>;
+    logOut: () => Promise<void>;
   };
 };
 const auth = getAuth(firebaseApp);
@@ -28,6 +31,16 @@ export const StateProvider = ({ children }: any) => {
       setPersistanceId(_firebaseAuthUser.uid);
     }
   });
+
+  const logOut = async () => {
+    try {
+      await auth.signOut();
+      setPersistanceId('');
+      await window.location.replace('/auth');
+    } catch (error) {
+      console.error('Error durante el logout:', error);
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -66,12 +79,28 @@ export const StateProvider = ({ children }: any) => {
     setMyPorfolio(response);
   };
 
+  const uploadFiles = async (assets: Asset[]) => {
+    assets.forEach(async file => {
+      const storageRef = ref(storageFile, `images/${user?.userName}/${file.fileType}/${file.name}`);
+      await uploadBytes(storageRef, file);
+    });
+  };
+
+  // const getFile = async () => {
+  //   const storageRef = ref(storageFile, 'images/');
+  //   await listAll(storageRef).then(response => {
+  //     response.items.forEach(item => getDownloadURL(item).then(url => setAvatar(prev => [...[prev], url])));
+  //   });
+  // };
+
   const handlers = {
     register: registerHandler,
     login: getUser,
     checkUserName,
     createPortfolio,
     getPortfolio,
+    uploadFiles,
+    logOut,
   };
 
   return <StateContext.Provider value={{ user, handlers, myPortfolio }}>{children}</StateContext.Provider>;
