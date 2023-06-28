@@ -1,50 +1,51 @@
 import './styles.scss';
-import { ButtonHTMLAttributes, DetailedHTMLProps, useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import StateContext from '../../../utils/stateContext';
+import ExpandMenu from '../collapse/expandMenu';
 
-type ButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
-  isOpen?: boolean;
-  onClick?: () => void;
-};
+const BurgerButton = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { user } = useContext(StateContext);
 
-const BurgerButton = ({ isOpen, onClick }: ButtonProps) => {
-  const { user, handlers } = useContext(StateContext);
-
+  const handleToggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
   return (
-    <div>
-      <button className={`burger-button ${isOpen ? 'open' : ''}`} onClick={onClick}>
+    <>
+      <button className={`burger-button ${isOpen ? 'open' : ''}`} onClick={handleToggleMenu}>
         <span className="bar"></span>
         <span className="bar"></span>
         <span className="bar"></span>
       </button>
-
-      {isOpen && (
-        <nav className="nav" id="nav">
-          <ul>
-            <li>
-              <Link to="/features">FEATURES</Link>
+      <ExpandMenu isOpen={isOpen}>
+        {' '}
+        <div className="burger__menu">
+          <ul className="burger__list">
+            <li className="burger__item">
+              <Link className="navbar__link" to="/features">
+                FEATURES
+              </Link>
             </li>
-            <li>
-              <Link to={`/${user?.userName}`}>ABOUT</Link>
+            <li className="burger__item">
+              <Link className="navbar__link" to={`/${user?.userName}`}>
+                ABOUT
+              </Link>
             </li>
-            <li>
-              <Link to="/edit">Edit Portfolio</Link>
+            <li className="burger__item">
+              <Link className="navbar__link" to="/edit">
+                Edit Portfolio
+              </Link>
             </li>
-            <li>
-              <Link to="/auth">JOIN</Link>
+            <li className="burger__item">
+              <Link className="navbar__link join" to="/auth">
+                JOIN
+              </Link>
             </li>
-            {user && (
-              <li>
-                <Link onClick={handlers.logOut} to="/auth">
-                  LOGOUT
-                </Link>
-              </li>
-            )}
           </ul>
-        </nav>
-      )}
-    </div>
+        </div>
+      </ExpandMenu>
+    </>
   );
 };
 

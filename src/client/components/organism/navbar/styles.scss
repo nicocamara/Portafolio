@@ -65,7 +65,10 @@
       }
     }
   }
-
+  &__burgerButton {
+   margin:auto;
+   margin-right: 0;
+  }
   &__link {
     cursor: pointer;
     margin-right: 30px;

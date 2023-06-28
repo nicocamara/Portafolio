@@ -22,7 +22,7 @@
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-  }
+    
 
   &__logo {
     @media (max-width: $mobile) {
@@ -46,4 +46,5 @@
   &__button-center {
     text-align: center;
   }
+}
 }
