@@ -5,8 +5,8 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  padding: 12px;
-  background-color: rgb(255 228 196);;
+  padding: 1.5rem 12px;
+  background-color: bisque;
   @media (max-width: $mobile) {
     flex-direction: row;
   }
