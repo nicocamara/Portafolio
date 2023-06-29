@@ -1,0 +1,15 @@
+.slider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderimg {
+  overflow: hidden;
+  max-height: 400px;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
