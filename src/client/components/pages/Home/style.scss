@@ -4,7 +4,6 @@
   flex-direction: column;
 
   &__section {
-    min-height: 700px;
     display: flex;
     justify-content: center;
 
@@ -58,6 +57,7 @@
   }
 
   &__features {
-    min-height: 700px;
+    max-height: 400px;
+    width: 100%;
   }
 }
