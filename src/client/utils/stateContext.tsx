@@ -13,6 +13,7 @@ export type ContextValue = {
     login: (email: string, password: string) => Promise<void>;
     checkUserName: (userName: string) => Promise<void>;
     createPortfolio: (values: Omit<Portfolio, 'id'>) => Promise<void>;
+    getAllPortfolios: () => Promise<Portfolio[]>;
     getPortfolio: (userName: string) => Promise<Portfolio>;
     uploadFiles: (assets: Asset[]) => Promise<void>;
     logOut: () => Promise<void>;
@@ -86,6 +87,13 @@ export const StateProvider = ({ children }: any) => {
     });
   };
 
+  //itentamos traer los portfolios
+  const getAllPortfolios = async () => {
+    const response = await callApi({ method: 'GET', endpoint: '/portfolios' });
+    console.log('response', response);
+    return response;
+  };
+
   // const getFile = async () => {
   //   const storageRef = ref(storageFile, 'images/');
   //   await listAll(storageRef).then(response => {
@@ -97,6 +105,7 @@ export const StateProvider = ({ children }: any) => {
     register: registerHandler,
     login: getUser,
     checkUserName,
+    getAllPortfolios,
     createPortfolio,
     getPortfolio,
     uploadFiles,
