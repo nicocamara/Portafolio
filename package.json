@@ -47,7 +47,6 @@
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-router-dom": "^6.11.1",
-    "swiper": "^9.4.1",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"
   },

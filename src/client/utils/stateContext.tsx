@@ -1,5 +1,5 @@
 import { browserLocalPersistence, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { ref, uploadBytes } from 'firebase/storage';
 import { createContext, useEffect, useState } from 'react';
 import { Asset, Portfolio, User } from './Type';
 import callApi from './callApi';
@@ -13,12 +13,12 @@ export type ContextValue = {
     login: (email: string, password: string) => Promise<void>;
     checkUserName: (userName: string) => Promise<void>;
     createPortfolio: (values: Omit<Portfolio, 'id'>) => Promise<void>;
-    getAllPortfolios: () => Promise<Portfolio[]>;
     getPortfolio: (userName: string) => Promise<Portfolio>;
     uploadFiles: (assets: Asset[]) => Promise<void>;
     logOut: () => Promise<void>;
   };
 };
+
 const auth = getAuth(firebaseApp);
 const StateContext = createContext<ContextValue>({} as ContextValue);
 
@@ -87,25 +87,10 @@ export const StateProvider = ({ children }: any) => {
     });
   };
 
-  //itentamos traer los portfolios
-  const getAllPortfolios = async () => {
-    const response = await callApi({ method: 'GET', endpoint: '/portfolios' });
-    console.log('response', response);
-    return response;
-  };
-
-  // const getFile = async () => {
-  //   const storageRef = ref(storageFile, 'images/');
-  //   await listAll(storageRef).then(response => {
-  //     response.items.forEach(item => getDownloadURL(item).then(url => setAvatar(prev => [...[prev], url])));
-  //   });
-  // };
-
   const handlers = {
     register: registerHandler,
     login: getUser,
     checkUserName,
-    getAllPortfolios,
     createPortfolio,
     getPortfolio,
     uploadFiles,

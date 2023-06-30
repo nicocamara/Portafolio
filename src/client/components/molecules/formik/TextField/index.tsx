@@ -14,7 +14,6 @@ const TextField = ({ field, form, label, ...props }: TextFieldProps) => {
   const error = isTouched && getIn(errors, field.name);
   const hasSuccess =
     isTouched && !error && !isEmpty(typeof field.value === 'string' ? field.value.trim() : field.value);
-
   const errorMessage = error ? getErrorMessage(error, label) : undefined;
 
   return (

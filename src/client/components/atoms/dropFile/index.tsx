@@ -4,8 +4,6 @@ import './style.scss';
 import { Asset } from '../../../utils/Type';
 import classNames from 'classnames';
 
-// https://react-dropzone.js.org/#section-components
-
 type DropFileProps = {
   oldAssets: Asset[];
   scenario: string;

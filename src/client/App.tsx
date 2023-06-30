@@ -5,7 +5,7 @@ import Navbar from './components/organism/navbar';
 import Home from './components/pages/Home';
 import Auth from './components/pages/auth';
 import EditPage from './components/pages/editPage';
-import PublicPortfolio from './components/pages/profile';
+import PublicPortfolio from './components/pages/profile/Index';
 import './main.scss';
 import { User } from './utils/Type';
 import StateContext from './utils/stateContext';
