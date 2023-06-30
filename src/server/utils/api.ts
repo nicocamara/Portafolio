@@ -82,6 +82,24 @@ API.get('/portfolio/:userName', async (_req, res) => {
   }
 });
 
+//consulta de la Api
+API.get('/portfolios', async (_req, res) => {
+  try {
+    const portfolioRef = await db.collection('Portfolio').get();
+    const portfolios: Portfolio[] = [];
+
+    portfolioRef.forEach(doc => {
+      portfolios.push(doc.data() as Portfolio);
+    });
+
+    console.log('Los portfolios:', portfolios);
+    res.status(200).send(portfolios);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send();
+  }
+});
+
 API.post('/portfolio/:userName', async (_req, res) => {
   const portfolio = _req.body as Portfolio;
   const userName = _req.params.userName;
