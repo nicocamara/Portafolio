@@ -4,12 +4,11 @@ import './style.scss';
 type ExpandMenuProps = {
   isOpen: boolean;
   children: ReactNode;
-  onClose?: () => void;
 };
 
 const TransitionTime = 300;
 
-const ExpandMenu = ({ isOpen, children, onClose }: ExpandMenuProps) => {
+const ExpandMenu = ({ isOpen, children }: ExpandMenuProps) => {
   const [containerHeight, setContainerHeight] = useState<number>();
   const containerRef = useRef<HTMLDivElement>(null);
 

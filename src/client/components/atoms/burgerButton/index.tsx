@@ -1,8 +1,9 @@
-import './styles.scss';
+import classNames from 'classnames';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import StateContext from '../../../utils/stateContext';
-import ExpandMenu from '../collapse/expandMenu';
+import ExpandMenu from '../expand';
+import './styles.scss';
 
 const BurgerButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,8 +13,8 @@ const BurgerButton = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <>
-      <button className={`burger-button ${isOpen ? 'open' : ''}`} onClick={handleToggleMenu}>
+    <div>
+      <button className={classNames(`burger ${isOpen ? 'open' : ''}`)} onClick={handleToggleMenu}>
         <span className="bar"></span>
         <span className="bar"></span>
         <span className="bar"></span>
@@ -45,7 +46,7 @@ const BurgerButton = () => {
           </ul>
         </div>
       </ExpandMenu>
-    </>
+    </div>
   );
 };
 
