@@ -4,11 +4,11 @@ import { Portfolio } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
 import LoadingSpinner from '../../atoms/loadingSpinneer';
 import Menu from '../../atoms/menu';
+import Experiences from '../../molecules/profileSteps/Experiences';
 import Identity from '../../molecules/profileSteps/Identity';
-import Projects from '../../molecules/profileSteps/Skilfulness';
-import Contact from '../../molecules/profileSteps/contact';
-import Experiences from '../../molecules/profileSteps/exprences';
-import Resume from '../../molecules/profileSteps/studies';
+import Contact from '../../molecules/profileSteps/Resume';
+import Projects from '../../molecules/profileSteps/Skills';
+import Resume from '../../molecules/profileSteps/Resume';
 import './styles.scss';
 
 export type Route = 'Resume' | 'Skilfulness' | 'Studies' | 'Experiences';

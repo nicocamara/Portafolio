@@ -1,11 +1,11 @@
 import { Portfolio } from '../../../utils/Type';
 import './styles.scss';
 
-type SkilfulnessProps = {
+type SkillsProps = {
   date: Portfolio;
 };
 
-const Skilfulness = ({ date }: SkilfulnessProps) => (
+const Skills = ({ date }: SkillsProps) => (
   <div className="contact">
     <div>
       {date.skills.map((skill, index) => (
@@ -40,4 +40,4 @@ const Skilfulness = ({ date }: SkilfulnessProps) => (
   </div>
 );
 
-export default Skilfulness;
+export default Skills;

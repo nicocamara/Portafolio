@@ -1,11 +1,11 @@
 import { Portfolio } from '../../../utils/Type';
 import './styles.scss';
 
-type contactProps = {
+type ResumeProps = {
   date: Portfolio;
 };
 
-const Resume = ({ date }: contactProps) => (
+const Resume = ({ date }: ResumeProps) => (
   <div className="contact">
     <div className="dvContainer">
       <div className="dvContainer__title">OverView Date</div>
