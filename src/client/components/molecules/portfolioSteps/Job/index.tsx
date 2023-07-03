@@ -1,6 +1,5 @@
 import { Field, Form, Formik, useFormikContext } from 'formik';
 import { Job } from '../../../../utils/Type';
-// import { runValidation } from '../../../utils/validations';
 import classNames from 'classnames';
 import Button from '../../../atoms/button';
 import { Route } from '../../../pages/editPage';
@@ -28,61 +27,42 @@ const JobStep = ({ changeRoute }: JobProps) => {
   };
 
   return (
-    <div className="JobForm">
-      {/* {mapear values.JobForm} */}
+    <div className="Job-form">
+      {/* {mapear values.Job-form} */}
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ submitForm, values }) => (
-          <Form className="jobForm__form">
-            <div className="jobForm__title">Work Experencie</div>
-            <hr className="jobForm__line" />
+          <Form className="job-form__form">
+            <div className="job-form__title">Work Experencie</div>
+            <hr className="job-form__line" />
             <div className="form__field-container">
-              <Field
-                component={TextField}
-                name="employer"
-                label={'employer'}
-                // validate={(value: string) => runValidation(value, 'firstName')}
-              />
+              <Field component={TextField} name="employer" label={'employer'} />
             </div>
             <div className="form__field-container">
-              <Field
-                component={TextField}
-                name="title"
-                label={'title'}
-                // validate={(value: string) => runValidation(value, 'firstName')}
-              />
+              <Field component={TextField} name="title" label={'title'} />
             </div>
-            {/* <div className="form__field-container">
-              <Field
-                component={TextField}
-                name="description"
-                label="Current Position"
-                // validate={(value: string) => runValidation(value, 'firstName')}
-              />
-            </div> */}
-            <div className={classNames('form__field-container', 'jobForm__date')}>
-              <div className="jobForm__date-subtitles">
+            <div className={classNames('form__field-container', 'job-form__date')}>
+              <div className="job-form__date-subtitles">
                 Start Date
-                <Field className="jobForm__date-button" type="date" name="startDate" />
+                <Field className="job-form__date-button" type="date" name="startDate" />
               </div>
               <div className="educationForm__date-subtitles">
                 Actuality
                 <Field type="checkbox" name="actuality" />
               </div>
               {!values.actuality && (
-                <div className="jobForm__date-subtitles">
+                <div className="job-form__date-subtitles">
                   End Date
-                  <Field className="jobForm__date-button" type="date" name="endDate" />
+                  <Field className="job-form__date-button" type="date" name="endDate" />
                 </div>
               )}
             </div>
             <div>
               <div className="form__field-container">
                 <Field
-                  className="jobForm__description"
+                  className="job-form__description"
                   component={TextField}
                   name="description"
                   label={'Description Job'}
-                  // validate={(value: string) => runValidation(value, 'firstName')}
                 />
               </div>
             </div>

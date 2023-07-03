@@ -1,32 +1,32 @@
 import { Portfolio } from '../../../utils/Type';
 import './styles.scss';
 
-type EducationProps = {
+type experiencesProps = {
   date: Portfolio;
 };
 
-const Studies = ({ date }: EducationProps) => (
+const Experiences = ({ date }: experiencesProps) => (
   <div className="contact">
     <div className="dvContainer">
       <div className="dvContainer__title">Education Date</div>
       <hr className="dvContainer__line" />
       <div className="dvContainer__container">
         <div>
-          {date.education.map((education, index) => (
+          {date.job.map((job, index) => (
             <div key={index}>
               <div className="dvContainer__subtitle">
-                Instituction
+                Employer
                 <hr className="dvContainer__overline" />
               </div>
               <div className="dvContainer__date">
-                <div>{education.institution}</div>
+                <div>{job.employer}</div>
               </div>
               <div className="dvContainer__subtitle">
                 Title of ther carrer
                 <hr className="dvContainer__overline" />
               </div>
               <div className="dvContainer__date">
-                <div>{education.title}</div>
+                <div>{job.title}</div>
               </div>
               <div className="dvContainer__container">
                 <div className="dvContainer__subtitle">
@@ -36,11 +36,11 @@ const Studies = ({ date }: EducationProps) => (
                 <div className="dvContainer__subcontainer">
                   <div className="dvContainer__date">
                     <span className="dvContainer__span">Start Date</span>
-                    <div>{education.startDate}</div>
+                    <div>{job.startDate}</div>
                   </div>
                   <div className="dvContainer__date">
                     <span className="dvContainer__span">End Date</span>
-                    <div>{education.actuality ? 'I Keep Studing' : education.endDate}</div>
+                    <div>{job.actuality ? 'I Keep Studing' : job.endDate}</div>
                   </div>
                 </div>
               </div>
@@ -48,9 +48,7 @@ const Studies = ({ date }: EducationProps) => (
                 Description
                 <hr className="dvContainer__overline" />
               </div>
-              <div className="dvContainer__date">
-                <div>{education.description}</div>
-              </div>
+              <div className="dvContainer__date">{job.description}</div>
             </div>
           ))}
         </div>
@@ -59,4 +57,4 @@ const Studies = ({ date }: EducationProps) => (
   </div>
 );
 
-export default Studies;
+export default Experiences;

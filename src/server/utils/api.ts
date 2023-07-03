@@ -2,12 +2,7 @@ import { Router } from 'express';
 import { User, Portfolio } from './types';
 import { auth, db } from './db';
 
-// Using http protocol we define a REST API(representational state transfer)
 const API = Router();
-
-// API.get('/', async (_req, res) => {
-//   res.status(200).send({ hoola: 'all good' });
-// });
 
 API.post('/register', async (_req, res) => {
   const { password, ...rest } = _req.body as Omit<User, 'uid'> & { password: string };
@@ -36,21 +31,6 @@ API.post('/register', async (_req, res) => {
     res.status(500).send(message);
   }
 });
-
-// API.get('/check-userName/:userName', async (_req, res) => {
-//   const userName = _req.params.userName;
-//   try {
-//     const querySnaptShot = await db.collection('Users').where('userName', '==', userName).get();
-
-//     if (!querySnaptShot.empty) {
-//       res.status(422).send('No esta disponible');
-//     } else {
-//       res.status(200).send({});
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
 
 API.get('/login/:userId', async (_req, res) => {
   const userId = _req.params.userId;
@@ -82,7 +62,6 @@ API.get('/portfolio/:userName', async (_req, res) => {
   }
 });
 
-//consulta de la Api
 API.get('/portfolios', async (_req, res) => {
   try {
     const portfolioRef = await db.collection('Portfolio').get();

@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
-import './styles.scss';
-import Logo from '../../atoms/logo';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import StateContext from '../../../utils/stateContext';
+import Logo from '../../atoms/logo';
+import './styles.scss';
 
 type NavbarProps = {
   isSticky: boolean;
@@ -35,7 +35,6 @@ const Navbar = ({ isSticky }: NavbarProps) => {
             LOGOUT
           </Link>
         )}
-        {/* <button onClick={handlers.logOut}>LOGOUT</button> */}
       </div>
     </div>
   );
