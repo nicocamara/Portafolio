@@ -1,15 +1,15 @@
 import { Field, Form, Formik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User } from '../../../utils/Type';
 import showNotification from '../../../utils/notifications';
 import StateContext from '../../../utils/stateContext';
+import { User } from '../../../utils/Type';
 import { runValidation } from '../../../utils/validations';
 import Button from '../../atoms/button';
+import LoadingSpinner from '../../atoms/loadingSpinneer';
 import Logo from '../../atoms/logo';
 import TextField from '../../molecules/formik/TextField';
 import './styles.scss';
-import LoadingSpinner from '../../atoms/loadingSpinneer';
 
 const Auth = () => {
   const { handlers, user } = useContext(StateContext);

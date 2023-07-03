@@ -22,28 +22,28 @@
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-  }
 
-  &__logo {
-    @media (max-width: $mobile) {
-      display: none;
+    &__logo {
+      @media (max-width: $mobile) {
+        display: none;
+      }
+
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 30px auto;
+
+      .logo {
+        font-size: 50px;
+      }
     }
 
-    display: flex;
-    justify-content: center;
-    margin: 0 auto 30px auto;
-
-    .logo {
-      font-size: 50px;
+    &__button {
+      margin-top: 20px !important;
+      margin-bottom: 0px !important;
     }
-  }
 
-  &__button {
-    margin-top: 20px !important;
-    margin-bottom: 0px !important;
-  }
-
-  &__button-center {
-    text-align: center;
+    &__button-center {
+      text-align: center;
+    }
   }
 }
