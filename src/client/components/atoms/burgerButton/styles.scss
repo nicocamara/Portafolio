@@ -1,58 +1,56 @@
 .burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: auto;
+  margin-right: 30px;
+
+  &__list {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 24px;
-    height: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin: auto;
-    margin-right: 30px;
-    
-    &__list {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    &__item {
-      margin-bottom: 20px;
-    }
-    
+  }
 
-    &__menu {
-      height: 200px;
-      width: 200px;
-       display: flex;
-       flex-direction: column;
-       border-color: black;
-       box-shadow: 0px 5px 10px 0px #aaa;
-       background: rgb(195,101,34);
-       background: linear-gradient(0deg, rgba(195,101,34,1) 0%, rgba(253,187,45,1) 100%);
-     }
-    }
-  .bar {
-    height: 4px;
-    width: 100%;
-    background-color: whitesmoke;
-    display: block;
+  &__item {
+    margin-bottom: 20px;
+  }
+
+  &__menu {
+    height: 200px;
+    width: 205px;
+    display: flex;
+    flex-direction: column;
+    border-color: black;
     border-radius: 5px;
-    transition: 0.3s ease;
+    box-shadow: 0px 5px 10px 0px #aaa;
+    background: rgb(195, 101, 34);
+    background: linear-gradient(0deg, rgba(195, 101, 34, 1) 0%, rgba(253, 187, 45, 1) 100%);
   }
-  
-  .burger.open .bar:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-  
-  .burger.open .bar:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .burger.open .bar:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-  
-  
-  
+}
+
+.bar {
+  height: 4px;
+  width: 100%;
+  background-color: whitesmoke;
+  display: block;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.burger.open .bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.burger.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}

@@ -7,20 +7,20 @@ import './styles.scss';
 
 const BurgerButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = useContext(StateContext);
+  const { user, handlers } = useContext(StateContext);
 
   const handleToggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <div>
-      <button className={classNames(`burger ${isOpen ? 'open' : ''}`)} onClick={handleToggleMenu}>
+      <button className={classNames('burger', { open: isOpen })} onClick={handleToggleMenu}>
         <span className="bar"></span>
         <span className="bar"></span>
         <span className="bar"></span>
       </button>
       <ExpandMenu isOpen={isOpen}>
-        {' '}
         <div className="burger__menu">
           <ul className="burger__list">
             <li className="burger__item">
@@ -38,11 +38,20 @@ const BurgerButton = () => {
                 Edit Portfolio
               </Link>
             </li>
-            <li className="burger__item">
-              <Link className="navbar__link join" to="/auth">
-                JOIN
-              </Link>
-            </li>
+            {!user && (
+              <li className="burger__item">
+                <Link className="navbar__link join" to="/auth">
+                  JOIN
+                </Link>
+              </li>
+            )}
+            {user && (
+              <li className="burger__item">
+                <Link onClick={handlers.logOut} className="navbar__link join" to="/auth">
+                  LOGOUT
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </ExpandMenu>
