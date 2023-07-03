@@ -17,35 +17,33 @@ const Navbar = ({ isSticky }: NavbarProps) => {
   const isMobile = useIsMobile();
 
   return (
-    <>
-      <div className={classNames('navbar', { 'navbar--sticky': isSticky })}>
-        <Link to="/" className="navbar__logo">
-          <Logo animate={isSticky} dark />
-        </Link>
-        <div className="navbar__burgerButton">{isMobile && <BurgerButton />}</div>
-        {!isMobile && (
-          <div className={classNames('navbar__links', { 'navbar__links--sticky': isSticky })}>
-            <Link className="navbar__link" to="/features">
-              FEATURES
+    <div className={classNames('navbar', { 'navbar--sticky': isSticky })}>
+      <Link to="/" className="navbar__logo">
+        <Logo animate={isSticky} dark />
+      </Link>
+      <div className="navbar__burgerButton">{isMobile && <BurgerButton />}</div>
+      {!isMobile && (
+        <div className={classNames('navbar__links', { 'navbar__links--sticky': isSticky })}>
+          <Link className="navbar__link" to="/features">
+            FEATURES
+          </Link>
+          <Link className="navbar__link" to={`/${user?.userName}`}>
+            ABOUT
+          </Link>
+          <Link className="navbar__link" to="/edit">
+            Edit Portfolio
+          </Link>
+          <Link className="navbar__link join" to="/auth">
+            JOIN
+          </Link>
+          {user && (
+            <Link onClick={handlers.logOut} className="navbar__link join" to="/auth">
+              LOGOUT
             </Link>
-            <Link className="navbar__link" to={`/${user?.userName}`}>
-              ABOUT
-            </Link>
-            <Link className="navbar__link" to="/edit">
-              Edit Portfolio
-            </Link>
-            <Link className="navbar__link join" to="/auth">
-              JOIN
-            </Link>
-            {user && (
-              <Link onClick={handlers.logOut} className="navbar__link join" to="/auth">
-                LOGOUT
-              </Link>
-            )}
-          </div>
-        )}
-      </div>
-    </>
+          )}
+        </div>
+      )}
+    </div>
   );
 };
 
