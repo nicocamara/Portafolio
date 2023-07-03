@@ -1,0 +1,74 @@
+@import '../../../variables.scss';
+
+.snippet {
+  padding: 2rem 50%;
+}
+
+.dot-spin {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: transparent;
+  box-shadow: 0 -18px 0 0 $secondaryColor, 12.72984px -12.72984px 0 0 $secondaryColor, 18px 0 0 0 $secondaryColor,
+    12.72984px 12.72984px 0 0 $primaryColor, 0 18px 0 0 $primaryColor, -12.72984px 12.72984px 0 0 $primaryColor,
+    -18px 0 0 0 $primaryColor, -12.72984px -12.72984px 0 0 $primaryColor;
+  animation: dotSpin 1.5s infinite linear;
+}
+
+@keyframes dotSpin {
+  0%,
+  100% {
+    box-shadow: 0 -18px 0 0 $secondaryColor, 12.72984px -12.72984px 0 0 $secondaryColor, 18px 0 0 0 $secondaryColor,
+      12.72984px 12.72984px 0 -5px $primaryColor, 0 18px 0 -5px $primaryColor,
+      -12.72984px 12.72984px 0 -5px $primaryColor, -18px 0 0 -5px $primaryColor,
+      -12.72984px -12.72984px 0 -5px $primaryColor;
+  }
+
+  12.5% {
+    box-shadow: 0 -18px 0 -5px $primaryColor, 12.72984px -12.72984px 0 0 $secondaryColor, 18px 0 0 0 $secondaryColor,
+      12.72984px 12.72984px 0 0 $secondaryColor, 0 18px 0 -5px $primaryColor,
+      -12.72984px 12.72984px 0 -5px $primaryColor, -18px 0 0 -5px $primaryColor,
+      -12.72984px -12.72984px 0 -5px $primaryColor;
+  }
+
+  25% {
+    box-shadow: 0 -18px 0 -5px $primaryColor, 12.72984px -12.72984px 0 -5px $primaryColor, 18px 0 0 0 $secondaryColor,
+      12.72984px 12.72984px 0 0 $secondaryColor, 0 18px 0 0 $secondaryColor, -12.72984px 12.72984px 0 -5px $primaryColor,
+      -18px 0 0 -5px $primaryColor, -12.72984px -12.72984px 0 -5px $primaryColor;
+  }
+
+  37.5% {
+    box-shadow: 0 -18px 0 -5px $primaryColor, 12.72984px -12.72984px 0 -5px $primaryColor, 18px 0 0 -5px $primaryColor,
+      12.72984px 12.72984px 0 0 $secondaryColor, 0 18px 0 0 $secondaryColor, -12.72984px 12.72984px 0 0 $secondaryColor,
+      -18px 0 0 -5px $primaryColor, -12.72984px -12.72984px 0 -5px $primaryColor;
+  }
+
+  50% {
+    box-shadow: 0 -18px 0 -5px $primaryColor, 12.72984px -12.72984px 0 -5px $primaryColor, 18px 0 0 -5px $primaryColor,
+      12.72984px 12.72984px 0 -5px $primaryColor, 0 18px 0 0 $secondaryColor, -12.72984px 12.72984px 0 0 $secondaryColor,
+      -18px 0 0 0 $secondaryColor, -12.72984px -12.72984px 0 -5px $primaryColor;
+  }
+
+  62.5% {
+    box-shadow: 0 -18px 0 -5px $primaryColor, 12.72984px -12.72984px 0 -5px $primaryColor, 18px 0 0 -5px $primaryColor,
+      12.72984px 12.72984px 0 -5px $primaryColor, 0 18px 0 -5px $primaryColor,
+      -12.72984px 12.72984px 0 0 $secondaryColor, -18px 0 0 0 $secondaryColor,
+      -12.72984px -12.72984px 0 0 $secondaryColor;
+  }
+
+  75% {
+    box-shadow: 0 -18px 0 0 $secondaryColor, 12.72984px -12.72984px 0 -5px $primaryColor, 18px 0 0 -5px $primaryColor,
+      12.72984px 12.72984px 0 -5px $primaryColor, 0 18px 0 -5px $primaryColor,
+      -12.72984px 12.72984px 0 -5px $primaryColor, -18px 0 0 0 $secondaryColor,
+      -12.72984px -12.72984px 0 0 $secondaryColor;
+  }
+
+  87.5% {
+    box-shadow: 0 -18px 0 0 $secondaryColor, 12.72984px -12.72984px 0 0 $secondaryColor, 18px 0 0 -5px $primaryColor,
+      12.72984px 12.72984px 0 -5px $primaryColor, 0 18px 0 -5px $primaryColor,
+      -12.72984px 12.72984px 0 -5px $primaryColor, -18px 0 0 -5px $primaryColor,
+      -12.72984px -12.72984px 0 0 $secondaryColor;
+  }
+}

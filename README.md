@@ -1,11 +1,11 @@
 # CV showcase
 
 ### ⚡ **Project overview:**
-
+ 
 - Get a unique URL path that includes your username with public access
 - Create a professional portfolio to showcase vital information to potential employers
 - Utilize two user-friendly interfaces, one for visualize and the other for upload/editing data
-- Manage your profile data, including overview, education, skills, projects, experience, and downloadable CV and cover letter
+- Manage your  profile data, including overview, education, skills, projects, experience, and downloadable CV and cover letter
 
 <br />
 

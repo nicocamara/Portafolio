@@ -1,10 +1,58 @@
-export type user = {
+export type User = {
+  uid: string;
+  userName: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  contraseña: string;
-  // nombre: string;
-  // apellido: string;
-  // direccion: string;
-  // pais: string;
-  // ciudad: string;
-  // telefono: number;
+};
+
+export type Asset = File & { fileType: string; preview: string };
+
+export type Portfolio = {
+  id: string;
+  overview: {
+    avatarURL: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    country: string;
+    street: string;
+    city: string;
+    birthDate: string;
+  };
+  skills: Skills[];
+  job: Job[];
+  education: Education[];
+  headLine: HeadLine[];
+};
+
+export type Skills = {
+  workSkills: string;
+  softSkills: string;
+  teachSkills: string;
+  coverLetter: string;
+};
+
+export type Education = Experence & {
+  institution: string;
+};
+
+export type Job = Experence & {
+  employer: string;
+};
+
+type Experence = {
+  title: string;
+  description: string;
+  startDate: string;
+  endDate?: string;
+  actuality: boolean;
+};
+
+export type HeadLine = {
+  linkedin: string;
+  facebook: string;
+  github: string;
+  instagram: string;
 };

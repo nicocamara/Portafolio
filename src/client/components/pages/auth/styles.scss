@@ -1,0 +1,49 @@
+@import '../../../variables.scss';
+
+.auth {
+  background-color: rgba(255, 255, 255, 0.733);
+  border-radius: $borderRadius;
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  padding: 30px 10px 15px 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 540px;
+
+  @media (max-width: $mobile) {
+    height: 100%;
+    width: 100%;
+    padding: 30px 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+
+    &__logo {
+      @media (max-width: $mobile) {
+        display: none;
+      }
+
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 30px auto;
+
+      .logo {
+        font-size: 50px;
+      }
+    }
+
+    &__button {
+      margin-top: 20px !important;
+      margin-bottom: 0px !important;
+    }
+
+    &__button-center {
+      text-align: center;
+    }
+  }
+}

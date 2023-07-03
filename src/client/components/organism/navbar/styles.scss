@@ -1,0 +1,102 @@
+@import '../../../variables.scss';
+
+.navbar {
+  position: sticky;
+  position: -webkit-sticky; /* for safari */
+  top: 0;
+  min-height: 65px;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  transition: all 0.5s ease;
+  z-index: 2;
+
+  &__logo {
+    text-decoration: none;
+  }
+
+  .logo {
+    margin-left: 30px;
+    @media (max-width: $mobile) {
+      margin-left: 10px;
+    }
+  }
+
+  &--sticky {
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .join {
+    font-size: 17px;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 8px 30px;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      background-color: $secondaryColor;
+      &::after {
+        transform: scaleX(0);
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+
+    &--sticky {
+      .navbar__link {
+        color: #333333;
+        &:after {
+          background-color: #333333;
+        }
+      }
+
+      .join {
+        color: $primaryColor;
+        border: 1px solid !important;
+        background-color: $primaryColor;
+        color: white;
+
+        &:hover {
+          background-color: #610248 !important;
+        }
+      }
+    }
+  }
+
+  &__burgerButton {
+    margin: auto;
+    margin-right: 0;
+  }
+
+  &__link {
+    cursor: pointer;
+    margin-right: 30px;
+    color: white;
+    position: relative;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-decoration: none;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1.5px;
+      bottom: -1px;
+      left: 0;
+      background-color: white;
+      transform-origin: center;
+      transition: transform 0.25s ease-out;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: center;
+    }
+  }
+}
