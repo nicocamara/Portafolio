@@ -127,14 +127,14 @@
     transition: background-color 2s ease-out;
     background-color: $primaryColor;
 
-    // &--selected {
-    //   background-color: $secondaryColor;
-    // }
+    &--selected {
+      background-color: $secondaryColor;
+    }
 
-    // &:hover {
-    //   background-color: $secondaryColor;
-    //   cursor: pointer;
-    // }
+    &:hover {
+      background-color: $secondaryColor;
+      cursor: pointer;
+    }
 
     &.clicked {
       background-color: $secondaryColor;

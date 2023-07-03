@@ -26,7 +26,6 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
 
   return (
     <div className="skills">
-      {/* {mapear values.JobForm} */}
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ submitForm }) => (
           <Form className="skills__form">
@@ -34,39 +33,19 @@ const SkillsForm = ({ changeRoute }: SkillsProps) => {
             <hr className="skills__line" />
             <div className="form__field-container">
               <div className="skills__subtitles">Work Skills</div>
-              <Field
-                component={TextField}
-                name="workSkills"
-                label={'Describe yours works Skills'}
-                // validate={(value: string) => runValidation(value, 'firstName')}
-              />
+              <Field component={TextField} name="workSkills" label={'Describe yours works Skills'} />
             </div>
             <div className="form__field-container">
               <div className="skills__subtitles">Soft Skills</div>
-              <Field
-                component={TextField}
-                name="softSkills"
-                label={'Describe Yours Soft Skills'}
-                // validate={(value: string) => runValidation(value, 'firstName')}
-              />
+              <Field component={TextField} name="softSkills" label={'Describe Yours Soft Skills'} />
             </div>
             <div className="form__field-container">
               <div className="skills__subtitles">Teach Skills</div>
-              <Field
-                component={TextField}
-                name="teachSkills"
-                label={'Describe Yours Teach Skills'}
-                // validate={(value: string) => runValidation(value, 'firstName')}
-              />
+              <Field component={TextField} name="teachSkills" label={'Describe Yours Teach Skills'} />
             </div>
             <div className="form__field-container">
               <div className="skills__subtitles">Cover Letter</div>
-              <Field
-                component={TextField}
-                name="coverLetter"
-                label={'Cover Letter'}
-                // validate={(value: string) => runValidation(value, 'firstName')}
-              />
+              <Field component={TextField} name="coverLetter" label={'Cover Letter'} />
             </div>
             <div className="form__field-container">
               <Button type="button" className="educationForm__button" onClick={submitForm}>

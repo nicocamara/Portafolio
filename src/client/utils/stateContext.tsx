@@ -1,5 +1,5 @@
 import { browserLocalPersistence, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { ref, uploadBytes } from 'firebase/storage';
 import { createContext, useEffect, useState } from 'react';
 import { Asset, Portfolio, User } from './Type';
 import callApi from './callApi';
@@ -18,6 +18,7 @@ export type ContextValue = {
     logOut: () => Promise<void>;
   };
 };
+
 const auth = getAuth(firebaseApp);
 const StateContext = createContext<ContextValue>({} as ContextValue);
 
@@ -85,13 +86,6 @@ export const StateProvider = ({ children }: any) => {
       await uploadBytes(storageRef, file);
     });
   };
-
-  // const getFile = async () => {
-  //   const storageRef = ref(storageFile, 'images/');
-  //   await listAll(storageRef).then(response => {
-  //     response.items.forEach(item => getDownloadURL(item).then(url => setAvatar(prev => [...[prev], url])));
-  //   });
-  // };
 
   const handlers = {
     register: registerHandler,

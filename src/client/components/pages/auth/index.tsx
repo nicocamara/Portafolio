@@ -115,12 +115,7 @@ const Auth = () => {
             />
           </div>
           <div className="form__field-container">
-            <Field
-              name="termsAndConditions"
-              label="Terms and conditions"
-              type="checkbox"
-              // validate={(value: boolean) => validateCheckBox(value)}
-            />
+            <Field name="termsAndConditions" label="Terms and conditions" type="checkbox" />
             <span className="text-sm">Accept Terms</span>
           </div>
           <div className="form__field-container auth__button">

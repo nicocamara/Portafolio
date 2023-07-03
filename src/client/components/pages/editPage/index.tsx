@@ -4,13 +4,13 @@ import { ReactNode, useContext, useState } from 'react';
 import { Asset } from '../../../utils/Type';
 import StateContext from '../../../utils/stateContext';
 import Icons from '../../atoms/icons';
+import LoadingSpinner from '../../atoms/loadingSpinneer';
 import JobStep from '../../molecules/portfolioSteps/Job';
 import EducationForm from '../../molecules/portfolioSteps/education';
 import HeadLineForm from '../../molecules/portfolioSteps/headLine';
 import OverView from '../../molecules/portfolioSteps/overviewForm';
 import SkillsForm from '../../molecules/portfolioSteps/skills';
 import './styles.scss';
-import LoadingSpinner from '../../atoms/loadingSpinneer';
 
 export type Route = 'OverView' | 'headLine' | 'skills' | 'education' | 'jobs';
 
@@ -33,26 +33,23 @@ const routes: Step[] = [
   { name: 'jobs', label: 'Jobs', description: 'Upload your data' },
 ];
 
-const BreadCrumb = (props: MenuProps) => {
-  console.log();
-  return (
-    <div className="breadCrumb">
-      {routes.map(({ name, label, description }) => (
-        <div className="breadCrumb__item" key={name} onClick={() => props.changeRoute(name)}>
-          <Icons
-            className={classNames('breadCrumb__icons', { 'breadCrumb__icons--selected': props.step === name })}
-            path={name}
-            alt={name}
-          />
-          <div className="breadCrumb__text">
-            <div className="breadCrumb__text-label">{label}</div>
-            <span className="breadCrumb__description">{description}</span>
-          </div>
+const BreadCrumb = (props: MenuProps) => (
+  <div className="breadCrumb">
+    {routes.map(({ name, label, description }) => (
+      <div className="breadcrumb__item" key={name} onClick={() => props.changeRoute(name)}>
+        <Icons
+          className={classNames('breadcrumb__icons', { 'breadcrumb__icons--selected': props.step === name })}
+          path={name}
+          alt={name}
+        />
+        <div className="breadcrumb__text">
+          <div className="breadcrumb__text-label">{label}</div>
+          <span className="breadcrumb__description">{description}</span>
         </div>
-      ))}
-    </div>
-  );
-};
+      </div>
+    ))}
+  </div>
+);
 
 const initialValues = {
   overview: {
@@ -88,7 +85,6 @@ const getStep = (step: Route, stepProps: StepProps) => {
     jobs: <JobStep changeRoute={changeRoute} />,
     skills: <SkillsForm changeRoute={changeRoute} />,
   };
-
   return steps[step];
 };
 

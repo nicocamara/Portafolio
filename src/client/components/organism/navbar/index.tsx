@@ -7,6 +7,7 @@ import BurgerButton from '../../atoms/burgerButton';
 import useIsMobile from '../../../utils/useIsMobile';
 import { Link } from 'react-router-dom';
 
+
 type NavbarProps = {
   isSticky: boolean;
 };
