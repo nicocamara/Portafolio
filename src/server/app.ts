@@ -8,9 +8,11 @@ import config from './utils/config';
 const app = express();
 app.disable('x-powered-by');
 
+
 const allowedOrigins = config.isDevelopment
   ? 'http://localhost:3000'
   : ['https://my-portfolio-staging.onrender.com', 'https://www.cvshowcase.com'];
+
 
 app.use(
   cors({
