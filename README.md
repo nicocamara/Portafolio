@@ -38,9 +38,9 @@
 
 - All branches are created from the latest `main` branch
 - All branches are merged into `main` branch
-- Branch and PR names must start with `POR-<ticketNumber>-<name>`
-- Commits must start with `POR-<ticketNumber>` and be descriptive.
-
+- Branch name must start with `POR-<ticketNumber>-<kebab-case-name>`
+- PR name must start with `POR-<ticketNumber> <Name with spaces>`
+- Commits must start with `POR-<ticketNumber> <Descriptive message>`
 <br />
 
 ### 🚀 **Deploys**:
