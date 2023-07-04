@@ -8,12 +8,16 @@ import config from './utils/config';
 const app = express();
 app.disable('x-powered-by');
 
-const originToAllow = config.isDevelopment ? 'http://localhost:3000' : ['https://my-portfolio-staging.onrender.com', 'www.cvshowcase.com'];
+
+const allowedOrigins = config.isDevelopment
+  ? 'http://localhost:3000'
+  : ['https://my-portfolio-staging.onrender.com', 'https://www.cvshowcase.com'];
+
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (origin?.includes(originToAllow)) {
+      if (origin && allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
