@@ -25,7 +25,7 @@ const Navbar = ({ isSticky }: NavbarProps) => {
       <div className="navbar__burgerButton">{isMobile && <BurgerButton />}</div>
       {!isMobile && (
         <div className={classNames('navbar__links', { 'navbar__links--sticky': isSticky })}>
-          {!isPortfolioPage && (
+          {!isPortfolioPage && user && (
             <Link className="navbar__link" to={`/${user?.userName}`}>
               My Portfolio
             </Link>
