@@ -1,11 +1,11 @@
 import classNames from 'classnames';
-import './styles.scss';
-import Logo from '../../atoms/logo';
-import { useContext, useState } from 'react';
-import StateContext from '../../../utils/stateContext';
-import BurgerButton from '../../atoms/burgerButton';
-import useIsMobile from '../../../utils/useIsMobile';
+import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import StateContext from '../../../utils/stateContext';
+import useIsMobile from '../../../utils/useIsMobile';
+import BurgerButton from '../../atoms/burgerButton';
+import Logo from '../../atoms/logo';
+import './styles.scss';
 
 type NavbarProps = {
   isSticky: boolean;
