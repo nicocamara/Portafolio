@@ -27,8 +27,8 @@ const JobStep = ({ changeRoute }: JobProps) => {
   };
 
   return (
-    <div className="Job-form">
-      {/* {mapear values.Job-form} */}
+    <div className="job-form">
+      {/* {mapear values.job-form} */}
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ submitForm, values }) => (
           <Form className="job-form__form">
@@ -45,7 +45,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
                 Start Date
                 <Field className="job-form__date-button" type="date" name="startDate" />
               </div>
-              <div className="educationForm__date-subtitles">
+              <div className="job-form__date-subtitles">
                 Actuality
                 <Field type="checkbox" name="actuality" />
               </div>
