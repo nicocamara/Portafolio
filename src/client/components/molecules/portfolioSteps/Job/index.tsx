@@ -31,35 +31,35 @@ const JobStep = ({ changeRoute }: JobProps) => {
       {/* {mapear values.Job-form} */}
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ submitForm, values }) => (
-          <Form className="job-form__form">
-            <div className="job-form__title">Work Experencie</div>
-            <hr className="job-form__line" />
+          <Form className="Job-form__form">
+            <div className="Job-form__title">Work Experencie</div>
+            <hr className="Job-form__line" />
             <div className="form__field-container">
               <Field component={TextField} name="employer" label={'employer'} />
             </div>
             <div className="form__field-container">
               <Field component={TextField} name="title" label={'title'} />
             </div>
-            <div className={classNames('form__field-container', 'job-form__date')}>
-              <div className="job-form__date-subtitles">
+            <div className={classNames('form__field-container', 'Job-form__date')}>
+              <div className="Job-form__date-subtitles">
                 Start Date
-                <Field className="job-form__date-button" type="date" name="startDate" />
+                <Field className="Job-form__date-button" type="date" name="startDate" />
               </div>
-              <div className="educationForm__date-subtitles">
+              <div className="Job-form__date-subtitles">
                 Actuality
                 <Field type="checkbox" name="actuality" />
               </div>
               {!values.actuality && (
-                <div className="job-form__date-subtitles">
+                <div className="Job-form__date-subtitles">
                   End Date
-                  <Field className="job-form__date-button" type="date" name="endDate" />
+                  <Field className="Job-form__date-button" type="date" name="endDate" />
                 </div>
               )}
             </div>
             <div>
               <div className="form__field-container">
                 <Field
-                  className="job-form__description"
+                  className="Job-form__description"
                   component={TextField}
                   name="description"
                   label={'Description Job'}

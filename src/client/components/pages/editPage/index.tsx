@@ -36,15 +36,15 @@ const routes: Step[] = [
 const BreadCrumb = (props: MenuProps) => (
   <div className="breadCrumb">
     {routes.map(({ name, label, description }) => (
-      <div className="breadcrumb__item" key={name} onClick={() => props.changeRoute(name)}>
+      <div className="breadCrumb__item" key={name} onClick={() => props.changeRoute(name)}>
         <Icons
-          className={classNames('breadcrumb__icons', { 'breadcrumb__icons--selected': props.step === name })}
+          className={classNames('breadCrumb__icons', { 'breadCrumb__icons--selected': props.step === name })}
           path={name}
           alt={name}
         />
-        <div className="breadcrumb__text">
-          <div className="breadcrumb__text-label">{label}</div>
-          <span className="breadcrumb__description">{description}</span>
+        <div className="breadCrumb__text">
+          <div className="breadCrumb__text-label">{label}</div>
+          <span className="breadCrumb__description">{description}</span>
         </div>
       </div>
     ))}
