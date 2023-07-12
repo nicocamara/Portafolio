@@ -40,9 +40,7 @@ const App = () => {
           </Routes>
         </div>
       </div>
-      <div className="app__footer">
-        <p>Footer </p>
-      </div>
+      <div className="app__footer"></div>
     </div>
   );
 };
