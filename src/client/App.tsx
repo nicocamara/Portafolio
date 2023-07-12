@@ -41,7 +41,7 @@ const App = () => {
         </div>
       </div>
       <div className="app__footer">
-        <p>Footer </p>
+        <p></p>
       </div>
     </div>
   );
