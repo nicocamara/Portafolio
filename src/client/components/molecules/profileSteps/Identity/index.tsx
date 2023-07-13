@@ -29,21 +29,16 @@ const Identity = ({ date }: identityProps) => {
 
   return (
     <div className="identity">
-      {date.headLine.map((head, index) => (
-        <div className="identity__container" key={index}>
-          <img
-            className="identity__foto"
-            src={avatarImg ? avatarImg : getAssetUrl('placeholder.png')}
-            alt="userimage"
-          />
-          <div className="identity__logos">
-            <Icons path="linkedin" alt="linkedin" className="linkedin" link={head.linkedin} />
-            <Icons path="facebook" alt="facebook" className="linkedin" link={head.facebook} />
-            <Icons path="github" alt="github" className="linkedin" link={head.github} />
-            <Icons path="instagram" alt="instagram" className="linkedin" link={head.instagram} />
-          </div>
+      <div className="identity__container">
+        <img className="identity__foto" src={avatarImg ? avatarImg : getAssetUrl('placeholder.png')} alt="userimage" />
+        <div className="identity__logos">
+          <Icons path="linkedin" alt="linkedin" className="linkedin" link={date.headLine.linkedin} />
+          <Icons path="facebook" alt="facebook" className="linkedin" link={date.headLine.facebook} />
+          <Icons path="github" alt="github" className="linkedin" link={date.headLine.github} />
+          <Icons path="instagram" alt="instagram" className="linkedin" link={date.headLine.instagram} />
         </div>
-      ))}
+      </div>
+
       <div className="identity__buttons">
         <Button className="identity__button">Download CV</Button>
       </div>

@@ -6,16 +6,16 @@ import LoadingSpinner from '../../atoms/loadingSpinneer';
 import Menu from '../../atoms/menu';
 import Experiences from '../../molecules/profileSteps/Experiences';
 import Identity from '../../molecules/profileSteps/Identity';
-import Contact from '../../molecules/profileSteps/Resume';
-import Projects from '../../molecules/profileSteps/Skills';
 import Resume from '../../molecules/profileSteps/Resume';
+import Projects from '../../molecules/profileSteps/Skills';
+import Studies from '../../molecules/profileSteps/studies';
 import './styles.scss';
 
 export type Route = 'Resume' | 'Skilfulness' | 'Studies' | 'Experiences';
 
 const contents: Record<Route, (props: { date: Portfolio }) => JSX.Element> = {
-  Resume: props => <Contact {...props} />,
-  Studies: props => <Resume {...props} />,
+  Resume: props => <Resume {...props} />,
+  Studies: props => <Studies {...props} />,
   Skilfulness: props => <Projects {...props} />,
   Experiences: props => <Experiences {...props} />,
 };
