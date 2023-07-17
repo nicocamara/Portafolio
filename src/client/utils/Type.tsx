@@ -21,10 +21,10 @@ export type Portfolio = {
     city: string;
     birthDate: string;
   };
-  skills: Skills[];
+  skills: Skills;
   job: Job[];
   education: Education[];
-  headLine: HeadLine[];
+  headLine: HeadLine;
 };
 
 export type Skills = {

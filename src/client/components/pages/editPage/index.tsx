@@ -63,10 +63,20 @@ const initialValues = {
     city: '',
     birthDate: '',
   },
-  skills: [],
+  skills: {
+    workSkills: '',
+    softSkills: '',
+    teachSkills: '',
+    coverLetter: '',
+  },
   job: [],
   education: [],
-  headLine: [],
+  headLine: {
+    linkedin: '',
+    facebook: '',
+    github: '',
+    instagram: '',
+  },
 };
 
 type StepProps = {
