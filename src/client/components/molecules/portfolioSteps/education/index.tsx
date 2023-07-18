@@ -5,6 +5,7 @@ import Button from '../../../atoms/button';
 import { Route } from '../../../pages/editPage';
 import TextField from '../../formik/TextField';
 import './styles.scss';
+import TextAreaField from '../../formik/textAreafield';
 
 type EducationProps = {
   changeRoute: (newRoute: Route) => void;
@@ -56,7 +57,7 @@ const EducationForm = ({ changeRoute }: EducationProps) => {
               )}
             </div>
             <div className="form__field-container">
-              <Field component={TextField} name="description" label={'description'} />
+              <Field component={TextAreaField} name="description" label={'description'} />
             </div>
             <div className="form__field-container">
               <Button type="button" className="education-form__button" onClick={submitForm}>
