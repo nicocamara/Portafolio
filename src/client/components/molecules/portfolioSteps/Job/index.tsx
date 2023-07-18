@@ -5,6 +5,7 @@ import Button from '../../../atoms/button';
 import { Route } from '../../../pages/editPage';
 import TextField from '../../formik/TextField';
 import './styles.scss';
+import TextAreaField from '../../formik/textAreafield';
 
 type JobProps = {
   changeRoute: (newRoute: Route) => void;
@@ -60,7 +61,7 @@ const JobStep = ({ changeRoute }: JobProps) => {
               <div className="form__field-container">
                 <Field
                   className="job-form__description"
-                  component={TextField}
+                  component={TextAreaField}
                   name="description"
                   label={'Description Job'}
                 />
