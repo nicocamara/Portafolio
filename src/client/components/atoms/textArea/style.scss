@@ -1,0 +1,31 @@
+@import '../../../variables.scss';
+
+.text-area {
+  min-height: 130px;
+  max-height: 250px;
+  resize: vertical;
+  padding: 12px 10px 8px 10px;
+  margin: 10px 0px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 17px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: 97%;
+  background-size: 20px;
+  border: 1px solid gray;
+  z-index: 1;
+  background-color: transparent;
+
+  &:hover {
+    border-color: $primaryColor;
+  }
+
+  &__error {
+    border-color: red;
+  }
+
+  &::placeholder {
+    visibility: hidden;
+  }
+}
