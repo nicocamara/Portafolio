@@ -1,14 +1,21 @@
-.checkBox {
-  position: relative;
-  height: 20px;
-  width: 20px;
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: red;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.checkBox:checked {
-  transition: 0.2s;
-  background-color: blue;
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+
+  &__input {
+    margin: 0 5px 0 0;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+
+    &:checked {
+      transition: 0.2s;
+      background-color: blue;
+    }
+  }
+
+  &__text {
+    font-size: 13px;
+  }
 }

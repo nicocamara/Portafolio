@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { User } from '../../../utils/Type';
 import showNotification from '../../../utils/notifications';
 import StateContext from '../../../utils/stateContext';
-import { runValidation } from '../../../utils/validations';
+import { runValidation, validateCheckbox } from '../../../utils/validations';
 import Button from '../../atoms/button';
 import Logo from '../../atoms/logo';
+import CheckboxField from '../../molecules/formik/CheckboxField';
 import TextField from '../../molecules/formik/TextField';
 import './styles.scss';
-import CheckBox from '../../atoms/checkBox';
 
 const Auth = () => {
   const { handlers, user } = useContext(StateContext);
@@ -22,6 +22,7 @@ const Auth = () => {
     userName: '',
     email: '',
     password: '',
+    termsAndConditions: false,
   };
 
   const onSubmit = async (values: Omit<User, 'uid'> & { password: string }) => {
@@ -109,12 +110,13 @@ const Auth = () => {
           </div>
           <div className="form__field-container">
             <Field
+              component={CheckboxField}
               name="termsAndConditions"
               label="Terms and conditions"
+              text="I am aware of the conditions and accept the terms"
               type="checkbox"
-              // validate={(value: boolean) => validateCheckBox(value)}
+              validate={(isChecked: boolean) => validateCheckbox(isChecked)}
             />
-            <span className="text-sm">Accept Terms</span>
           </div>
           <div className="form__field-container auth__button">
             <Button type="submit">{isLogin ? 'Sign In' : 'Sign Up'}</Button>
@@ -125,10 +127,6 @@ const Auth = () => {
         <Button isTertiary onClick={() => setIsLogin(!isLogin)}>
           {isLogin ? 'Not a member? - Join Us' : 'Already registered? Go to Login'}
         </Button>
-      </div>
-      <div className="form__field-container ">
-        <CheckBox />
-        <span>hola</span>
       </div>
     </div>
   );

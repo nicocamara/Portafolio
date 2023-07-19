@@ -1,20 +1,16 @@
-import classNames from 'classnames';
-import { InputHTMLAttributes, DetailedHTMLProps } from 'react';
+import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import './style.scss';
 
-type CheckBoxProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
-  isSecondary?: boolean;
-  isTertiary?: boolean;
-  className?: string;
-};
+export type CheckboxProps = { text: string } & DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
-const CheckBox = ({ className, isSecondary, isTertiary }: CheckBoxProps) => {
-  const dynamicClasses = {
-    'checkBox--isSecondary': isSecondary,
-    'checkBox--isTertiary': isTertiary,
-  };
+const Checkbox = ({ className, text, ...props }: CheckboxProps) => (
+  <div className="checkbox">
+    <input type="checkbox" className="checkbox__input" {...props} />
+    <span className="checkbox__text">{text}</span>
+  </div>
+);
 
-  return <input type="checkbox" className={classNames('checkBox', dynamicClasses, className)}></input>;
-};
-
-export default CheckBox;
+export default Checkbox;

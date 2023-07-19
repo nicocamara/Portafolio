@@ -30,9 +30,10 @@ const validationRules: { [key: string]: ValidationOptions } = {
   zipCode: { minLength: 3, maxLength: 10, isRequired: true, format: '^(\\d){3,10}$' },
   city: { minLength: 2, maxLength: 15, isRequired: true, format: '^(\\D| )*$' },
   country: { minLength: 2, maxLength: 15, isRequired: true, format: '^(\\D| )*$' },
+  checbox: { minLength: 2, maxLength: 15, isRequired: true, format: '^(\\D| )*$' },
 };
 
-export const validateCheckBox = (value: boolean) => (value ? undefined : ['isRequired']);
+export const validateCheckbox = (isChecked: boolean) => (isChecked ? undefined : 'isRequired');
 export const isEmpty = (value: any) => value === null || value === undefined || value === '';
 
 export const runValidation = (value: string, name: InputType) => {
