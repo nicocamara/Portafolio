@@ -1,0 +1,14 @@
+.checkBox {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: red;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.checkBox:checked {
+  transition: 0.2s;
+  background-color: blue;
+}

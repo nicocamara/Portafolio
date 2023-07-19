@@ -9,6 +9,7 @@ import Button from '../../atoms/button';
 import Logo from '../../atoms/logo';
 import TextField from '../../molecules/formik/TextField';
 import './styles.scss';
+import CheckBox from '../../atoms/checkBox';
 
 const Auth = () => {
   const { handlers, user } = useContext(StateContext);
@@ -124,6 +125,10 @@ const Auth = () => {
         <Button isTertiary onClick={() => setIsLogin(!isLogin)}>
           {isLogin ? 'Not a member? - Join Us' : 'Already registered? Go to Login'}
         </Button>
+      </div>
+      <div className="form__field-container ">
+        <CheckBox />
+        <span>hola</span>
       </div>
     </div>
   );
